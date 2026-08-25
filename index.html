@@ -882,6 +882,22 @@ const header = document.getElementById('siteHeader');
 const onScroll = () => { if (window.scrollY > 40) header.classList.add('scrolled'); else header.classList.remove('scrolled'); };
 window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
+// Manual anchor scroll — computed explicitly in JS, does not rely on CSS scroll-margin-top,
+// to guarantee every in-page link stops exactly at (section top - header height), no exceptions.
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  const targetId = a.getAttribute('href').slice(1);
+  if (!targetId) return;
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const headerH = header.getBoundingClientRect().height;
+    const y = target.getBoundingClientRect().top + window.scrollY - headerH;
+    window.scrollTo({top: y, behavior: 'smooth'});
+    history.pushState(null, '', '#' + targetId);
+  });
+});
+
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, {threshold:0.12});
