@@ -301,12 +301,15 @@ section{position:relative;}
 .form-row textarea{resize:vertical;min-height:84px;}
 .form-row input::placeholder,.form-row textarea::placeholder{color:rgba(255,248,240,0.42);}
 .contact-form .btn{width:100%;justify-content:center;margin-top:8px;}
-.form-status{font-size:13px;margin:10px 0 0;min-height:16px;line-height:1.5;}
-.form-status.success{color:var(--mint);}
-.form-status.error{color:#E39A8A;}
-#newsletterStatus{width:100%;margin-top:2px;}
-#newsletterStatus.success{color:var(--gold-soft);}
-#newsletterStatus.error{color:#E39A8A;}
+.form-feedback{display:none;align-items:flex-start;gap:12px;padding:14px 18px;border-radius:var(--r);font-size:14px;line-height:1.5;margin-top:14px;opacity:0;transform:translateY(10px);transition:opacity .5s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1);}
+.form-feedback.visible{display:flex;opacity:1;transform:none;}
+.form-feedback-icon{flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.form-feedback-icon svg{width:12px;height:12px;}
+.form-feedback.success{background:rgba(185,217,186,0.14);border:1px solid rgba(185,217,186,0.5);color:var(--soft-white);}
+.form-feedback.success .form-feedback-icon{background:var(--mint);color:var(--dark-green);}
+.form-feedback.error{background:rgba(227,154,138,0.14);border:1px solid rgba(227,154,138,0.55);color:var(--soft-white);}
+.form-feedback.error .form-feedback-icon{background:#E39A8A;color:var(--dark-green);}
+.form-feedback-text strong{display:block;font-family:var(--font-display);font-size:15px;font-weight:500;margin-bottom:2px;}
 button[disabled]{opacity:0.65;cursor:default;}
 
 /* ---------- FOOTER: rooted, not a divider line ---------- */
@@ -736,7 +739,10 @@ button[disabled]{opacity:0.65;cursor:default;}
         <div class="form-row"><label for="email">Email<i>*</i></label><input type="email" id="email" name="email" placeholder="adresa@exemplu.ro" required></div>
         <div class="form-row"><label for="msg">Mesaj<i>*</i></label><textarea id="msg" name="mesaj" rows="4" placeholder="Spune-ne despre spațiul tău verde..." required></textarea></div>
         <button type="submit" class="btn btn-secondary">Trimite mesajul</button>
-        <p class="form-status" id="contactStatus" aria-live="polite"></p>
+        <div class="form-feedback" id="contactStatus" role="status" aria-live="polite">
+          <span class="form-feedback-icon"></span>
+          <span class="form-feedback-text"></span>
+        </div>
         <p class="form-consent">Trimițând acest mesaj ești de acord cu <a href="#">politica de confidențialitate</a> și cu <a href="#">termenii și condițiile</a>.</p>
       </form>
     </div>
@@ -813,7 +819,10 @@ button[disabled]{opacity:0.65;cursor:default;}
           <input type="email" name="email" placeholder="Adresa ta de email" required>
           <button type="submit" class="btn btn-secondary">Abonează-te</button>
         </form>
-        <p class="form-status" id="newsletterStatus" aria-live="polite"></p>
+        <div class="form-feedback" id="newsletterStatus" role="status" aria-live="polite">
+          <span class="form-feedback-icon"></span>
+          <span class="form-feedback-text"></span>
+        </div>
         <p class="footer-legal-note">Prin abonare ești de acord cu <a href="#">Politica de confidențialitate</a> și îți dai consimțământul să primești noutăți.</p>
       </div>
     </div>
@@ -931,14 +940,25 @@ document.querySelectorAll('video[autoplay]').forEach(v => {
   }
 })();
 /* Trimitere formulare (contact + newsletter) fără reîncărcarea paginii */
-function wireAjaxForm(formEl, statusEl, successMsg){
+const ICONS = {
+  success: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  error: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v5M12 16.5v.01M12 3l9.5 17H2.5L12 3z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+};
+function showFeedback(el, type, title, text){
+  if (!el) return;
+  el.classList.remove('success','error');
+  el.classList.add(type, 'visible');
+  el.querySelector('.form-feedback-icon').innerHTML = ICONS[type];
+  el.querySelector('.form-feedback-text').innerHTML = '<strong>' + title + '</strong>' + text;
+}
+function wireAjaxForm(formEl, statusEl, successTitle, successText){
   if (!formEl) return;
   formEl.addEventListener('submit', function(e){
     e.preventDefault();
     const submitBtn = formEl.querySelector('button[type="submit"]');
     const originalLabel = submitBtn ? submitBtn.textContent : '';
     if (submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Se trimite...'; }
-    if (statusEl){ statusEl.textContent = ''; statusEl.classList.remove('success','error'); }
+    if (statusEl){ statusEl.classList.remove('visible','success','error'); }
     const ajaxAction = formEl.getAttribute('action').replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/');
     fetch(ajaxAction, {
       method: 'POST',
@@ -947,19 +967,19 @@ function wireAjaxForm(formEl, statusEl, successMsg){
     })
     .then(res => { if (!res.ok) throw new Error('network'); return res.json(); })
     .then(() => {
-      if (statusEl){ statusEl.textContent = successMsg; statusEl.classList.add('success'); }
+      showFeedback(statusEl, 'success', successTitle, successText);
       formEl.reset();
     })
     .catch(() => {
-      if (statusEl){ statusEl.textContent = 'A apărut o eroare. Încearcă din nou sau scrie-ne direct pe email.'; statusEl.classList.add('error'); }
+      showFeedback(statusEl, 'error', 'A apărut o eroare.', ' Încearcă din nou sau scrie-ne direct pe email.');
     })
     .finally(() => {
       if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
     });
   });
 }
-wireAjaxForm(document.getElementById('contactForm'), document.getElementById('contactStatus'), 'Mulțumim! Mesajul tău a fost trimis — revenim curând.');
-wireAjaxForm(document.getElementById('newsletterForm'), document.getElementById('newsletterStatus'), 'Te-ai abonat cu succes la noutăți!');
+wireAjaxForm(document.getElementById('contactForm'), document.getElementById('contactStatus'), 'Mulțumim!', ' Mesajul tău a fost trimis — revenim curând.');
+wireAjaxForm(document.getElementById('newsletterForm'), document.getElementById('newsletterStatus'), 'Te-ai abonat!', ' Vei primi noutăți din grădină direct pe email.');
 
 document.querySelectorAll('.prompt').forEach(p => {
   p.addEventListener('click', () => {
