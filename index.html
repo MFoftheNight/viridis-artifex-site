@@ -360,6 +360,42 @@ button[disabled]{opacity:0.65;cursor:default;}
 .footer-bottom a{color:rgba(255,248,240,0.42);}
 .footer-bottom a:hover{color:var(--gold-soft);}
 .footer-legal{display:flex;gap:22px;flex-wrap:wrap;}
+/* ===== Quick contact modal ===== */
+.qc-overlay{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(11,45,26,0.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.2,.7,.2,1),visibility 0s linear .35s;}
+.qc-overlay.open{opacity:1;visibility:visible;transition-delay:0s;}
+body.qc-lock{overflow:hidden;}
+.qc-content{position:relative;z-index:1;}
+.qc-modal{position:relative;width:100%;max-width:760px;max-height:88vh;overflow-y:auto;background:var(--dark-green);border:1px solid var(--line-on-dark);border-radius:var(--r);padding:clamp(32px,4.5vw,58px);color:var(--cream-soft);transform:translateY(22px) scale(.97);transition:transform .4s cubic-bezier(.2,.7,.2,1);}
+.qc-overlay.open .qc-modal{transform:none;}
+.qc-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-on-dark);background:transparent;color:var(--cream-soft);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s ease,color .25s ease,transform .3s ease;}
+.qc-close:hover{border-color:var(--gold-soft);color:var(--gold-soft);transform:rotate(90deg);}
+.qc-close svg{width:15px;height:15px;}
+.qc-title{font-family:var(--font-display);font-size:clamp(22px,2.6vw,26px);font-weight:400;color:var(--soft-white);margin:0 0 12px;padding-right:34px;line-height:1.2;}
+.qc-intro{font-size:14.5px;line-height:1.6;color:var(--cream-soft);margin:0 0 24px;}
+.qc-form .btn{width:100%;justify-content:center;margin-top:14px;}
+.qc-form .btn:hover{filter:none;}
+.qc-modal .form-row label{text-transform:none;letter-spacing:0;font-size:13px;font-weight:600;}
+.qc-opt-tag{font-size:9.5px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,248,240,0.42);font-weight:400;margin-left:6px;}
+.qc-optional-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:420px){ .qc-optional-row{grid-template-columns:1fr;} }
+.qc-pill-row label{margin-bottom:10px;}
+.pill-group{display:flex;flex-wrap:wrap;gap:8px;}
+.pill{display:inline-flex;align-items:center;padding:9px 16px;border-radius:999px;border:1px solid rgba(255,248,240,0.26);background:rgba(255,248,240,0.05);color:var(--cream-soft);font-family:var(--font-body);font-size:13.5px;font-weight:500;line-height:1.3;cursor:pointer;transition:border-color .25s ease,background .25s ease,color .25s ease;}
+.pill:hover{border-color:rgba(201,169,110,0.5);background:rgba(255,248,240,0.09);}
+.pill.active{border-color:var(--gold-soft);background:var(--gold-soft);color:var(--dark-green);font-weight:600;}
+.qc-reveal{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
+.qc-reveal.open{max-height:1800px;}
+.qc-reveal-inner{margin-top:2px;}
+.qc-branch{margin-bottom:24px;}
+.qc-branch-title{font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--soft-white);margin:0 0 12px;}
+.qc-branch-box{border:1px solid rgba(255,248,240,0.22);border-radius:var(--r);padding:20px 20px 2px;background:rgba(255,248,240,0.035);}
+.qc-attach input[type=file]{width:100%;background:rgba(255,248,240,0.05);border:1px solid rgba(255,248,240,0.26);border-radius:var(--r);color:var(--cream-soft);font-family:var(--font-body);font-size:13px;padding:10px 12px;}
+.qc-attach input[type=file]::file-selector-button{margin-right:12px;padding:8px 14px;border-radius:999px;border:1px solid var(--gold-soft);background:transparent;color:var(--gold-soft);font-family:var(--font-body);font-size:12.5px;font-weight:500;cursor:pointer;transition:background .25s ease,color .25s ease;}
+.qc-attach input[type=file]::file-selector-button:hover{background:var(--gold-soft);color:var(--dark-green);}
+.qc-info{margin-top:26px;padding-top:22px;border-top:1px solid var(--line-on-dark);display:flex;flex-direction:column;}
+@media (prefers-reduced-motion:reduce){
+  .qc-overlay,.qc-modal,.qc-close,.qc-reveal{transition:none !important;}
+}
 </style>
 </head>
 <body>
@@ -472,7 +508,7 @@ button[disabled]{opacity:0.65;cursor:default;}
     </nav>
     <div class="header-actions">
       <div class="lang-switch"><a href="#" class="active">RO</a><span>/</span><a href="#">EN</a></div>
-      <button class="btn btn-nav-cta">Hai să discutăm</button>
+      <button class="btn btn-nav-cta js-open-contact">Hai să discutăm</button>
     </div>
   </div>
 </header>
@@ -485,7 +521,7 @@ button[disabled]{opacity:0.65;cursor:default;}
     <p class="hero-sub">Proiectăm, plantăm și îngrijim grădini care respiră odată cu anotimpurile — spații definite de ecologie, proporție și un respect profund față de lumea naturală.</p>
     <div class="hero-actions">
       <button class="btn btn-primary-teal">Vezi portofoliul</button>
-      <button class="btn btn-on-dark">Hai să discutăm</button>
+      <button class="btn btn-on-dark js-open-contact">Hai să discutăm</button>
     </div>
    </div>
   </div>
@@ -677,7 +713,7 @@ button[disabled]{opacity:0.65;cursor:default;}
         <p class="eyebrow">Întrebări frecvente</p>
         <h2>Ce te-ar putea interesa</h2>
         <p class="lede">Aici găsești răspunsurile la cele mai comune întrebări. Dacă nu găsești ce te interesează, scrie-ne un mesaj și revenim cu un răspuns în cel mai scurt timp.</p>
-        <button class="btn btn-ghost">Hai să discutăm</button>
+        <button class="btn btn-ghost js-open-contact">Hai să discutăm</button>
       </div>
       <div class="faq-list">
         <div class="faq-item open">
@@ -877,6 +913,169 @@ button[disabled]{opacity:0.65;cursor:default;}
   </div>
 </footer>
 
+<!-- QUICK CONTACT MODAL -->
+<div class="qc-overlay" id="qcOverlay" aria-hidden="true">
+  <div class="qc-modal bg-dark-tex" id="qcModal" role="dialog" aria-modal="true" aria-labelledby="qcTitle">
+    <button type="button" class="qc-close" id="qcClose" aria-label="Închide fereastra">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <div class="qc-content">
+    <p class="eyebrow on-dark" style="margin-bottom:18px;">Contact</p>
+    <h3 class="qc-title" id="qcTitle">Hai să discutăm despre grădina ta</h3>
+    <p class="qc-intro">Spune-ne câteva detalii ca să pregătim un răspuns cât mai potrivit.</p>
+
+    <form class="qc-form" id="qcContactForm" action="https://formsubmit.co/viridisartifex.landscape@gmail.com" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="Mesaj nou de pe site — Viridis Artifex">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="form-row"><label for="qcName">Nume<i>*</i></label><input type="text" id="qcName" name="name" placeholder="Numele tău" required></div>
+      <div class="form-row"><label for="qcEmail">Email<i>*</i></label><input type="email" id="qcEmail" name="email" placeholder="adresa@exemplu.ro" required></div>
+      <div class="qc-optional-row">
+        <div class="form-row"><label for="qcPhone">Telefon <span class="qc-opt-tag">opțional</span></label><input type="tel" id="qcPhone" name="telefon" placeholder="07xx xxx xxx"></div>
+        <div class="form-row"><label for="qcLocation">Locație <span class="qc-opt-tag">opțional</span></label><input type="text" id="qcLocation" name="localitate" placeholder="ex. Brașov"></div>
+      </div>
+
+      <div class="form-row qc-pill-row" data-field="serviciu">
+        <label>Ce serviciu te interesează?</label>
+        <div class="pill-group">
+          <button type="button" class="pill" data-value="Îngrijire plante" data-branch="plante">Îngrijire plante</button>
+          <button type="button" class="pill" data-value="Design digital" data-branch="design">Design digital</button>
+          <button type="button" class="pill" data-value="Consultanță" data-branch="consultanta">Consultanță</button>
+          <button type="button" class="pill" data-value="Nu sunt sigur" data-branch="niciunul">Nu sunt sigur</button>
+        </div>
+        <input type="hidden" name="serviciu" value="">
+      </div>
+
+      <div class="qc-reveal" id="qcReveal">
+        <div class="qc-reveal-inner">
+
+          <div class="qc-branch" data-branch-panel="plante">
+            <p class="qc-branch-title">Detalii – Îngrijire plante</p>
+            <div class="qc-branch-box">
+              <div class="form-row qc-pill-row" data-field="pachet">
+                <label>Ce pachet ți se potrivește?</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="Lunar">Lunar</button>
+                  <button type="button" class="pill" data-value="De sezon">De sezon</button>
+                  <button type="button" class="pill" data-value="Personalizat">Personalizat</button>
+                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                </div>
+                <input type="hidden" name="pachet" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="unde_plante">
+                <label>Unde sunt plantele?</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="Interior">Interior</button>
+                  <button type="button" class="pill" data-value="Exterior">Exterior</button>
+                  <button type="button" class="pill" data-value="Mixt">Mixt</button>
+                </div>
+                <input type="hidden" name="unde_plante" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="probleme">
+                <label>Există probleme acum?</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="Dăunători">Dăunători</button>
+                  <button type="button" class="pill" data-value="Foliaj îngălbenit/uscat">Foliaj îngălbenit/uscat</button>
+                  <button type="button" class="pill" data-value="Altceva">Altceva</button>
+                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                </div>
+                <input type="hidden" name="probleme" value="">
+              </div>
+            </div>
+          </div>
+
+          <div class="qc-branch" data-branch-panel="design">
+            <p class="qc-branch-title">Detalii – Design digital</p>
+            <div class="qc-branch-box">
+              <div class="form-row qc-pill-row" data-field="tip_spatiu">
+                <label>Tip spațiu</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="Balcon">Balcon</button>
+                  <button type="button" class="pill" data-value="Terasă">Terasă</button>
+                  <button type="button" class="pill" data-value="Curte">Curte</button>
+                  <button type="button" class="pill" data-value="Grădină">Grădină</button>
+                  <button type="button" class="pill" data-value="Interior">Interior</button>
+                </div>
+                <input type="hidden" name="tip_spatiu" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="suprafata">
+                <label>Suprafață estimată</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="sub 100 mp">sub 100 mp</button>
+                  <button type="button" class="pill" data-value="100-250 mp">100-250 mp</button>
+                  <button type="button" class="pill" data-value="peste 250 mp">peste 250 mp</button>
+                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                </div>
+                <input type="hidden" name="suprafata" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="intretinere">
+                <label>Nivel de întreținere dorit</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="Redus">Redus</button>
+                  <button type="button" class="pill" data-value="Mediu">Mediu</button>
+                  <button type="button" class="pill" data-value="Ridicat">Ridicat</button>
+                </div>
+                <input type="hidden" name="intretinere" value="">
+              </div>
+            </div>
+          </div>
+
+          <div class="qc-branch" data-branch-panel="consultanta">
+            <p class="qc-branch-title">Detalii – Consultanță</p>
+            <div class="qc-branch-box">
+              <div class="form-row qc-pill-row" data-field="cand_discutam">
+                <label>Când preferi să discutăm? <span class="qc-opt-tag">opțional</span></label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="Dimineață">Dimineață</button>
+                  <button type="button" class="pill" data-value="După-amiază">După-amiază</button>
+                  <button type="button" class="pill" data-value="Weekend">Weekend</button>
+                  <button type="button" class="pill" data-value="Oricând">Oricând</button>
+                </div>
+                <input type="hidden" name="cand_discutam" value="">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row qc-attach" data-branch-panel="plante design">
+            <label for="qcFile">Poză <span class="qc-opt-tag">opțional — ajută la un prim diagnostic</span></label>
+            <input type="file" id="qcFile" name="attachment" accept="image/*">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row qc-pill-row" data-field="mod_lucru">
+        <label>Cum preferi să lucrăm?</label>
+        <div class="pill-group">
+          <button type="button" class="pill" data-value="Online">Online</button>
+          <button type="button" class="pill" data-value="La fața locului">La fața locului</button>
+          <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+        </div>
+        <input type="hidden" name="mod_lucru" value="">
+      </div>
+
+      <div class="form-row">
+        <label for="qcMsg">Detalii</label>
+        <textarea id="qcMsg" name="mesaj" rows="4" placeholder="Spune-ne despre spațiul tău verde..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-secondary">Trimite mesajul</button>
+      <div class="form-feedback" id="qcContactStatus" role="status" aria-live="polite">
+        <span class="form-feedback-icon"></span>
+        <span class="form-feedback-text"></span>
+      </div>
+      <p class="form-consent">Trimițând acest mesaj ești de acord cu <a href="#">politica de confidențialitate</a> și cu <a href="#">termenii și condițiile</a>.</p>
+    </form>
+
+    <div class="contact-info qc-info">
+      <a href="tel:+40742306289"><span class="ci-label">Tel</span><span>+40 742 306 289</span></a>
+      <a href="mailto:viridisartifex.landscape@gmail.com"><span class="ci-label">Email</span><span>viridisartifex.landscape@gmail.com</span></a>
+    </div>
+    </div>
+  </div>
+</div>
+
 <script>
 const header = document.getElementById('siteHeader');
 const onScroll = () => { if (window.scrollY > 40) header.classList.add('scrolled'); else header.classList.remove('scrolled'); };
@@ -971,7 +1170,7 @@ function showFeedback(el, type, title, text){
   el.querySelector('.form-feedback-icon').innerHTML = ICONS[type];
   el.querySelector('.form-feedback-text').innerHTML = '<strong>' + title + '</strong>' + text;
 }
-function wireAjaxForm(formEl, statusEl, successTitle, successText){
+function wireAjaxForm(formEl, statusEl, successTitle, successText, onSuccess){
   if (!formEl) return;
   formEl.addEventListener('submit', function(e){
     e.preventDefault();
@@ -989,6 +1188,7 @@ function wireAjaxForm(formEl, statusEl, successTitle, successText){
     .then(() => {
       showFeedback(statusEl, 'success', successTitle, successText);
       formEl.reset();
+      if (typeof onSuccess === 'function') onSuccess();
     })
     .catch(() => {
       showFeedback(statusEl, 'error', 'A apărut o eroare.', ' Încearcă din nou sau scrie-ne direct pe email.');
@@ -1000,20 +1200,137 @@ function wireAjaxForm(formEl, statusEl, successTitle, successText){
 }
 wireAjaxForm(document.getElementById('contactForm'), document.getElementById('contactStatus'), 'Mulțumim!', ' Mesajul tău a fost trimis — revenim curând.');
 wireAjaxForm(document.getElementById('newsletterForm'), document.getElementById('newsletterStatus'), 'Te-ai abonat!', ' Vei primi noutăți din grădină direct pe email.');
-
-document.querySelectorAll('.prompt').forEach(p => {
-  p.addEventListener('click', () => {
-    document.querySelectorAll('.prompt').forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
-    const msg = document.getElementById('msg');
-    if (msg) {
-      msg.value = p.dataset.fill;
-      msg.focus();
-      const form = document.querySelector('.contact-form');
-      if (form && window.matchMedia('(max-width:980px)').matches) form.scrollIntoView({behavior:'smooth', block:'center'});
-    }
-  });
+wireAjaxForm(document.getElementById('qcContactForm'), document.getElementById('qcContactStatus'), 'Mulțumim!', ' Mesajul tău a fost trimis — revenim curând.', () => {
+  if (typeof resetQuickContactUI === 'function') resetQuickContactUI();
+  setTimeout(closeQuickContact, 2200);
 });
+
+/* Quick-fill prompt pills — used by the main contact form */
+function wirePrompts(prompts, textareaEl, scrollTarget){
+  prompts.forEach(p => {
+    p.addEventListener('click', () => {
+      prompts.forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      if (textareaEl) {
+        textareaEl.value = p.dataset.fill;
+        textareaEl.focus();
+        if (scrollTarget && window.matchMedia('(max-width:980px)').matches) scrollTarget.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    });
+  });
+}
+wirePrompts(document.querySelectorAll('#contact .prompt'), document.getElementById('msg'), document.querySelector('.contact-form'));
+
+/* Quick-contact modal — branching pill questions per service (multi-select) */
+var resetQuickContactUI;
+(function(){
+  const qcForm = document.getElementById('qcContactForm');
+  if (!qcForm) return;
+  const reveal = document.getElementById('qcReveal');
+  const msgField = document.getElementById('qcMsg');
+  const DEFAULT_PLACEHOLDER = 'Spune-ne despre spațiul tău verde...';
+  const DESIGN_PLACEHOLDER = 'Spune-ne despre spațiul tău verde... (poți menționa și un buget orientativ, dacă ai deja unul)';
+  const selectedServices = new Set();
+
+  function updateServiceUI(){
+    qcForm.querySelectorAll('[data-branch-panel]').forEach(panel => {
+      const branches = panel.dataset.branchPanel.split(' ');
+      panel.style.display = branches.some(b => selectedServices.has(b)) ? '' : 'none';
+    });
+    reveal.classList.toggle('open', selectedServices.size > 0);
+    if (msgField) msgField.placeholder = selectedServices.has('design') ? DESIGN_PLACEHOLDER : DEFAULT_PLACEHOLDER;
+  }
+
+  /* Generic single-select wiring — every pill row except the service picker */
+  qcForm.querySelectorAll('.qc-pill-row').forEach(row => {
+    if (row.dataset.field === 'serviciu') return;
+    const hidden = row.querySelector('input[type="hidden"]');
+    const pills = row.querySelectorAll('.pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const wasActive = pill.classList.contains('active');
+        pills.forEach(p => p.classList.remove('active'));
+        if (!wasActive) pill.classList.add('active');
+        if (hidden) hidden.value = wasActive ? '' : pill.dataset.value;
+      });
+    });
+  });
+
+  /* Multi-select wiring — service picker only; "Nu sunt sigur" is mutually exclusive with real services */
+  const serviceRow = qcForm.querySelector('.qc-pill-row[data-field="serviciu"]');
+  const serviceHidden = serviceRow.querySelector('input[type="hidden"]');
+  const servicePills = serviceRow.querySelectorAll('.pill');
+  servicePills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const branch = pill.dataset.branch;
+      if (branch === 'niciunul'){
+        const wasActive = pill.classList.contains('active');
+        servicePills.forEach(p => p.classList.remove('active'));
+        if (!wasActive) pill.classList.add('active');
+        selectedServices.clear();
+      } else {
+        const niciunulPill = [...servicePills].find(p => p.dataset.branch === 'niciunul');
+        if (niciunulPill) niciunulPill.classList.remove('active');
+        pill.classList.toggle('active');
+        if (pill.classList.contains('active')) selectedServices.add(branch);
+        else selectedServices.delete(branch);
+      }
+      serviceHidden.value = [...servicePills].filter(p => p.classList.contains('active')).map(p => p.dataset.value).join(', ');
+      updateServiceUI();
+    });
+  });
+
+  resetQuickContactUI = function(){
+    qcForm.querySelectorAll('.pill.active').forEach(p => p.classList.remove('active'));
+    qcForm.querySelectorAll('.qc-pill-row input[type="hidden"]').forEach(h => { h.value = ''; });
+    selectedServices.clear();
+    if (reveal) reveal.classList.remove('open');
+    qcForm.querySelectorAll('[data-branch-panel]').forEach(panel => { panel.style.display = ''; });
+    if (msgField) msgField.placeholder = DEFAULT_PLACEHOLDER;
+  };
+})();
+
+/* Quick contact modal — opened by every "Hai să discutăm" CTA except the header's own #contact anchor link */
+(function(){
+  const overlay = document.getElementById('qcOverlay');
+  const modal = document.getElementById('qcModal');
+  const closeBtn = document.getElementById('qcClose');
+  if (!overlay || !modal) return;
+  let lastFocused = null;
+
+  window.openQuickContact = function(e){
+    if (e) e.preventDefault();
+    lastFocused = document.activeElement;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('qc-lock');
+    const firstField = document.getElementById('qcName');
+    window.setTimeout(() => { if (firstField) firstField.focus(); }, 320);
+  };
+  window.closeQuickContact = function(){
+    if (!overlay.classList.contains('open')) return;
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('qc-lock');
+    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+  };
+
+  document.querySelectorAll('.js-open-contact').forEach(btn => btn.addEventListener('click', openQuickContact));
+  closeBtn.addEventListener('click', closeQuickContact);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeQuickContact(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeQuickContact();
+  });
+  modal.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const focusables = modal.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+})();
 
 /* Plan legend <-> pin linking */
 document.querySelectorAll('.legend-row').forEach(row => {
