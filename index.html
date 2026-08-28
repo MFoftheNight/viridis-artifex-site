@@ -211,20 +211,38 @@ section{position:relative;}
 .season-legend i{width:16px;height:8px;border-radius:999px;display:block;}
 
 /* ---------- SERVICES ---------- */
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--paper-line);border:1px solid var(--paper-line);}
-.service-card{background:var(--soft-white);padding:48px 40px 44px;position:relative;overflow:hidden;transition:background .4s ease;}
-.service-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .45s cubic-bezier(.4,0,.2,1);}
-.service-card:hover::before{transform:scaleY(1);transform-origin:top;}
-.service-card:hover{background:var(--cream-2);}
-.service-icon{width:38px;height:38px;color:var(--dark-green);margin-bottom:26px;transition:transform .5s cubic-bezier(.3,.7,.3,1);}
-.service-card:hover .service-icon{transform:translateY(-4px) rotate(-4deg);}
-.service-card h3{font-size:22px;font-weight:500;margin-bottom:14px;}
-.service-card .card-desc{font-size:14.5px;color:var(--ink-soft);line-height:1.7;margin-bottom:20px;}
-.card-tags{display:flex;flex-wrap:nowrap;gap:7px;margin-bottom:24px;}
-.card-tags span{font-size:11px;letter-spacing:0.05em;color:var(--ink-soft);border:1px solid var(--paper-line);border-radius:var(--r);padding:4px 9px;background:var(--soft-white);}
-.service-link{font-size:13px;font-weight:600;color:var(--dark-green);display:inline-flex;align-items:center;gap:7px;position:relative;}
-.service-link::after{content:'';position:absolute;left:0;bottom:-2px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s ease;}
-.service-card:hover .service-link::after{transform:scaleX(1);transform-origin:left;}
+.svc-index{border-top:1px solid var(--paper-line);}
+.svc-row{border-bottom:1px solid var(--paper-line);}
+.svc-head{width:100%;display:flex;align-items:center;gap:24px;padding:34px 6px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:background .3s ease;}
+.svc-head:hover{background:var(--cream-2);}
+.svc-icon{width:34px;height:34px;color:var(--dark-green);flex:none;transition:transform .5s cubic-bezier(.3,.7,.3,1);}
+.svc-head:hover .svc-icon,.svc-row.open .svc-icon{transform:translateY(-3px) rotate(-4deg);}
+.svc-titles{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0;}
+.svc-name{font-family:var(--font-display);font-size:clamp(22px,2.4vw,28px);font-weight:500;line-height:1.15;}
+.svc-tag{font-size:14px;color:var(--ink-soft);}
+.svc-plus{width:16px;height:16px;flex:none;position:relative;}
+.svc-plus::before,.svc-plus::after{content:'';position:absolute;background:var(--gold);transition:transform .35s cubic-bezier(.4,0,.2,1);}
+.svc-plus::before{left:0;right:0;top:7.5px;height:1.5px;}
+.svc-plus::after{top:0;bottom:0;left:7.5px;width:1.5px;}
+.svc-row.open .svc-plus::after{transform:scaleY(0);}
+.svc-detail-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.4,0,.2,1);}
+.svc-row.open .svc-detail-wrap{grid-template-rows:1fr;}
+.svc-detail{overflow:hidden;}
+.svc-detail-inner{position:relative;overflow:hidden;margin:0 0 32px;border-radius:var(--r);}
+.svc-watermark{position:absolute;top:50%;right:clamp(-8px,2vw,26px);transform:translateY(-50%);font-family:var(--font-display);font-style:italic;font-weight:400;font-size:clamp(100px,15vw,200px);color:var(--soft-white);opacity:0.055;line-height:1;white-space:nowrap;pointer-events:none;z-index:0;user-select:none;}
+.svc-detail-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:clamp(28px,4vw,64px);padding:clamp(36px,4vw,52px) clamp(24px,3.4vw,48px);}
+.svc-detail-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 20px;font-weight:600;}
+.svc-inc-row{border-top:1px solid rgba(255,248,240,0.15);padding:15px 0;font-size:15.5px;line-height:1.55;color:var(--cream-soft);max-width:520px;}
+.svc-inc-row:last-child{border-bottom:1px solid rgba(255,248,240,0.15);}
+.svc-detail-cta{display:flex;flex-direction:column;gap:4px;align-self:center;padding-left:40px;border-left:1px solid var(--gold-soft);min-width:190px;}
+.svc-price-amt{font-family:var(--font-display);font-style:italic;font-size:25px;color:var(--gold-soft);line-height:1.2;}
+.svc-price-note{font-size:12.5px;color:var(--cream-soft);opacity:0.85;margin-bottom:16px;}
+@media(max-width:760px){
+  .svc-detail-grid{grid-template-columns:1fr;}
+  .svc-detail-cta{align-self:stretch;padding-left:0;padding-top:24px;border-left:none;border-top:1px solid var(--gold-soft);min-width:0;}
+  .svc-watermark{font-size:80px;opacity:0.05;}
+  .svc-head{gap:16px;padding:26px 4px;}
+}
 
 /* ---------- PORTFOLIO ---------- */
 .portfolio-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;gap:24px;flex-wrap:wrap;}
@@ -401,7 +419,7 @@ body.qc-lock{overflow:hidden;}
 .site-toast strong{color:var(--gold-soft);}
 .site-toast-icon{flex:none;width:20px;height:20px;border-radius:50%;background:var(--gold-soft);color:var(--dark-green);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
 @media (prefers-reduced-motion:reduce){
-  .qc-overlay,.qc-modal,.qc-close,.qc-reveal,.site-toast{transition:none !important;}
+  .qc-overlay,.qc-modal,.qc-close,.qc-reveal,.site-toast,.svc-detail-wrap,.svc-plus,.svc-icon{transition:none !important;}
 }
 </style>
 </head>
@@ -633,29 +651,128 @@ body.qc-lock{overflow:hidden;}
     <div class="section-head reveal">
       <p class="eyebrow">Ce oferim</p>
       <h2>Servicii &amp; expertiză</h2>
-      <p class="lede">Poți alege un singur serviciu sau le putem combina într-un proces complet — merg la fel de bine separat sau împreună, în funcție de prioritățile și bugetul tău.</p>
+      <p class="lede">Poți alege un singur serviciu sau le putem combina într-un proces complet — merg la fel de bine separat sau împreună, în funcție de prioritățile și bugetul tău. Dă click pe orice serviciu pentru detalii.</p>
     </div>
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 40 40" fill="none"><path d="M20 33c9-2 13-10 13-21-11 0-17 6-17 15 0 2 0 4 1 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 33c0-8 3-13 8-16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        <h3>Design peisagistic</h3>
-        <p class="card-desc">Proiectăm grădini unice, de la concept la plan de plantare detaliat — pornind de la ecologia terenului tău.</p>
-        <div class="card-tags"><span>Masterplan</span><span>Plan de plantare</span></div>
-        <a href="#" class="service-link">Află mai mult</a>
+    <div class="svc-index reveal">
+      <div class="svc-row">
+        <button type="button" class="svc-head">
+          <svg class="svc-icon" viewBox="0 0 40 40" fill="none"><path d="M20 33c9-2 13-10 13-21-11 0-17 6-17 15 0 2 0 4 1 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 33c0-8 3-13 8-16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <span class="svc-titles">
+            <span class="svc-name">Design peisagistic</span>
+            <span class="svc-tag">Din concept, plan de plantare, pas cu pas</span>
+          </span>
+          <span class="svc-plus"></span>
+        </button>
+        <div class="svc-detail-wrap">
+          <div class="svc-detail">
+            <div class="svc-detail-inner bg-dark-tex">
+              <span class="svc-watermark" aria-hidden="true">plan</span>
+              <div class="svc-detail-grid">
+                <div class="svc-detail-list">
+                  <p class="svc-detail-label">Ce include</p>
+                  <div class="svc-inc-row">Vizită și discuție despre spațiul tău</div>
+                  <div class="svc-inc-row">Masterplan + plan de plantare, cu listă de plante</div>
+                  <div class="svc-inc-row">Documentație 2D (3D la cerere)</div>
+                </div>
+                <div class="svc-detail-cta">
+                  <span class="svc-price-amt">de la 7.500 lei</span>
+                  <span class="svc-price-note">în funcție de dimensiune și complexitate</span>
+                  <button type="button" class="btn btn-primary-teal js-open-contact">Hai să discutăm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 40 40" fill="none"><path d="M20 34V17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M20 17c0-6-4-9-9-10 0 6 3 10 9 10z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M20 21c0-5 4-8 9-9 0 5-3 9-9 9z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M13 34h14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        <h3>Amenajare spații verzi</h3>
-        <p class="card-desc">Transformăm terenuri în spații vii, folosind soiuri autohtone reziliente și principii de biodiversitate.</p>
-        <div class="card-tags"><span>Specii autohtone</span><span>Biodiversitate</span></div>
-        <a href="#" class="service-link">Află mai mult</a>
+      <div class="svc-row">
+        <button type="button" class="svc-head">
+          <svg class="svc-icon" viewBox="0 0 40 40" fill="none"><path d="M20 34V17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M20 17c0-6-4-9-9-10 0 6 3 10 9 10z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M20 21c0-5 4-8 9-9 0 5-3 9-9 9z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M13 34h14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <span class="svc-titles">
+            <span class="svc-name">Amenajare spații verzi</span>
+            <span class="svc-tag">De la plan la grădină reală</span>
+          </span>
+          <span class="svc-plus"></span>
+        </button>
+        <div class="svc-detail-wrap">
+          <div class="svc-detail">
+            <div class="svc-detail-inner bg-dark-tex">
+              <span class="svc-watermark" aria-hidden="true">teren</span>
+              <div class="svc-detail-grid">
+                <div class="svc-detail-list">
+                  <p class="svc-detail-label">Ce include</p>
+                  <div class="svc-inc-row">Pregătirea terenului și plantare</div>
+                  <div class="svc-inc-row">Gazon, garduri vii, alei, sisteme de irigație</div>
+                  <div class="svc-inc-row">Materiale alese cu grijă, execuție îngrijită</div>
+                </div>
+                <div class="svc-detail-cta">
+                  <span class="svc-price-amt">Ofertă personalizată</span>
+                  <span class="svc-price-note">în funcție de suprafață și lucrările incluse</span>
+                  <button type="button" class="btn btn-primary-teal js-open-contact">Hai să discutăm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 40 40" fill="none"><path d="M13 19c0-5 3-8 7-8s7 3 7 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M9 19h20l-2 13H11z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M25 17l9-7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="35" cy="9" r="1.6" fill="currentColor"/><path d="M30 24v3M34 22v3M26 27v3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-        <h3>Întreținere spații verzi</h3>
-        <p class="card-desc">Oferim programe sezoniere, îngrijire personalizată și consiliere specializată, adaptate ritmului fiecărei grădini.</p>
-        <div class="card-tags"><span>Vizite lunare</span><span>Tăieri de sezon</span></div>
-        <a href="#" class="service-link">Află mai mult</a>
+      <div class="svc-row">
+        <button type="button" class="svc-head">
+          <svg class="svc-icon" viewBox="0 0 40 40" fill="none"><path d="M13 19c0-5 3-8 7-8s7 3 7 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M9 19h20l-2 13H11z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M25 17l9-7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="35" cy="9" r="1.6" fill="currentColor"/><path d="M30 24v3M34 22v3M26 27v3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <span class="svc-titles">
+            <span class="svc-name">Îngrijire spații verzi</span>
+            <span class="svc-tag">Plante de interior, exterior și grădini deja amenajate</span>
+          </span>
+          <span class="svc-plus"></span>
+        </button>
+        <div class="svc-detail-wrap">
+          <div class="svc-detail">
+            <div class="svc-detail-inner bg-dark-tex">
+              <span class="svc-watermark" aria-hidden="true">grijă</span>
+              <div class="svc-detail-grid">
+                <div class="svc-detail-list">
+                  <p class="svc-detail-label">Ce include</p>
+                  <div class="svc-inc-row">Vizite lunare sau sezoniere</div>
+                  <div class="svc-inc-row">Tăieri, fertilizări, tratamente</div>
+                  <div class="svc-inc-row">Pachete: Lunar, De sezon, Personalizat</div>
+                </div>
+                <div class="svc-detail-cta">
+                  <span class="svc-price-amt">de la 500 lei/lună</span>
+                  <span class="svc-price-note">interior — sau de la 4 lei/mp exterior</span>
+                  <button type="button" class="btn btn-primary-teal js-open-contact">Hai să discutăm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="svc-row">
+        <button type="button" class="svc-head">
+          <svg class="svc-icon" viewBox="0 0 40 40" fill="none"><rect x="6" y="8" width="28" height="18" rx="5" stroke="currentColor" stroke-width="1.3"/><path d="M13 26v6l7-6" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="15" cy="17" r="1.1" fill="currentColor"/><circle cx="20" cy="17" r="1.1" fill="currentColor"/><circle cx="25" cy="17" r="1.1" fill="currentColor"/></svg>
+          <span class="svc-titles">
+            <span class="svc-name">Consultanță</span>
+            <span class="svc-tag">Ca să clarificăm exact de ce ai nevoie, înainte de orice angajament</span>
+          </span>
+          <span class="svc-plus"></span>
+        </button>
+        <div class="svc-detail-wrap">
+          <div class="svc-detail">
+            <div class="svc-detail-inner bg-dark-tex">
+              <span class="svc-watermark" aria-hidden="true">discuție</span>
+              <div class="svc-detail-grid">
+                <div class="svc-detail-list">
+                  <p class="svc-detail-label">Ce include</p>
+                  <div class="svc-inc-row">Discuție online sau la fața locului</div>
+                  <div class="svc-inc-row">Identificăm boli, dăunători și compatibilități</div>
+                  <div class="svc-inc-row">Recomandări clare, fără obligații ulterioare</div>
+                </div>
+                <div class="svc-detail-cta">
+                  <span class="svc-price-amt">de la 250 lei</span>
+                  <span class="svc-price-note">online — sau 500 lei la fața locului, zona Brașov</span>
+                  <button type="button" class="btn btn-primary-teal js-open-contact">Hai să discutăm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -948,8 +1065,9 @@ body.qc-lock{overflow:hidden;}
       <div class="form-row qc-pill-row" data-field="serviciu">
         <label>Ce serviciu te interesează?</label>
         <div class="pill-group">
-          <button type="button" class="pill" data-value="Îngrijire plante" data-branch="plante">Îngrijire plante</button>
-          <button type="button" class="pill" data-value="Design digital" data-branch="design">Design digital</button>
+          <button type="button" class="pill" data-value="Design peisagistic" data-branch="design">Design peisagistic</button>
+          <button type="button" class="pill" data-value="Amenajare spații verzi" data-branch="amenajare">Amenajare spații verzi</button>
+          <button type="button" class="pill" data-value="Îngrijire spații verzi" data-branch="plante">Îngrijire spații verzi</button>
           <button type="button" class="pill" data-value="Consultanță" data-branch="consultanta">Consultanță</button>
           <button type="button" class="pill" data-value="Nu sunt sigur" data-branch="niciunul">Nu sunt sigur</button>
         </div>
@@ -959,43 +1077,8 @@ body.qc-lock{overflow:hidden;}
       <div class="qc-reveal" id="qcReveal">
         <div class="qc-reveal-inner">
 
-          <div class="qc-branch" data-branch-panel="plante">
-            <p class="qc-branch-title">Detalii – Îngrijire plante</p>
-            <div class="qc-branch-box">
-              <div class="form-row qc-pill-row" data-field="pachet">
-                <label>Ce pachet ți se potrivește?</label>
-                <div class="pill-group">
-                  <button type="button" class="pill" data-value="Lunar">Lunar</button>
-                  <button type="button" class="pill" data-value="De sezon">De sezon</button>
-                  <button type="button" class="pill" data-value="Personalizat">Personalizat</button>
-                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
-                </div>
-                <input type="hidden" name="Pachet (Îngrijire plante)" value="">
-              </div>
-              <div class="form-row qc-pill-row" data-field="unde_plante">
-                <label>Unde sunt plantele?</label>
-                <div class="pill-group">
-                  <button type="button" class="pill" data-value="Interior">Interior</button>
-                  <button type="button" class="pill" data-value="Exterior">Exterior</button>
-                  <button type="button" class="pill" data-value="Mixt">Mixt</button>
-                </div>
-                <input type="hidden" name="Unde sunt plantele (Îngrijire plante)" value="">
-              </div>
-              <div class="form-row qc-pill-row" data-field="probleme">
-                <label>Există probleme acum?</label>
-                <div class="pill-group">
-                  <button type="button" class="pill" data-value="Dăunători">Dăunători</button>
-                  <button type="button" class="pill" data-value="Foliaj îngălbenit/uscat">Foliaj îngălbenit/uscat</button>
-                  <button type="button" class="pill" data-value="Altceva">Altceva</button>
-                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
-                </div>
-                <input type="hidden" name="Probleme actuale (Îngrijire plante)" value="">
-              </div>
-            </div>
-          </div>
-
           <div class="qc-branch" data-branch-panel="design">
-            <p class="qc-branch-title">Detalii – Design digital</p>
+            <p class="qc-branch-title">Detalii – Design peisagistic</p>
             <div class="qc-branch-box">
               <div class="form-row qc-pill-row" data-field="tip_spatiu">
                 <label>Tip spațiu</label>
@@ -1006,7 +1089,7 @@ body.qc-lock{overflow:hidden;}
                   <button type="button" class="pill" data-value="Grădină">Grădină</button>
                   <button type="button" class="pill" data-value="Interior">Interior</button>
                 </div>
-                <input type="hidden" name="Tip spațiu (Design digital)" value="">
+                <input type="hidden" name="Tip spațiu (Design peisagistic)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="suprafata">
                 <label>Suprafață estimată</label>
@@ -1016,7 +1099,7 @@ body.qc-lock{overflow:hidden;}
                   <button type="button" class="pill" data-value="peste 250 mp">peste 250 mp</button>
                   <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
                 </div>
-                <input type="hidden" name="Suprafață estimată (Design digital)" value="">
+                <input type="hidden" name="Suprafață estimată (Design peisagistic)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="intretinere">
                 <label>Nivel de întreținere dorit</label>
@@ -1025,7 +1108,79 @@ body.qc-lock{overflow:hidden;}
                   <button type="button" class="pill" data-value="Mediu">Mediu</button>
                   <button type="button" class="pill" data-value="Ridicat">Ridicat</button>
                 </div>
-                <input type="hidden" name="Nivel întreținere (Design digital)" value="">
+                <input type="hidden" name="Nivel întreținere (Design peisagistic)" value="">
+              </div>
+            </div>
+          </div>
+
+          <div class="qc-branch" data-branch-panel="amenajare">
+            <p class="qc-branch-title">Detalii – Amenajare spații verzi</p>
+            <div class="qc-branch-box">
+              <div class="form-row qc-pill-row" data-field="plan_existent">
+                <label>Ai deja un plan de amenajare?</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="Da, de la noi">Da, de la noi</button>
+                  <button type="button" class="pill" data-value="Da, de la altcineva">Da, de la altcineva</button>
+                  <button type="button" class="pill" data-value="Nu încă">Nu încă</button>
+                </div>
+                <input type="hidden" name="Plan existent (Amenajare spații verzi)" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="tip_lucrare">
+                <label>Ce tip de lucrare ai în minte?</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="Gazon">Gazon</button>
+                  <button type="button" class="pill" data-value="Garduri vii">Garduri vii</button>
+                  <button type="button" class="pill" data-value="Plantare">Plantare</button>
+                  <button type="button" class="pill" data-value="Alei / pavaje">Alei / pavaje</button>
+                  <button type="button" class="pill" data-value="Irigație">Irigație</button>
+                  <button type="button" class="pill" data-value="Altceva">Altceva</button>
+                </div>
+                <input type="hidden" name="Tip lucrare (Amenajare spații verzi)" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="suprafata_amenajare">
+                <label>Suprafață aproximativă</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="sub 100 mp">sub 100 mp</button>
+                  <button type="button" class="pill" data-value="100-250 mp">100-250 mp</button>
+                  <button type="button" class="pill" data-value="peste 250 mp">peste 250 mp</button>
+                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                </div>
+                <input type="hidden" name="Suprafață aproximativă (Amenajare spații verzi)" value="">
+              </div>
+            </div>
+          </div>
+
+          <div class="qc-branch" data-branch-panel="plante">
+            <p class="qc-branch-title">Detalii – Îngrijire spații verzi</p>
+            <div class="qc-branch-box">
+              <div class="form-row qc-pill-row" data-field="pachet">
+                <label>Ce pachet ți se potrivește?</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="Lunar">Lunar</button>
+                  <button type="button" class="pill" data-value="De sezon">De sezon</button>
+                  <button type="button" class="pill" data-value="Personalizat">Personalizat</button>
+                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                </div>
+                <input type="hidden" name="Pachet (Îngrijire spații verzi)" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="unde_plante">
+                <label>Unde sunt plantele?</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="Interior">Interior</button>
+                  <button type="button" class="pill" data-value="Exterior">Exterior</button>
+                  <button type="button" class="pill" data-value="Mixt">Mixt</button>
+                </div>
+                <input type="hidden" name="Unde sunt plantele (Îngrijire spații verzi)" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="probleme">
+                <label>Există probleme acum?</label>
+                <div class="pill-group">
+                  <button type="button" class="pill" data-value="Dăunători">Dăunători</button>
+                  <button type="button" class="pill" data-value="Foliaj îngălbenit/uscat">Foliaj îngălbenit/uscat</button>
+                  <button type="button" class="pill" data-value="Altceva">Altceva</button>
+                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                </div>
+                <input type="hidden" name="Probleme actuale (Îngrijire spații verzi)" value="">
               </div>
             </div>
           </div>
@@ -1046,7 +1201,7 @@ body.qc-lock{overflow:hidden;}
             </div>
           </div>
 
-          <div class="form-row qc-attach" data-branch-panel="plante design">
+          <div class="form-row qc-attach" data-branch-panel="plante design amenajare">
             <label for="qcFile">Poză <span class="qc-opt-tag">opțional — ajută la un prim diagnostic</span></label>
             <input type="file" id="qcFile" name="attachment" accept="image/*">
             <p class="qc-file-note" id="qcFileNote">Dimensiune maximă: 10 MB</p>
@@ -1113,6 +1268,10 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+});
+
+document.querySelectorAll('.svc-head').forEach(h => {
+  h.addEventListener('click', () => h.closest('.svc-row').classList.toggle('open'));
 });
 
 document.querySelectorAll('video[autoplay]').forEach(v => {
@@ -1292,7 +1451,7 @@ var resetQuickContactUI;
       panel.style.display = branches.some(b => selectedServices.has(b)) ? '' : 'none';
     });
     reveal.classList.toggle('open', selectedServices.size > 0);
-    if (msgField) msgField.placeholder = selectedServices.has('design') ? DESIGN_PLACEHOLDER : DEFAULT_PLACEHOLDER;
+    if (msgField) msgField.placeholder = (selectedServices.has('design') || selectedServices.has('amenajare')) ? DESIGN_PLACEHOLDER : DEFAULT_PLACEHOLDER;
   }
 
   /* Generic single-select wiring — every pill row except the service picker */
