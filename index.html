@@ -393,8 +393,12 @@ body.qc-lock{overflow:hidden;}
 .qc-attach input[type=file]::file-selector-button{margin-right:12px;padding:8px 14px;border-radius:999px;border:1px solid var(--gold-soft);background:transparent;color:var(--gold-soft);font-family:var(--font-body);font-size:12.5px;font-weight:500;cursor:pointer;transition:background .25s ease,color .25s ease;}
 .qc-attach input[type=file]::file-selector-button:hover{background:var(--gold-soft);color:var(--dark-green);}
 .qc-info{margin-top:26px;padding-top:22px;border-top:1px solid var(--line-on-dark);display:flex;flex-direction:column;}
+.site-toast{position:fixed;top:20px;left:50%;z-index:1100;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 40px);background:var(--dark-green);color:var(--soft-white);border:1px solid var(--line-on-dark);border-radius:999px;padding:14px 22px;box-shadow:0 14px 34px rgba(11,45,26,0.28);font-family:var(--font-body);font-size:14px;line-height:1.4;opacity:0;visibility:hidden;transform:translate(-50%,-14px);transition:opacity .4s cubic-bezier(.2,.7,.2,1),transform .4s cubic-bezier(.2,.7,.2,1),visibility 0s linear .4s;}
+.site-toast.open{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s;}
+.site-toast strong{color:var(--gold-soft);}
+.site-toast-icon{flex:none;width:20px;height:20px;border-radius:50%;background:var(--gold-soft);color:var(--dark-green);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
 @media (prefers-reduced-motion:reduce){
-  .qc-overlay,.qc-modal,.qc-close,.qc-reveal{transition:none !important;}
+  .qc-overlay,.qc-modal,.qc-close,.qc-reveal,.site-toast{transition:none !important;}
 }
 </style>
 </head>
@@ -928,7 +932,7 @@ body.qc-lock{overflow:hidden;}
       <input type="hidden" name="_subject" value="Mesaj nou de pe site — Viridis Artifex">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://viridisartifex.ro/">
+      <input type="hidden" name="_next" value="https://viridisartifex.ro/?trimis=1">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
       <div class="form-row"><label for="qcName">Nume<i>*</i></label><input type="text" id="qcName" name="name" placeholder="Numele tău" required></div>
@@ -1204,6 +1208,24 @@ function wireAjaxForm(formEl, statusEl, successTitle, successText, onSuccess){
     });
   });
 }
+/* Confirmation toast shown after a native (attachment) form submission redirects back here */
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('trimis') !== '1') return;
+  const toast = document.createElement('div');
+  toast.className = 'site-toast';
+  toast.setAttribute('role', 'status');
+  toast.innerHTML = '<span class="site-toast-icon">✓</span><span><strong>Mulțumim!</strong> Mesajul tău a fost trimis — revenim curând.</span>';
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('open'));
+  setTimeout(() => {
+    toast.classList.remove('open');
+    setTimeout(() => toast.remove(), 500);
+  }, 6000);
+  const cleanUrl = window.location.pathname + window.location.hash;
+  window.history.replaceState(null, '', cleanUrl);
+})();
+
 wireAjaxForm(document.getElementById('contactForm'), document.getElementById('contactStatus'), 'Mulțumim!', ' Mesajul tău a fost trimis — revenim curând.');
 wireAjaxForm(document.getElementById('newsletterForm'), document.getElementById('newsletterStatus'), 'Te-ai abonat!', ' Vei primi noutăți din grădină direct pe email.');
 wireAjaxForm(document.getElementById('qcContactForm'), document.getElementById('qcContactStatus'), 'Mulțumim!', ' Mesajul tău a fost trimis — revenim curând.', () => {
