@@ -928,6 +928,7 @@ body.qc-lock{overflow:hidden;}
       <input type="hidden" name="_subject" value="Mesaj nou de pe site — Viridis Artifex">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://viridisartifex.ro/">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
       <div class="form-row"><label for="qcName">Nume<i>*</i></label><input type="text" id="qcName" name="name" placeholder="Numele tău" required></div>
@@ -962,7 +963,7 @@ body.qc-lock{overflow:hidden;}
                   <button type="button" class="pill" data-value="Personalizat">Personalizat</button>
                   <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
                 </div>
-                <input type="hidden" name="pachet" value="">
+                <input type="hidden" name="Pachet (Îngrijire plante)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="unde_plante">
                 <label>Unde sunt plantele?</label>
@@ -971,7 +972,7 @@ body.qc-lock{overflow:hidden;}
                   <button type="button" class="pill" data-value="Exterior">Exterior</button>
                   <button type="button" class="pill" data-value="Mixt">Mixt</button>
                 </div>
-                <input type="hidden" name="unde_plante" value="">
+                <input type="hidden" name="Unde sunt plantele (Îngrijire plante)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="probleme">
                 <label>Există probleme acum?</label>
@@ -981,7 +982,7 @@ body.qc-lock{overflow:hidden;}
                   <button type="button" class="pill" data-value="Altceva">Altceva</button>
                   <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
                 </div>
-                <input type="hidden" name="probleme" value="">
+                <input type="hidden" name="Probleme actuale (Îngrijire plante)" value="">
               </div>
             </div>
           </div>
@@ -998,7 +999,7 @@ body.qc-lock{overflow:hidden;}
                   <button type="button" class="pill" data-value="Grădină">Grădină</button>
                   <button type="button" class="pill" data-value="Interior">Interior</button>
                 </div>
-                <input type="hidden" name="tip_spatiu" value="">
+                <input type="hidden" name="Tip spațiu (Design digital)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="suprafata">
                 <label>Suprafață estimată</label>
@@ -1008,7 +1009,7 @@ body.qc-lock{overflow:hidden;}
                   <button type="button" class="pill" data-value="peste 250 mp">peste 250 mp</button>
                   <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
                 </div>
-                <input type="hidden" name="suprafata" value="">
+                <input type="hidden" name="Suprafață estimată (Design digital)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="intretinere">
                 <label>Nivel de întreținere dorit</label>
@@ -1017,7 +1018,7 @@ body.qc-lock{overflow:hidden;}
                   <button type="button" class="pill" data-value="Mediu">Mediu</button>
                   <button type="button" class="pill" data-value="Ridicat">Ridicat</button>
                 </div>
-                <input type="hidden" name="intretinere" value="">
+                <input type="hidden" name="Nivel întreținere (Design digital)" value="">
               </div>
             </div>
           </div>
@@ -1033,7 +1034,7 @@ body.qc-lock{overflow:hidden;}
                   <button type="button" class="pill" data-value="Weekend">Weekend</button>
                   <button type="button" class="pill" data-value="Oricând">Oricând</button>
                 </div>
-                <input type="hidden" name="cand_discutam" value="">
+                <input type="hidden" name="Când preferă să discute (Consultanță)" value="">
               </div>
             </div>
           </div>
@@ -1173,6 +1174,11 @@ function showFeedback(el, type, title, text){
 function wireAjaxForm(formEl, statusEl, successTitle, successText, onSuccess){
   if (!formEl) return;
   formEl.addEventListener('submit', function(e){
+    const fileInput = formEl.querySelector('input[type="file"]');
+    if (fileInput && fileInput.files && fileInput.files.length > 0){
+      /* FormSubmit's AJAX endpoint does not process file attachments — let the browser submit natively so the photo actually arrives. */
+      return;
+    }
     e.preventDefault();
     const submitBtn = formEl.querySelector('button[type="submit"]');
     const originalLabel = submitBtn ? submitBtn.textContent : '';
