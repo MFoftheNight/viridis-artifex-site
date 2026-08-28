@@ -392,6 +392,9 @@ body.qc-lock{overflow:hidden;}
 .qc-attach input[type=file]{width:100%;background:rgba(255,248,240,0.05);border:1px solid rgba(255,248,240,0.26);border-radius:var(--r);color:var(--cream-soft);font-family:var(--font-body);font-size:13px;padding:10px 12px;}
 .qc-attach input[type=file]::file-selector-button{margin-right:12px;padding:8px 14px;border-radius:999px;border:1px solid var(--gold-soft);background:transparent;color:var(--gold-soft);font-family:var(--font-body);font-size:12.5px;font-weight:500;cursor:pointer;transition:background .25s ease,color .25s ease;}
 .qc-attach input[type=file]::file-selector-button:hover{background:var(--gold-soft);color:var(--dark-green);}
+.qc-file-note{font-size:12px;color:rgba(255,248,240,0.42);margin-top:8px;transition:color .2s ease;}
+.qc-file-note.error{color:#e2897c;font-weight:600;}
+.qc-attach input[type=file].error{border-color:#e2897c;}
 .qc-info{margin-top:26px;padding-top:22px;border-top:1px solid var(--line-on-dark);display:flex;flex-direction:column;}
 .site-toast{position:fixed;top:20px;left:50%;z-index:1100;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 40px);background:var(--dark-green);color:var(--soft-white);border:1px solid var(--line-on-dark);border-radius:999px;padding:14px 22px;box-shadow:0 14px 34px rgba(11,45,26,0.28);font-family:var(--font-body);font-size:14px;line-height:1.4;opacity:0;visibility:hidden;transform:translate(-50%,-14px);transition:opacity .4s cubic-bezier(.2,.7,.2,1),transform .4s cubic-bezier(.2,.7,.2,1),visibility 0s linear .4s;}
 .site-toast.open{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s;}
@@ -1046,6 +1049,7 @@ body.qc-lock{overflow:hidden;}
           <div class="form-row qc-attach" data-branch-panel="plante design">
             <label for="qcFile">Poză <span class="qc-opt-tag">opțional — ajută la un prim diagnostic</span></label>
             <input type="file" id="qcFile" name="attachment" accept="image/*">
+            <p class="qc-file-note" id="qcFileNote">Dimensiune maximă: 10 MB</p>
           </div>
         </div>
       </div>
@@ -1260,6 +1264,28 @@ var resetQuickContactUI;
   const DESIGN_PLACEHOLDER = 'Spune-ne despre spațiul tău verde... (poți menționa și un buget orientativ, dacă ai deja unul)';
   const selectedServices = new Set();
 
+  /* File size guard — checked the moment a file is chosen, so we never rely on FormSubmit's own (slow, off-site) size check */
+  const qcFile = document.getElementById('qcFile');
+  const qcFileNote = document.getElementById('qcFileNote');
+  const MAX_FILE_SIZE = 10 * 1024 * 1024;
+  const DEFAULT_FILE_NOTE = qcFileNote ? qcFileNote.textContent : '';
+  if (qcFile && qcFileNote){
+    qcFile.addEventListener('change', () => {
+      const file = qcFile.files && qcFile.files[0];
+      if (file && file.size > MAX_FILE_SIZE){
+        const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+        qcFileNote.textContent = `Fișierul are ${sizeMb} MB — peste limita de 10 MB. Alege o poză mai mică.`;
+        qcFileNote.classList.add('error');
+        qcFile.classList.add('error');
+        qcFile.value = '';
+      } else {
+        qcFileNote.textContent = DEFAULT_FILE_NOTE;
+        qcFileNote.classList.remove('error');
+        qcFile.classList.remove('error');
+      }
+    });
+  }
+
   function updateServiceUI(){
     qcForm.querySelectorAll('[data-branch-panel]').forEach(panel => {
       const branches = panel.dataset.branchPanel.split(' ');
@@ -1315,6 +1341,8 @@ var resetQuickContactUI;
     if (reveal) reveal.classList.remove('open');
     qcForm.querySelectorAll('[data-branch-panel]').forEach(panel => { panel.style.display = ''; });
     if (msgField) msgField.placeholder = DEFAULT_PLACEHOLDER;
+    if (qcFileNote){ qcFileNote.textContent = DEFAULT_FILE_NOTE; qcFileNote.classList.remove('error'); }
+    if (qcFile){ qcFile.classList.remove('error'); }
   };
 })();
 
