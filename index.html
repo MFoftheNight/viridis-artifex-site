@@ -16,6 +16,7 @@
   --ink:#15161F;
   --ink-soft:#4B4E5A;
   --paper-line:#DED2C7;
+  --svc-row-bg:rgba(255,248,240,0.6); /* soft-white translucid: hover SI card deschis */
   --line-on-dark:rgba(255,248,240,0.18);
   --cream-soft:rgba(255,248,240,0.78);
   --font-display:'Fraunces', Georgia, serif;
@@ -219,9 +220,9 @@ section{position:relative;}
 /* ---------- SERVICES ---------- */
 .svc-index{border-top:1px solid var(--paper-line);}
 .svc-row{border-bottom:1px solid var(--paper-line);transition:background .45s ease,margin-bottom .45s cubic-bezier(.4,0,.2,1);}
-.svc-row.open{background:rgba(255,248,240,0.92);margin-bottom:20px;}
+.svc-row.open{background:var(--svc-row-bg);margin-bottom:20px;}
 .svc-head{width:100%;display:flex;align-items:center;gap:24px;padding:34px 38px 34px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:background .3s ease;}
-.svc-head:hover{background:rgba(255,248,240,0.72);}
+.svc-head:hover{background:var(--svc-row-bg);}
 .svc-row.open .svc-head:hover{background:transparent;}
 .svc-icon{width:34px;height:34px;color:var(--dark-green);flex:none;transition:transform .5s cubic-bezier(.3,.7,.3,1);}
 .svc-head:hover .svc-icon,.svc-row.open .svc-icon{transform:translateY(-3px) rotate(-4deg);}
