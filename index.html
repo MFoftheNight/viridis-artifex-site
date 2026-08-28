@@ -219,9 +219,9 @@ section{position:relative;}
 /* ---------- SERVICES ---------- */
 .svc-index{border-top:1px solid var(--paper-line);}
 .svc-row{border-bottom:1px solid var(--paper-line);transition:background .45s ease,margin-bottom .45s cubic-bezier(.4,0,.2,1);}
-.svc-row.open{background:rgba(11,45,26,0.055);margin-bottom:20px;}
+.svc-row.open{background:rgba(255,248,240,0.92);margin-bottom:20px;}
 .svc-head{width:100%;display:flex;align-items:center;gap:24px;padding:34px 38px 34px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:background .3s ease;}
-.svc-head:hover{background:rgba(11,45,26,0.04);}
+.svc-head:hover{background:rgba(255,248,240,0.72);}
 .svc-row.open .svc-head:hover{background:transparent;}
 .svc-icon{width:34px;height:34px;color:var(--dark-green);flex:none;transition:transform .5s cubic-bezier(.3,.7,.3,1);}
 .svc-head:hover .svc-icon,.svc-row.open .svc-icon{transform:translateY(-3px) rotate(-4deg);}
@@ -326,7 +326,7 @@ section{position:relative;}
 .form-consent{font-size:11.5px;color:rgba(255,248,240,0.5);margin-top:16px;line-height:1.6;text-align:left;}
 .form-consent a{color:var(--mint);text-decoration:underline;}
 .form-row{margin-bottom:20px;}
-.form-row label{display:block;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mint);margin-bottom:8px;}
+.form-row label{display:block;font-size:13px;font-weight:600;color:var(--mint);margin-bottom:8px;}
 .form-row input,.form-row textarea{width:100%;background:rgba(255,248,240,0.05);border:1px solid rgba(255,248,240,0.26);border-radius:var(--r);color:var(--soft-white);font-family:var(--font-body);font-size:15px;padding:12px 13px;transition:border-color .25s ease,background .25s ease;}
 .form-row input:focus,.form-row textarea:focus{outline:none;border-color:var(--gold-soft);background:rgba(255,248,240,0.09);}
 .form-row textarea{resize:vertical;min-height:84px;}
@@ -391,25 +391,31 @@ button[disabled]{opacity:0.65;cursor:default;}
 .qc-overlay{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(11,45,26,0.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.2,.7,.2,1),visibility 0s linear .35s;}
 .qc-overlay.open{opacity:1;visibility:visible;transition-delay:0s;}
 body.qc-lock{overflow:hidden;}
-.qc-content{position:relative;z-index:1;max-height:88vh;overflow-y:auto;padding:clamp(32px,4.5vw,58px);}
+.qc-content{position:relative;z-index:1;max-height:88vh;overflow-y:auto;padding:clamp(56px,5.5vw,64px);}
 .qc-modal{position:relative;width:100%;max-width:760px;max-height:88vh;overflow:hidden;background:var(--dark-green);border:1px solid var(--line-on-dark);border-radius:var(--r);color:var(--cream-soft);transform:translateY(22px) scale(.97);transition:transform .4s cubic-bezier(.2,.7,.2,1);}
 .qc-overlay.open .qc-modal{transform:none;}
-.qc-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-on-dark);background:transparent;color:var(--cream-soft);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s ease,color .25s ease,transform .3s ease;}
+.qc-close{position:absolute;z-index:3;top:20px;right:20px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-on-dark);background:rgba(11,45,26,0.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);color:var(--cream-soft);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s ease,color .25s ease,transform .3s ease;}
 .qc-close:hover{border-color:var(--gold-soft);color:var(--gold-soft);transform:rotate(90deg);}
 .qc-close svg{width:15px;height:15px;}
 .qc-title{font-family:var(--font-display);font-size:clamp(22px,2.6vw,26px);font-weight:400;color:var(--soft-white);margin:0 0 12px;padding-right:34px;line-height:1.2;}
 .qc-intro{font-size:14.5px;line-height:1.6;color:var(--cream-soft);margin:0 0 24px;}
 .qc-form .btn{width:100%;justify-content:center;margin-top:14px;}
 .qc-form .btn:hover{filter:none;}
-.qc-modal .form-row label{text-transform:none;letter-spacing:0;font-size:13px;font-weight:600;}
 .qc-opt-tag{font-size:9.5px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,248,240,0.42);font-weight:400;margin-left:6px;}
 .qc-optional-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:560px){
+  .qc-content{padding:54px 22px 30px;}
+  .qc-close{top:14px;right:14px;}
+}
 @media (max-width:420px){ .qc-optional-row{grid-template-columns:1fr;} }
 .qc-pill-row label{margin-bottom:10px;}
 .pill-group{display:flex;flex-wrap:wrap;gap:8px;}
 .pill{display:inline-flex;align-items:center;padding:9px 16px;border-radius:999px;border:1px solid rgba(255,248,240,0.26);background:rgba(255,248,240,0.05);color:var(--cream-soft);font-family:var(--font-body);font-size:13.5px;font-weight:500;line-height:1.3;cursor:pointer;transition:border-color .25s ease,background .25s ease,color .25s ease;}
 .pill:hover{border-color:rgba(201,169,110,0.5);background:rgba(255,248,240,0.09);}
-.pill.active{border-color:var(--gold-soft);background:var(--gold-soft);color:var(--dark-green);font-weight:600;}
+.pill.active{border-color:var(--gold-soft);background:rgba(201,169,110,0.22);color:var(--soft-white);font-weight:600;}
+.pill.active:hover{background:rgba(201,169,110,0.32);border-color:var(--gold-soft);}
+.pill.active::after{content:'\00d7';margin-left:9px;margin-right:-2px;font-size:15px;line-height:1;color:var(--gold-soft);}
+.pill:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px;}
 .qc-reveal{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
 .qc-reveal.open{max-height:1800px;}
 .qc-reveal-inner{margin-top:2px;}
@@ -1074,11 +1080,11 @@ body.qc-lock{overflow:hidden;}
       <div class="form-row qc-pill-row" data-field="serviciu">
         <label>Ce serviciu te interesează?</label>
         <div class="pill-group">
-          <button type="button" class="pill" data-value="Design peisagistic" data-branch="design">Design peisagistic</button>
-          <button type="button" class="pill" data-value="Amenajare spații verzi" data-branch="amenajare">Amenajare spații verzi</button>
-          <button type="button" class="pill" data-value="Îngrijire spații verzi" data-branch="plante">Îngrijire spații verzi</button>
-          <button type="button" class="pill" data-value="Consultanță" data-branch="consultanta">Consultanță</button>
-          <button type="button" class="pill" data-value="Nu sunt sigur" data-branch="niciunul">Nu sunt sigur</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Design peisagistic" data-branch="design">Design peisagistic</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Amenajare spații verzi" data-branch="amenajare">Amenajare spații verzi</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Îngrijire spații verzi" data-branch="plante">Îngrijire spații verzi</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Consultanță" data-branch="consultanta">Consultanță</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur" data-branch="niciunul">Nu sunt sigur</button>
         </div>
         <input type="hidden" name="serviciu" value="">
       </div>
@@ -1092,30 +1098,30 @@ body.qc-lock{overflow:hidden;}
               <div class="form-row qc-pill-row" data-field="tip_spatiu">
                 <label>Tip spațiu</label>
                 <div class="pill-group">
-                  <button type="button" class="pill" data-value="Balcon">Balcon</button>
-                  <button type="button" class="pill" data-value="Terasă">Terasă</button>
-                  <button type="button" class="pill" data-value="Curte">Curte</button>
-                  <button type="button" class="pill" data-value="Grădină">Grădină</button>
-                  <button type="button" class="pill" data-value="Interior">Interior</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Balcon">Balcon</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Terasă">Terasă</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Curte">Curte</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Grădină">Grădină</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Interior">Interior</button>
                 </div>
                 <input type="hidden" name="Tip spațiu (Design peisagistic)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="suprafata">
                 <label>Suprafață estimată</label>
                 <div class="pill-group">
-                  <button type="button" class="pill" data-value="sub 100 mp">sub 100 mp</button>
-                  <button type="button" class="pill" data-value="100-250 mp">100-250 mp</button>
-                  <button type="button" class="pill" data-value="peste 250 mp">peste 250 mp</button>
-                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="sub 100 mp">sub 100 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="100-250 mp">100-250 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="peste 250 mp">peste 250 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
                 </div>
                 <input type="hidden" name="Suprafață estimată (Design peisagistic)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="intretinere">
                 <label>Nivel de întreținere dorit</label>
                 <div class="pill-group">
-                  <button type="button" class="pill" data-value="Redus">Redus</button>
-                  <button type="button" class="pill" data-value="Mediu">Mediu</button>
-                  <button type="button" class="pill" data-value="Ridicat">Ridicat</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Redus">Redus</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Mediu">Mediu</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Ridicat">Ridicat</button>
                 </div>
                 <input type="hidden" name="Nivel întreținere (Design peisagistic)" value="">
               </div>
@@ -1128,31 +1134,31 @@ body.qc-lock{overflow:hidden;}
               <div class="form-row qc-pill-row" data-field="plan_existent">
                 <label>Ai deja un plan de amenajare?</label>
                 <div class="pill-group">
-                  <button type="button" class="pill" data-value="Da, de la noi">Da, de la noi</button>
-                  <button type="button" class="pill" data-value="Da, de la altcineva">Da, de la altcineva</button>
-                  <button type="button" class="pill" data-value="Nu încă">Nu încă</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Da, de la noi">Da, de la noi</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Da, de la altcineva">Da, de la altcineva</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Nu încă">Nu încă</button>
                 </div>
                 <input type="hidden" name="Plan existent (Amenajare spații verzi)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="tip_lucrare">
                 <label>Ce tip de lucrare ai în minte?</label>
                 <div class="pill-group">
-                  <button type="button" class="pill" data-value="Gazon">Gazon</button>
-                  <button type="button" class="pill" data-value="Garduri vii">Garduri vii</button>
-                  <button type="button" class="pill" data-value="Plantare">Plantare</button>
-                  <button type="button" class="pill" data-value="Alei / pavaje">Alei / pavaje</button>
-                  <button type="button" class="pill" data-value="Irigație">Irigație</button>
-                  <button type="button" class="pill" data-value="Altceva">Altceva</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Gazon">Gazon</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Garduri vii">Garduri vii</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Plantare">Plantare</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Alei / pavaje">Alei / pavaje</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Irigație">Irigație</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Altceva">Altceva</button>
                 </div>
                 <input type="hidden" name="Tip lucrare (Amenajare spații verzi)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="suprafata_amenajare">
                 <label>Suprafață aproximativă</label>
                 <div class="pill-group">
-                  <button type="button" class="pill" data-value="sub 100 mp">sub 100 mp</button>
-                  <button type="button" class="pill" data-value="100-250 mp">100-250 mp</button>
-                  <button type="button" class="pill" data-value="peste 250 mp">peste 250 mp</button>
-                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="sub 100 mp">sub 100 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="100-250 mp">100-250 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="peste 250 mp">peste 250 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
                 </div>
                 <input type="hidden" name="Suprafață aproximativă (Amenajare spații verzi)" value="">
               </div>
@@ -1165,29 +1171,29 @@ body.qc-lock{overflow:hidden;}
               <div class="form-row qc-pill-row" data-field="pachet">
                 <label>Ce pachet ți se potrivește?</label>
                 <div class="pill-group">
-                  <button type="button" class="pill" data-value="Lunar">Lunar</button>
-                  <button type="button" class="pill" data-value="De sezon">De sezon</button>
-                  <button type="button" class="pill" data-value="Personalizat">Personalizat</button>
-                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Lunar">Lunar</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="De sezon">De sezon</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Personalizat">Personalizat</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
                 </div>
                 <input type="hidden" name="Pachet (Îngrijire spații verzi)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="unde_plante">
                 <label>Unde sunt plantele?</label>
                 <div class="pill-group">
-                  <button type="button" class="pill" data-value="Interior">Interior</button>
-                  <button type="button" class="pill" data-value="Exterior">Exterior</button>
-                  <button type="button" class="pill" data-value="Mixt">Mixt</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Interior">Interior</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Exterior">Exterior</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Mixt">Mixt</button>
                 </div>
                 <input type="hidden" name="Unde sunt plantele (Îngrijire spații verzi)" value="">
               </div>
               <div class="form-row qc-pill-row" data-field="probleme">
                 <label>Există probleme acum?</label>
                 <div class="pill-group">
-                  <button type="button" class="pill" data-value="Dăunători">Dăunători</button>
-                  <button type="button" class="pill" data-value="Foliaj îngălbenit/uscat">Foliaj îngălbenit/uscat</button>
-                  <button type="button" class="pill" data-value="Altceva">Altceva</button>
-                  <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Dăunători">Dăunători</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Foliaj îngălbenit/uscat">Foliaj îngălbenit/uscat</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Altceva">Altceva</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
                 </div>
                 <input type="hidden" name="Probleme actuale (Îngrijire spații verzi)" value="">
               </div>
@@ -1200,10 +1206,10 @@ body.qc-lock{overflow:hidden;}
               <div class="form-row qc-pill-row" data-field="cand_discutam">
                 <label>Când preferi să discutăm? <span class="qc-opt-tag">opțional</span></label>
                 <div class="pill-group">
-                  <button type="button" class="pill" data-value="Dimineață">Dimineață</button>
-                  <button type="button" class="pill" data-value="După-amiază">După-amiază</button>
-                  <button type="button" class="pill" data-value="Weekend">Weekend</button>
-                  <button type="button" class="pill" data-value="Oricând">Oricând</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Dimineață">Dimineață</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="După-amiază">După-amiază</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Weekend">Weekend</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Oricând">Oricând</button>
                 </div>
                 <input type="hidden" name="Când preferă să discute (Consultanță)" value="">
               </div>
@@ -1221,9 +1227,9 @@ body.qc-lock{overflow:hidden;}
       <div class="form-row qc-pill-row" data-field="mod_lucru">
         <label>Cum preferi să lucrăm?</label>
         <div class="pill-group">
-          <button type="button" class="pill" data-value="Online">Online</button>
-          <button type="button" class="pill" data-value="La fața locului">La fața locului</button>
-          <button type="button" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Online">Online</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="La fața locului">La fața locului</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
         </div>
         <input type="hidden" name="mod_lucru" value="">
       </div>
@@ -1471,8 +1477,8 @@ var resetQuickContactUI;
     pills.forEach(pill => {
       pill.addEventListener('click', () => {
         const wasActive = pill.classList.contains('active');
-        pills.forEach(p => p.classList.remove('active'));
-        if (!wasActive) pill.classList.add('active');
+        pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
+        if (!wasActive) { pill.classList.add('active'); pill.setAttribute('aria-pressed', 'true'); }
         if (hidden) hidden.value = wasActive ? '' : pill.dataset.value;
       });
     });
@@ -1487,13 +1493,14 @@ var resetQuickContactUI;
       const branch = pill.dataset.branch;
       if (branch === 'niciunul'){
         const wasActive = pill.classList.contains('active');
-        servicePills.forEach(p => p.classList.remove('active'));
-        if (!wasActive) pill.classList.add('active');
+        servicePills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
+        if (!wasActive) { pill.classList.add('active'); pill.setAttribute('aria-pressed', 'true'); }
         selectedServices.clear();
       } else {
         const niciunulPill = [...servicePills].find(p => p.dataset.branch === 'niciunul');
-        if (niciunulPill) niciunulPill.classList.remove('active');
+        if (niciunulPill) { niciunulPill.classList.remove('active'); niciunulPill.setAttribute('aria-pressed', 'false'); }
         pill.classList.toggle('active');
+        pill.setAttribute('aria-pressed', pill.classList.contains('active') ? 'true' : 'false');
         if (pill.classList.contains('active')) selectedServices.add(branch);
         else selectedServices.delete(branch);
       }
@@ -1503,7 +1510,7 @@ var resetQuickContactUI;
   });
 
   resetQuickContactUI = function(){
-    qcForm.querySelectorAll('.pill.active').forEach(p => p.classList.remove('active'));
+    qcForm.querySelectorAll('.pill.active').forEach(p => { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
     qcForm.querySelectorAll('.qc-pill-row input[type="hidden"]').forEach(h => { h.value = ''; });
     selectedServices.clear();
     if (reveal) reveal.classList.remove('open');
