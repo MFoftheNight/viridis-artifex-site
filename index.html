@@ -68,31 +68,37 @@ button{font-family:inherit;cursor:pointer;}
 
 /* ---------- BUTTONS ---------- */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:14px 30px;border-radius:999px;font-family:var(--font-body);font-size:14.5px;font-weight:500;border:1px solid transparent;cursor:pointer;isolation:isolate;overflow:hidden;transition:color .45s ease,border-color .45s ease,transform .35s cubic-bezier(.34,1.3,.5,1),box-shadow .35s cubic-bezier(.34,1.3,.5,1);white-space:nowrap;}
-.btn:hover{transform:scale(1.02);filter:drop-shadow(0 10px 20px rgba(11,45,26,0.4)) drop-shadow(0 4px 9px rgba(11,45,26,0.3));}
-.btn:active{transform:scale(0.98);filter:drop-shadow(0 4px 10px rgba(11,45,26,0.35));}
+.btn:hover{transform:scale(1.02);filter:drop-shadow(0 8px 22px rgba(11,45,26,0.13)) drop-shadow(0 3px 8px rgba(11,45,26,0.08));}
+.btn:active{transform:scale(0.98);filter:drop-shadow(0 3px 10px rgba(11,45,26,0.12));}
 .btn::before{content:'';position:absolute;inset:0;border-radius:999px;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.4,0,.2,1);z-index:-1;}
-/* PRIMARY — gold outline on dark/light, fills gold on hover */
-.btn-primary{background:transparent;color:var(--gold);border-color:var(--gold);}
-.btn-primary::before{background:var(--gold);}
-.btn-primary:hover{color:var(--dark-green);}
-.btn-primary:hover::before{transform:scaleX(1);}
-.btn-primary-teal{background:transparent;color:var(--gold-soft);border-color:var(--gold-soft);}
-.btn-primary-teal::before{background:var(--gold-soft);}
-.btn-primary-teal:hover{color:var(--dark-green);}
-.btn-primary-teal:hover::before{transform:scaleX(1);}
-/* SECONDARY — subtler outline, fills on hover; works on dark via .on-dark scoping */
-.btn-secondary{background:transparent;color:var(--soft-white);border-color:rgba(255,248,240,0.4);}
-.btn-secondary::before{background:var(--soft-white);}
-.btn-secondary:hover{color:var(--dark-green);}
-.btn-secondary:hover::before{transform:scaleX(1);}
-.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink);}
-.btn-ghost::before{background:var(--ink);}
-.btn-ghost:hover{color:var(--soft-white);}
-.btn-ghost:hover::before{transform:scaleX(1);}
-.btn-on-dark{background:transparent;color:var(--soft-white);border-color:var(--line-on-dark);}
-.btn-on-dark::before{background:var(--soft-white);}
-.btn-on-dark:hover{color:var(--dark-green);}
-.btn-on-dark:hover::before{transform:scaleX(1);}
+/* ---------- SISTEM DE BUTOANE ----------
+   2 roluri (primary / secondary) x 2 fundaluri (light / dark).
+   Toate: contur transparent -> se umple de la stanga la dreapta pe hover.
+   Exceptie unica: .btn-nav-cta (navbar), singurul plin din start.        */
+
+/* PRIMARY pe fundal DESCHIS — auriu */
+.btn-primary-light{background:transparent;color:var(--gold);border-color:var(--gold);}
+.btn-primary-light::before{background:var(--gold);}
+.btn-primary-light:hover{color:var(--soft-white);}
+.btn-primary-light:hover::before{transform:scaleX(1);}
+
+/* SECONDARY pe fundal DESCHIS — verde-inchis de brand */
+.btn-secondary-light{background:transparent;color:var(--dark-green);border-color:var(--dark-green);}
+.btn-secondary-light::before{background:var(--dark-green);}
+.btn-secondary-light:hover{color:var(--soft-white);}
+.btn-secondary-light:hover::before{transform:scaleX(1);}
+
+/* PRIMARY pe fundal INCHIS — auriu deschis */
+.btn-primary-dark{background:transparent;color:var(--gold-soft);border-color:var(--gold-soft);}
+.btn-primary-dark::before{background:var(--gold-soft);}
+.btn-primary-dark:hover{color:var(--dark-green);}
+.btn-primary-dark:hover::before{transform:scaleX(1);}
+
+/* SECONDARY pe fundal INCHIS — crem */
+.btn-secondary-dark{background:transparent;color:var(--soft-white);border-color:rgba(255,248,240,0.45);}
+.btn-secondary-dark::before{background:var(--soft-white);}
+.btn-secondary-dark:hover{color:var(--dark-green);}
+.btn-secondary-dark:hover::before{transform:scaleX(1);}
 .btn-nav-cta{background:var(--soft-white);color:var(--dark-green);border-color:var(--soft-white);transition:border-color .35s ease,color .45s ease,transform .3s cubic-bezier(.3,.7,.3,1),box-shadow .3s ease;}
 .btn-nav-cta::before{background:var(--mint);}
 .btn-nav-cta:hover::before{transform:scaleX(1);}
@@ -212,9 +218,11 @@ section{position:relative;}
 
 /* ---------- SERVICES ---------- */
 .svc-index{border-top:1px solid var(--paper-line);}
-.svc-row{border-bottom:1px solid var(--paper-line);}
-.svc-head{width:100%;display:flex;align-items:center;gap:24px;padding:34px 6px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:background .3s ease;}
-.svc-head:hover{background:var(--cream-2);}
+.svc-row{border-bottom:1px solid var(--paper-line);transition:background .45s ease,margin-bottom .45s cubic-bezier(.4,0,.2,1);}
+.svc-row.open{background:rgba(11,45,26,0.055);margin-bottom:20px;}
+.svc-head{width:100%;display:flex;align-items:center;gap:24px;padding:34px 38px 34px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:background .3s ease;}
+.svc-head:hover{background:rgba(11,45,26,0.04);}
+.svc-row.open .svc-head:hover{background:transparent;}
 .svc-icon{width:34px;height:34px;color:var(--dark-green);flex:none;transition:transform .5s cubic-bezier(.3,.7,.3,1);}
 .svc-head:hover .svc-icon,.svc-row.open .svc-icon{transform:translateY(-3px) rotate(-4deg);}
 .svc-titles{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0;}
@@ -228,20 +236,21 @@ section{position:relative;}
 .svc-detail-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.4,0,.2,1);}
 .svc-row.open .svc-detail-wrap{grid-template-rows:1fr;}
 .svc-detail{overflow:hidden;}
-.svc-detail-inner{position:relative;overflow:hidden;margin:0 0 32px;border-radius:var(--r);background:rgba(11,45,26,0.035);border:1px solid rgba(11,45,26,0.12);}
-.svc-watermark{position:absolute;top:50%;right:clamp(-8px,2vw,26px);transform:translateY(-50%);font-family:var(--font-display);font-style:italic;font-weight:400;font-size:clamp(100px,15vw,200px);color:var(--dark-green);opacity:0.05;line-height:1;white-space:nowrap;pointer-events:none;z-index:0;user-select:none;}
-.svc-detail-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 240px;gap:clamp(28px,4vw,64px);padding:clamp(36px,4vw,52px) clamp(24px,3.4vw,48px);}
-.svc-detail-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin:0 0 20px;font-weight:600;}
-.svc-inc-row{border-top:1px solid var(--paper-line);padding:15px 0;font-size:15.5px;line-height:1.55;color:var(--ink-soft);}
-.svc-inc-row:last-child{border-bottom:1px solid var(--paper-line);}
-.svc-detail-cta{display:flex;flex-direction:column;gap:4px;align-self:center;padding-left:40px;border-left:1px solid var(--gold);}
-.svc-price-amt{font-family:var(--font-display);font-style:italic;font-size:25px;color:var(--gold);line-height:1.2;}
-.svc-price-note{font-size:12.5px;color:var(--ink-soft);opacity:0.9;margin-bottom:16px;}
+.svc-detail-inner{position:relative;overflow:hidden;}
+.svc-watermark{position:absolute;top:50%;right:clamp(-8px,2vw,20px);transform:translateY(-50%);font-family:var(--font-display);font-style:italic;font-weight:400;font-size:clamp(100px,15vw,190px);color:var(--dark-green);opacity:0.05;line-height:1;white-space:nowrap;pointer-events:none;z-index:0;user-select:none;}
+.svc-detail-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 290px;gap:clamp(28px,4vw,56px);padding:4px 38px 48px 82px;}
+.svc-detail-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin:0 0 18px;font-weight:600;}
+.svc-inc-row{border-top:1px solid rgba(11,45,26,0.16);padding:15px 0;font-size:15.5px;line-height:1.55;color:var(--ink);}
+.svc-inc-row:last-child{border-bottom:1px solid rgba(11,45,26,0.16);}
+.svc-detail-cta{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:4px;align-self:stretch;padding-left:44px;border-left:1px solid var(--gold);}
+.svc-price-amt{font-family:var(--font-body);font-size:20px;font-weight:600;letter-spacing:-0.01em;color:var(--gold);line-height:1.25;}
+.svc-price-note{font-size:12.5px;color:var(--ink-soft);margin-bottom:18px;}
 @media(max-width:760px){
-  .svc-detail-grid{grid-template-columns:1fr;}
-  .svc-detail-cta{align-self:stretch;padding-left:0;padding-top:24px;border-left:none;border-top:1px solid var(--gold);min-width:0;}
+  .svc-detail-grid{grid-template-columns:1fr;padding:4px 16px 36px 16px;}
+  .svc-detail-cta{align-self:stretch;padding-left:0;padding-top:24px;border-left:none;border-top:1px solid var(--gold);}
   .svc-watermark{font-size:80px;opacity:0.045;}
-  .svc-head{gap:16px;padding:26px 4px;}
+  .svc-row.open{margin-bottom:14px;}
+  .svc-head{gap:16px;padding:26px 20px 26px 16px;}
 }
 
 /* ---------- PORTFOLIO ---------- */
@@ -545,8 +554,8 @@ body.qc-lock{overflow:hidden;}
     <h1 class="hero-title">Natură sălbatică,<br><em>atent gândită</em>.</h1>
     <p class="hero-sub">Proiectăm, plantăm și îngrijim grădini care respiră odată cu anotimpurile — spații definite de ecologie, proporție și un respect profund față de lumea naturală.</p>
     <div class="hero-actions">
-      <button class="btn btn-primary-teal">Vezi portofoliul</button>
-      <button class="btn btn-on-dark js-open-contact">Hai să discutăm</button>
+      <button class="btn btn-primary-dark">Vezi portofoliul</button>
+      <button class="btn btn-secondary-dark js-open-contact">Hai să discutăm</button>
     </div>
    </div>
   </div>
@@ -677,7 +686,7 @@ body.qc-lock{overflow:hidden;}
                 <div class="svc-detail-cta">
                   <span class="svc-price-amt">de la 7.500 lei</span>
                   <span class="svc-price-note">în funcție de dimensiune și complexitate</span>
-                  <button type="button" class="btn btn-primary js-open-contact">Hai să discutăm</button>
+                  <button type="button" class="btn btn-primary-light js-open-contact">Hai să discutăm</button>
                 </div>
               </div>
             </div>
@@ -707,7 +716,7 @@ body.qc-lock{overflow:hidden;}
                 <div class="svc-detail-cta">
                   <span class="svc-price-amt">Ofertă personalizată</span>
                   <span class="svc-price-note">în funcție de suprafață și lucrările incluse</span>
-                  <button type="button" class="btn btn-primary js-open-contact">Hai să discutăm</button>
+                  <button type="button" class="btn btn-primary-light js-open-contact">Hai să discutăm</button>
                 </div>
               </div>
             </div>
@@ -737,7 +746,7 @@ body.qc-lock{overflow:hidden;}
                 <div class="svc-detail-cta">
                   <span class="svc-price-amt">de la 500 lei/lună</span>
                   <span class="svc-price-note">interior — sau de la 4 lei/mp exterior</span>
-                  <button type="button" class="btn btn-primary js-open-contact">Hai să discutăm</button>
+                  <button type="button" class="btn btn-primary-light js-open-contact">Hai să discutăm</button>
                 </div>
               </div>
             </div>
@@ -767,7 +776,7 @@ body.qc-lock{overflow:hidden;}
                 <div class="svc-detail-cta">
                   <span class="svc-price-amt">de la 250 lei</span>
                   <span class="svc-price-note">online — sau 500 lei la fața locului, zona Brașov</span>
-                  <button type="button" class="btn btn-primary js-open-contact">Hai să discutăm</button>
+                  <button type="button" class="btn btn-primary-light js-open-contact">Hai să discutăm</button>
                 </div>
               </div>
             </div>
@@ -786,7 +795,7 @@ body.qc-lock{overflow:hidden;}
         <p class="eyebrow">Lucrări recente</p>
         <h2>Grădini care au prins <span class="italic-accent">viață</span></h2>
       </div>
-      <button class="btn btn-ghost">Vezi tot portofoliul</button>
+      <button class="btn btn-secondary-light">Vezi tot portofoliul</button>
     </div>
     <div class="portfolio-grid reveal">
       <a href="#" class="pf-card large">
@@ -823,7 +832,7 @@ body.qc-lock{overflow:hidden;}
           <div><b>Design</b></div>
           <div><b>Inginerie</b></div>
         </div>
-        <button class="btn btn-on-dark">Află mai multe</button>
+        <button class="btn btn-secondary-dark">Află mai multe</button>
       </div>
     </div>
   </div>
@@ -837,7 +846,7 @@ body.qc-lock{overflow:hidden;}
         <p class="eyebrow">Întrebări frecvente</p>
         <h2>Ce te-ar putea interesa</h2>
         <p class="lede">Aici găsești răspunsurile la cele mai comune întrebări. Dacă nu găsești ce te interesează, scrie-ne un mesaj și revenim cu un răspuns în cel mai scurt timp.</p>
-        <button class="btn btn-ghost js-open-contact">Hai să discutăm</button>
+        <button class="btn btn-secondary-light js-open-contact">Hai să discutăm</button>
       </div>
       <div class="faq-list">
         <div class="faq-item open">
@@ -902,7 +911,7 @@ body.qc-lock{overflow:hidden;}
         <div class="form-row"><label for="name">Nume<i>*</i></label><input type="text" id="name" name="name" placeholder="Numele tău" required></div>
         <div class="form-row"><label for="email">Email<i>*</i></label><input type="email" id="email" name="email" placeholder="adresa@exemplu.ro" required></div>
         <div class="form-row"><label for="msg">Mesaj<i>*</i></label><textarea id="msg" name="mesaj" rows="4" placeholder="Spune-ne despre spațiul tău verde..." required></textarea></div>
-        <button type="submit" class="btn btn-secondary">Trimite mesajul</button>
+        <button type="submit" class="btn btn-secondary-dark">Trimite mesajul</button>
         <div class="form-feedback" id="contactStatus" role="status" aria-live="polite">
           <span class="form-feedback-icon"></span>
           <span class="form-feedback-text"></span>
@@ -981,7 +990,7 @@ body.qc-lock{overflow:hidden;}
           <input type="hidden" name="Tip formular" value="Abonare newsletter">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <input type="email" name="email" placeholder="Adresa ta de email" required>
-          <button type="submit" class="btn btn-secondary">Abonează-te</button>
+          <button type="submit" class="btn btn-secondary-dark">Abonează-te</button>
         </form>
         <div class="form-feedback" id="newsletterStatus" role="status" aria-live="polite">
           <span class="form-feedback-icon"></span>
@@ -1224,7 +1233,7 @@ body.qc-lock{overflow:hidden;}
         <textarea id="qcMsg" name="mesaj" rows="4" placeholder="Spune-ne despre spațiul tău verde..."></textarea>
       </div>
 
-      <button type="submit" class="btn btn-secondary">Trimite mesajul</button>
+      <button type="submit" class="btn btn-secondary-dark">Trimite mesajul</button>
       <div class="form-feedback" id="qcContactStatus" role="status" aria-live="polite">
         <span class="form-feedback-icon"></span>
         <span class="form-feedback-text"></span>
