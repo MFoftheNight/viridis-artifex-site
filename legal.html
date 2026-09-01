@@ -6,21 +6,33 @@
 <title>Informații legale — Viridis Artifex</title>
 <meta name="description" content="Politica de confidențialitate, termeni și condiții, politica de cookie-uri și soluționarea litigiilor pentru viridisartifex.ro.">
 <link rel="canonical" href="https://viridisartifex.ro/legal">
-<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0B2D1A">
+<meta name="robots" content="index, follow">
+
+<!-- Partajare pe retele sociale -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Viridis Artifex">
 <meta property="og:locale" content="ro_RO">
 <meta property="og:url" content="https://viridisartifex.ro/legal">
 <meta property="og:title" content="Informații legale — Viridis Artifex">
-<meta property="og:description" content="Politica de confidențialitate, termeni și condiții, cookie-uri și soluționarea litigiilor.">
+<meta property="og:description" content="Proiectăm, amenajăm și îngrijim grădini naturaliste, cu plante locale alese pentru biodiversitate.">
 <meta property="og:image" content="https://viridisartifex.ro/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Plan de plantare desenat de mână pentru o grădină naturalistă">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Informații legale — Viridis Artifex">
+<meta name="twitter:description" content="Proiectăm, amenajăm și îngrijim grădini naturaliste, cu plante locale alese pentru biodiversitate.">
+<meta name="twitter:image" content="https://viridisartifex.ro/img/og-image.jpg">
+
 <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap">
 <style>
+
 :root{
   --dark-green:#0B2D1A;
   --teal-green:#408C78;
@@ -32,6 +44,7 @@
   --ink:#15161F;
   --ink-soft:#4B4E5A;
   --paper-line:#DED2C7;
+  --svc-row-bg:rgba(255,248,240,0.6); /* soft-white translucid: hover SI card deschis */
   --line-on-dark:rgba(255,248,240,0.18);
   --cream-soft:rgba(255,248,240,0.78);
   --font-display:'Fraunces', Georgia, serif;
@@ -41,326 +54,899 @@
   --header-h:88px;
   --r:3px;
 }
-*{box-sizing:border-box;}
+*,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{margin:0;background:#F3EADB;color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+/* Fixed botanical texture — user's own grass drawing */
 body::before{
   content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:url("/img/textura-iarba.jpg");
   background-size:1000px;background-position:left top;background-repeat:repeat;
   opacity:0.05;
 }
-.wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1;}
-a{color:inherit;}
+body > *{position:relative;z-index:1;}
+img{max-width:100%;display:block;height:auto;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;margin:0;}
+p{margin:0;}
+ul{margin:0;padding:0;list-style:none;}
+button{font-family:inherit;cursor:pointer;}
+.wrap{max-width:var(--max-w);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter);position:relative;z-index:1;}
 
+/* ---------- TEXTURE SYSTEM ----------
+   Paper grain + contour lines derived from the logo's root motif.
+   Applied as pseudo-elements so no image files are needed. */
+.grain{position:relative;}
+.grain::after{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+}
+/* Contour band — the root-line motif from the mark, used as a section edge */
+.contour{
+  height:78px;width:100%;display:block;color:var(--paper-line);
+}
+.contour.on-dark{color:rgba(255,248,240,0.16);}
+
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);flex:none;}
+.eyebrow.on-dark{color:var(--gold-soft);}
+.eyebrow.on-dark::before{background:var(--gold-soft);}
+.eyebrow.centered{justify-content:center;}
+.italic-accent{font-style:italic;font-weight:400;color:var(--gold);}
+.lede{margin-top:20px;font-size:16.5px;color:var(--ink-soft);line-height:1.7;max-width:520px;}
+
+/* ---------- BUTTONS ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:14px 30px;border-radius:999px;font-family:var(--font-body);font-size:14.5px;font-weight:500;border:1px solid transparent;cursor:pointer;isolation:isolate;overflow:hidden;transition:color .45s ease,border-color .45s ease,transform .35s cubic-bezier(.34,1.3,.5,1),box-shadow .35s cubic-bezier(.34,1.3,.5,1);white-space:nowrap;}
+.btn:hover{transform:scale(1.02);filter:drop-shadow(0 8px 22px rgba(11,45,26,0.13)) drop-shadow(0 3px 8px rgba(11,45,26,0.08));}
+.btn:active{transform:scale(0.98);filter:drop-shadow(0 3px 10px rgba(11,45,26,0.12));}
+.btn::before{content:'';position:absolute;inset:0;border-radius:999px;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.4,0,.2,1);z-index:-1;}
+/* ---------- SISTEM DE BUTOANE ----------
+   2 roluri (primary / secondary) x 2 fundaluri (light / dark).
+   Toate: contur transparent -> se umple de la stanga la dreapta pe hover.
+   Exceptie unica: .btn-nav-cta (navbar), singurul plin din start.        */
+
+/* PRIMARY pe fundal DESCHIS — auriu */
+.btn-primary-light{background:transparent;color:var(--gold);border-color:var(--gold);}
+.btn-primary-light::before{background:var(--gold);}
+.btn-primary-light:hover{color:var(--soft-white);}
+.btn-primary-light:hover::before{transform:scaleX(1);}
+
+/* SECONDARY pe fundal DESCHIS — verde-inchis de brand */
+.btn-secondary-light{background:transparent;color:var(--dark-green);border-color:var(--dark-green);}
+.btn-secondary-light::before{background:var(--dark-green);}
+.btn-secondary-light:hover{color:var(--soft-white);}
+.btn-secondary-light:hover::before{transform:scaleX(1);}
+
+/* PRIMARY pe fundal INCHIS — auriu deschis */
+.btn-primary-dark{background:transparent;color:var(--gold-soft);border-color:var(--gold-soft);}
+.btn-primary-dark::before{background:var(--gold-soft);}
+.btn-primary-dark:hover{color:var(--dark-green);}
+.btn-primary-dark:hover::before{transform:scaleX(1);}
+
+/* SECONDARY pe fundal INCHIS — crem */
+.btn-secondary-dark{background:transparent;color:var(--soft-white);border-color:rgba(255,248,240,0.45);}
+.btn-secondary-dark::before{background:var(--soft-white);}
+.btn-secondary-dark:hover{color:var(--dark-green);}
+.btn-secondary-dark:hover::before{transform:scaleX(1);}
+.btn-nav-cta{background:var(--soft-white);color:var(--dark-green);border-color:var(--soft-white);transition:border-color .35s ease,color .45s ease,transform .3s cubic-bezier(.3,.7,.3,1),box-shadow .3s ease;}
+.btn-nav-cta::before{background:var(--mint);}
+.btn-nav-cta:hover::before{transform:scaleX(1);}
+.site-header.scrolled .btn-nav-cta{border-color:var(--dark-green);}
+
+/* ---------- HEADER ---------- */
+section[id]{scroll-margin-top:var(--header-h);}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);display:flex;align-items:center;transition:background .35s ease,box-shadow .35s ease;isolation:isolate;}
+.site-header.scrolled{background:#FBF4E8;box-shadow:0 1px 0 var(--paper-line);}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%;max-width:var(--max-w);}
+.nav-brand{display:flex;align-items:center;position:relative;width:44px;height:44px;}
+.nav-brand svg{width:44px;height:44px;flex:none;position:absolute;inset:0;transition:opacity .35s ease;}
+.nav-brand .logo-on-dark{opacity:1;}
+.nav-brand .logo-on-light{opacity:0;}
+.site-header.scrolled .nav-brand .logo-on-dark{opacity:0;}
+.site-header.scrolled .nav-brand .logo-on-light{opacity:1;}
+.main-nav{display:flex;align-items:center;gap:38px;}
+.navlink{position:relative;font-size:13.5px;font-weight:500;letter-spacing:0.03em;text-transform:uppercase;color:var(--soft-white);padding-bottom:4px;cursor:pointer;transition:color .35s ease;}
+.site-header.scrolled .navlink{color:var(--ink);}
+.site-header.scrolled .navlink:hover{color:var(--gold);}
+.site-header.scrolled .navlink::after{background:var(--gold);}
+.navlink::after{content:'';position:absolute;left:0;bottom:0;height:1.5px;width:100%;background:var(--gold-soft);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.4,0,.2,1);}
+.navlink:hover{color:var(--gold-soft);}
+.navlink:hover::after{transform:scaleX(1);transform-origin:left;}
+.header-actions{display:flex;align-items:center;gap:20px;}
+.lang-switch{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--soft-white);transition:color .35s ease;}
+.site-header.scrolled .lang-switch{color:var(--ink);}
+.site-header.scrolled .lang-switch a.active{color:var(--gold);}
+.lang-switch a{opacity:0.55;transition:opacity .25s ease;}
+.lang-switch a.active{opacity:1;color:var(--gold-soft);}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:var(--dark-green);overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-grain.jpg");background-repeat:repeat;background-size:900px auto;opacity:0.18;mix-blend-mode:hard-light;}
+.hero-text{display:flex;flex-direction:column;justify-content:center;align-items:flex-end;padding:150px var(--gutter) 90px var(--gutter);color:var(--soft-white);position:relative;z-index:2;}
+.hero-text-inner{width:100%;max-width:calc(var(--max-w) / 2 - var(--gutter));}
+.hero-text .eyebrow{margin-bottom:22px;}
+.hero-title{font-size:clamp(40px,4.8vw,60px);line-height:1.06;font-weight:400;letter-spacing:-0.01em;max-width:560px;}
+.hero-title em{font-style:italic;color:var(--gold-soft);font-weight:400;}
+.hero-sub{margin-top:26px;font-size:17px;line-height:1.65;color:var(--cream-soft);max-width:420px;font-weight:300;}
+.hero-actions{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap;}
+.hero-media{position:relative;overflow:hidden;}
+.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(11,45,26,0.5) 0%, rgba(11,45,26,0.05) 30%);}
+
+section{position:relative;}
+.section-pad{padding:120px 0;}
+.on-cream2{background:rgba(255,248,240,0.55);}
+.bg-texture{background:rgba(255,248,240,0.55);}
+.bg-mint{background:rgba(255,248,240,0.55);}
+.bg-soft{background:rgba(255,248,240,0.55);}
+.bg-dark-tex{background:var(--dark-green);color:var(--soft-white);position:relative;overflow:hidden;}
+.bg-dark-tex::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-grain.jpg");background-repeat:repeat;background-size:900px auto;opacity:0.18;mix-blend-mode:hard-light;}
+.bg-dark-tex .wrap{position:relative;z-index:1;}
+.section-head{max-width:640px;margin-bottom:64px;}
+.section-head .eyebrow{margin-bottom:16px;}
+.section-head h2{font-size:clamp(30px,3.6vw,44px);line-height:1.15;font-weight:400;}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+
+/* ---------- PROCESS: drafting-table treatment ---------- */
+.sketch-section{background:rgba(255,248,240,0.55);padding:130px 0 120px;overflow:hidden;}
+.sketch-head{text-align:center;max-width:680px;margin:0 auto 60px;}
+.sketch-head h2{font-size:clamp(32px,4vw,50px);line-height:1.15;}
+.sketch-head .lede{margin-left:auto;margin-right:auto;}
+.plan-layout{display:grid;grid-template-columns:1fr 264px;gap:0;max-width:1060px;margin:0 auto;border:1px solid var(--paper-line);background:var(--soft-white);}
+.plan-stage{position:relative;padding:clamp(16px,3vw,34px);border-right:1px solid var(--paper-line);}
+.plan-stage img{width:100%;display:block;}
+.plan-meta{display:flex;justify-content:flex-start;align-items:center;padding:14px clamp(16px,3vw,34px);border-top:1px solid var(--paper-line);font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);}
+.plan-scale{display:flex;align-items:center;gap:8px;}
+.plan-scale i{display:block;width:54px;height:5px;border:1px solid var(--ink-soft);border-top:none;font-style:normal;}
+/* legend panel — hovering a row lights its marker on the plan, and vice versa */
+.plan-legend{padding:clamp(20px,2.5vw,28px);display:flex;flex-direction:column;}
+.plan-legend h4{font-family:var(--font-body);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:20px;}
+.legend-row{display:flex;align-items:baseline;gap:11px;padding:9px 0;border-bottom:1px solid var(--paper-line);cursor:default;transition:background .2s ease;}
+.legend-row:last-of-type{border-bottom:none;}
+.legend-row:hover{background:var(--cream-2);}
+.legend-key{width:9px;height:9px;border-radius:50%;flex:none;position:relative;top:2px;}
+.legend-name{font-family:var(--font-display);font-style:italic;font-size:14px;line-height:1.3;}
+.legend-ro{display:block;font-family:var(--font-body);font-style:normal;font-size:11.5px;color:var(--ink-soft);letter-spacing:0.02em;}
+.plan-note{margin-top:auto;padding-top:20px;font-size:12px;color:var(--ink-soft);line-height:1.6;font-style:italic;font-family:var(--font-display);}
+.pin{position:absolute;width:13px;height:13px;border-radius:50%;border:2px solid var(--soft-white);transform:translate(-50%,-50%);transition:transform .25s ease,box-shadow .25s ease;box-shadow:0 0 0 1px rgba(0,0,0,0.25);}
+.pin.lit{transform:translate(-50%,-50%) scale(1.65);box-shadow:0 0 0 6px rgba(169,129,74,0.25),0 0 0 1px rgba(0,0,0,0.3);}
+
+/* ---------- SEASONS: the signature element ---------- */
+.seasons{background:var(--dark-green);color:var(--soft-white);padding:120px 0 110px;position:relative;overflow:hidden;}
+.seasons::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-grain.jpg");background-repeat:repeat;background-size:900px auto;opacity:0.18;mix-blend-mode:hard-light;}
+.seasons-head{max-width:660px;margin-bottom:54px;}
+.seasons-head h2{font-size:clamp(30px,3.6vw,44px);line-height:1.15;font-weight:400;margin-top:16px;}
+.seasons-head p{margin-top:20px;font-size:16.5px;color:var(--cream-soft);line-height:1.7;font-weight:300;}
+.season-tabs{display:flex;gap:0;margin-bottom:34px;border-bottom:1px solid var(--line-on-dark);}
+.season-tab{background:none;border:none;padding:12px 26px 14px;color:var(--cream-soft);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;position:relative;transition:color .3s ease;}
+.season-tab::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold-soft);transform:scaleX(0);transition:transform .35s cubic-bezier(.4,0,.2,1);}
+.season-tab:hover{color:var(--soft-white);}
+.season-tab.active{color:var(--gold-soft);}
+.season-tab.active::after{transform:scaleX(1);}
+/* the succession chart */
+.chart{display:flex;flex-direction:column;gap:0;}
+.chart-months{display:grid;grid-template-columns:190px 1fr;align-items:end;margin-bottom:10px;}
+.chart-months .mlabels{display:grid;grid-template-columns:repeat(12,1fr);font-size:10.5px;letter-spacing:0.06em;color:rgba(255,248,240,0.5);text-transform:uppercase;}
+.chart-months .mlabels span{text-align:center;}
+.chart-row{display:grid;grid-template-columns:190px 1fr;align-items:center;padding:7px 0;border-top:1px solid rgba(255,248,240,0.09);transition:background .25s ease;}
+.chart-row:hover{background:rgba(255,248,240,0.04);}
+.chart-row .sp{padding-right:16px;}
+.chart-row .sp b{display:block;font-family:var(--font-display);font-style:italic;font-weight:400;font-size:14px;color:var(--soft-white);}
+.chart-row .sp i{display:block;font-style:normal;font-size:11px;color:rgba(255,248,240,0.55);letter-spacing:0.02em;}
+.track{position:relative;height:15px;display:grid;grid-template-columns:repeat(12,1fr);}
+.track::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.333% - 1px),rgba(255,248,240,0.07) calc(8.333% - 1px),rgba(255,248,240,0.07) 8.333%);}
+.bar{position:relative;height:100%;border-radius:999px;transition:opacity .35s ease,filter .35s ease;}
+.bar.bloom{background:var(--gold-soft);}
+.bar.structure{background:rgba(185,217,186,0.42);}
+.bar.dim{opacity:0.18;}
+.season-legend{display:flex;gap:26px;margin-top:26px;font-size:12px;color:rgba(255,248,240,0.6);flex-wrap:wrap;}
+.season-legend span{display:flex;align-items:center;gap:8px;}
+.season-legend i{width:16px;height:8px;border-radius:999px;display:block;}
+
+/* ---------- SERVICES ---------- */
+.svc-index{border-top:1px solid var(--paper-line);}
+.svc-row{border-bottom:1px solid var(--paper-line);transition:background .45s ease,margin-bottom .45s cubic-bezier(.4,0,.2,1);}
+.svc-row.open{background:var(--svc-row-bg);margin-bottom:20px;}
+.svc-head{width:100%;display:flex;align-items:center;gap:24px;padding:34px 38px 34px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:background .3s ease;}
+.svc-head:hover{background:var(--svc-row-bg);}
+.svc-row.open .svc-head:hover{background:transparent;}
+.svc-icon{width:34px;height:34px;color:var(--dark-green);flex:none;transition:transform .5s cubic-bezier(.3,.7,.3,1);}
+.svc-head:hover .svc-icon,.svc-row.open .svc-icon{transform:translateY(-3px) rotate(-4deg);}
+.svc-titles{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0;}
+.svc-name{font-family:var(--font-display);font-size:clamp(22px,2.4vw,28px);font-weight:500;line-height:1.15;}
+.svc-tag{font-size:14px;color:var(--ink-soft);}
+.svc-plus{width:16px;height:16px;flex:none;position:relative;}
+.svc-plus::before,.svc-plus::after{content:'';position:absolute;background:var(--gold);transition:transform .35s cubic-bezier(.4,0,.2,1);}
+.svc-plus::before{left:0;right:0;top:7.5px;height:1.5px;}
+.svc-plus::after{top:0;bottom:0;left:7.5px;width:1.5px;}
+.svc-row.open .svc-plus::after{transform:scaleY(0);}
+.svc-detail-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.4,0,.2,1);}
+.svc-row.open .svc-detail-wrap{grid-template-rows:1fr;}
+.svc-detail{overflow:hidden;}
+.svc-detail-inner{position:relative;overflow:hidden;}
+.svc-watermark{position:absolute;top:50%;right:clamp(-8px,2vw,20px);transform:translateY(-50%);font-family:var(--font-display);font-style:italic;font-weight:400;font-size:clamp(100px,15vw,190px);color:var(--dark-green);opacity:0.05;line-height:1;white-space:nowrap;pointer-events:none;z-index:0;user-select:none;}
+.svc-detail-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 290px;gap:clamp(28px,4vw,56px);padding:4px 38px 48px 82px;}
+.svc-detail-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin:0 0 18px;font-weight:600;}
+.svc-inc-row{border-top:1px solid rgba(11,45,26,0.16);padding:15px 0;font-size:15.5px;line-height:1.55;color:var(--ink);}
+.svc-inc-row:last-child{border-bottom:1px solid rgba(11,45,26,0.16);}
+.svc-detail-cta{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:4px;align-self:stretch;padding-left:44px;border-left:1px solid var(--gold);}
+.svc-price-amt{font-family:var(--font-body);font-size:20px;font-weight:600;letter-spacing:-0.01em;color:var(--gold);line-height:1.25;}
+.svc-price-note{font-size:12.5px;color:var(--ink-soft);margin-bottom:18px;}
+@media(max-width:760px){
+  .svc-detail-grid{grid-template-columns:1fr;padding:4px 16px 36px 16px;}
+  .svc-detail-cta{align-self:stretch;padding-left:0;padding-top:24px;border-left:none;border-top:1px solid var(--gold);}
+  .svc-watermark{font-size:80px;opacity:0.045;}
+  .svc-row.open{margin-bottom:14px;}
+  .svc-head{gap:16px;padding:26px 20px 26px 16px;}
+}
+
+/* ---------- PORTFOLIO ---------- */
+.portfolio-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;gap:24px;flex-wrap:wrap;}
+.portfolio-grid{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:auto auto;gap:22px;}
+.pf-card{position:relative;overflow:hidden;border-radius:var(--r);aspect-ratio:4/3;}
+.pf-card.large{grid-row:1/3;aspect-ratio:auto;}
+.pf-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1);}
+.pf-card:hover img{transform:scale(1.05);}
+.pf-overlay{position:absolute;inset:0;background:linear-gradient(0deg, rgba(11,45,26,0.85) 0%, rgba(11,45,26,0) 48%);display:flex;flex-direction:column;justify-content:flex-end;padding:28px;color:var(--soft-white);}
+.pf-cat{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:8px;}
+.pf-title{font-family:var(--font-display);font-size:22px;font-weight:400;}
+.pf-more{font-size:12px;color:var(--cream-soft);margin-top:8px;max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease,opacity .4s ease;}
+.pf-card:hover .pf-more{max-height:40px;opacity:1;}
+
+/* ---------- ABOUT: editorial, no offset panel ---------- */
+.about-teaser{display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(32px,6vw,88px);align-items:start;}
+.about-figure{position:relative;}
+.about-portrait{position:relative;overflow:hidden;border-radius:var(--r);aspect-ratio:4/5;}
+.about-portrait img{width:100%;height:100%;object-fit:cover;}
+.about-caption{margin-top:14px;font-size:12px;color:var(--cream-soft);font-style:italic;font-family:var(--font-display);display:flex;align-items:center;gap:10px;}
+.about-caption::before{content:'';width:20px;height:1px;background:var(--gold-soft);flex:none;}
+.about-text h2{font-size:clamp(28px,3.2vw,38px);line-height:1.2;margin-bottom:22px;}
+.about-text h2 .italic-accent{color:var(--gold-soft);}
+.about-text p:not(.eyebrow){font-size:16px;color:var(--cream-soft);line-height:1.8;margin-bottom:18px;}
+.about-text .eyebrow{margin-bottom:18px;}
+.about-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:34px 0 6px;border-top:1px solid var(--line-on-dark);border-bottom:1px solid var(--line-on-dark);}
+.about-facts div{padding:20px 20px 20px 22px;border-right:1px solid var(--line-on-dark);text-align:left;}
+.about-facts div:first-child{padding-left:0;}
+.about-facts div:last-child{border-right:none;}
+.about-facts b{display:block;font-family:var(--font-display);font-size:19px;font-weight:400;color:var(--soft-white);line-height:1;font-style:italic;}
+.about-text .btn{margin-top:30px;}
+
+/* ---------- FAQ ---------- */
+.faq-layout{display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(40px,6vw,90px);align-items:start;}
+.faq-sticky{position:sticky;top:calc(var(--header-h) + 40px);}
+.faq-sticky h2{font-size:clamp(28px,3.2vw,38px);line-height:1.2;margin-top:16px;}
+.faq-sticky .btn{margin-top:30px;}
+.faq-list{border-top:1px solid var(--paper-line);}
+.faq-item{border-bottom:1px solid var(--paper-line);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 4px;cursor:pointer;font-size:17px;font-weight:500;transition:color .25s ease;}
+.faq-q:hover{color:var(--gold);}
+.faq-plus{width:15px;height:15px;flex:none;position:relative;}
+.faq-plus::before,.faq-plus::after{content:'';position:absolute;background:var(--gold);transition:transform .35s cubic-bezier(.4,0,.2,1);}
+.faq-plus::before{left:0;right:0;top:7px;height:1.5px;}
+.faq-plus::after{top:0;bottom:0;left:7px;width:1.5px;}
+.faq-item.open .faq-plus::after{transform:scaleY(0);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1);}
+.faq-item.open .faq-a{max-height:240px;}
+.faq-a p{padding:0 4px 26px;font-size:15px;color:var(--ink-soft);line-height:1.7;max-width:640px;}
+
+/* ---------- CONTACT ---------- */
+.contact-section{background:var(--dark-green);color:var(--soft-white);padding:120px 0 100px;position:relative;overflow:hidden;}
+.contact-section::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-grain.jpg");background-repeat:repeat;background-size:900px auto;opacity:0.18;mix-blend-mode:hard-light;}
+.contact-grid{display:grid;grid-template-columns:1fr 0.92fr;gap:clamp(40px,6vw,96px);position:relative;z-index:1;align-items:start;}
+.contact-copy h2{font-size:clamp(30px,3.8vw,46px);line-height:1.18;margin-bottom:20px;}
+.contact-intro{font-size:16px;line-height:1.7;color:var(--cream-soft);margin-bottom:28px;font-weight:300;max-width:440px;}
+.contact-prompts{display:flex;flex-direction:column;gap:10px;}
+.prompt{display:block;width:100%;text-align:left;background:rgba(255,248,240,0.05);border:1px solid rgba(255,248,240,0.16);border-radius:var(--r);padding:16px 18px 16px 20px;color:var(--cream-soft);font-family:var(--font-body);font-size:15px;line-height:1.5;cursor:pointer;position:relative;overflow:hidden;transition:border-color .3s ease,background .3s ease,transform .2s ease;}
+.prompt::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold-soft);transform:scaleY(0);transform-origin:bottom;transition:transform .35s cubic-bezier(.4,0,.2,1);}
+.prompt:hover{border-color:rgba(201,169,110,0.5);background:rgba(255,248,240,0.09);transform:translateX(3px);}
+.prompt:hover::before{transform:scaleY(1);transform-origin:top;}
+.prompt.active{border-color:var(--gold-soft);background:rgba(201,169,110,0.12);}
+.prompt.active::before{transform:scaleY(1);}
+.prompt-key{display:block;font-family:var(--font-display);font-style:italic;font-size:15px;color:var(--gold-soft);margin-bottom:3px;}
+.contact-info{margin-top:42px;display:flex;flex-direction:column;gap:0;padding-top:30px;border-top:1px solid var(--line-on-dark);}
+.contact-info a{display:flex;align-items:baseline;gap:16px;font-size:16px;padding:8px 0;transition:color .25s ease;}
+.contact-info a:hover{color:var(--gold-soft);}
+.contact-info .ci-label{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mint);width:52px;flex:none;}
+.contact-form{background:rgba(255,248,240,0.06);border:1px solid rgba(255,248,240,0.22);border-radius:var(--r);padding:clamp(28px,3.4vw,42px);max-width:460px;width:100%;justify-self:end;align-self:start;position:sticky;top:calc(var(--header-h) + 40px);}
+.contact-form h3{font-family:var(--font-display);font-size:20px;font-weight:400;margin-bottom:26px;color:var(--soft-white);}
+.form-row label i{color:var(--gold-soft);font-style:normal;margin-left:1px;}
+.form-consent{font-size:11.5px;color:rgba(255,248,240,0.5);margin-top:16px;line-height:1.6;text-align:left;}
+.form-consent a{color:var(--mint);text-decoration:underline;}
+.form-row{margin-bottom:20px;}
+.form-row label{display:block;font-size:13px;font-weight:600;color:var(--mint);margin-bottom:8px;}
+.form-row input,.form-row textarea{width:100%;background:rgba(255,248,240,0.05);border:1px solid rgba(255,248,240,0.26);border-radius:var(--r);color:var(--soft-white);font-family:var(--font-body);font-size:15px;padding:12px 13px;transition:border-color .25s ease,background .25s ease;}
+.form-row input:focus,.form-row textarea:focus{outline:none;border-color:var(--gold-soft);background:rgba(255,248,240,0.09);}
+.form-row textarea{resize:vertical;min-height:84px;}
+.form-row input::placeholder,.form-row textarea::placeholder{color:rgba(255,248,240,0.42);}
+.contact-form .btn{width:100%;justify-content:center;margin-top:8px;}
+.form-feedback{display:none;align-items:flex-start;gap:12px;padding:14px 18px;border-radius:var(--r);font-size:14px;line-height:1.5;margin-top:14px;opacity:0;transform:translateY(10px);transition:opacity .5s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1);}
+.form-feedback.visible{display:flex;opacity:1;transform:none;}
+.form-feedback-icon{flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.form-feedback-icon svg{width:12px;height:12px;}
+.form-feedback.success{background:rgba(185,217,186,0.14);border:1px solid rgba(185,217,186,0.5);color:var(--soft-white);}
+.form-feedback.success .form-feedback-icon{background:var(--mint);color:var(--dark-green);}
+.form-feedback.error{background:rgba(227,154,138,0.14);border:1px solid rgba(227,154,138,0.55);color:var(--soft-white);}
+.form-feedback.error .form-feedback-icon{background:#E39A8A;color:var(--dark-green);}
+.form-feedback-text strong{display:block;font-family:var(--font-display);font-size:15px;font-weight:500;margin-bottom:2px;}
+button[disabled]{opacity:0.65;cursor:default;}
+
+/* ---------- FOOTER: rooted, not a divider line ---------- */
+/* ---------- FOOTER — structured, mark-anchored ---------- */
+.site-footer{background:var(--dark-green);color:var(--cream-soft);position:relative;overflow:hidden;}
+.site-footer::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-footer.jpg");background-repeat:no-repeat;background-position:top center;background-size:cover;opacity:0.9;mix-blend-mode:color-burn;}
+.footer-inner{position:relative;z-index:1;}
+.footer-inner{padding-top:100px;}
+.footer-cta{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,56px);padding-bottom:60px;border-bottom:1px solid var(--line-on-dark);align-items:start;}
+.footer-cta-left{display:flex;flex-direction:column;align-items:flex-start;}
+.footer-brand-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+.footer-mark{width:56px;height:56px;flex:none;display:block;}
+.footer-cta-left h3{font-size:clamp(20px,2.3vw,36px);color:var(--soft-white);line-height:1.15;font-weight:400;}
+.footer-cta-left h3 em{font-style:italic;color:var(--gold-soft);}
+.footer-brandtext{font-size:13.5px;line-height:1.75;color:rgba(255,248,240,0.6);max-width:400px;margin-top:20px;}
+.footer-cta-right{padding-top:8px;}
+.footer-news-label{display:block;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px;font-weight:600;}
+.newsletter-form{display:flex;gap:10px;flex-wrap:wrap;}
+.newsletter-form input{flex:1;min-width:260px;background:rgba(255,248,240,0.06);border:1px solid var(--line-on-dark);border-radius:999px;padding:13px 22px;color:var(--soft-white);font-family:var(--font-body);font-size:14px;}
+.newsletter-form input::placeholder{color:rgba(255,248,240,0.4);}
+.footer-legal-note{font-size:11.5px;color:rgba(255,248,240,0.42);margin-top:14px;line-height:1.6;}
+.footer-legal-note a{text-decoration:underline;}
+.footer-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:72px;padding:56px 0;max-width:760px;}
+.footer-col h4{font-family:var(--font-display);font-size:16px;letter-spacing:0.01em;text-transform:none;color:var(--gold-soft);margin-bottom:18px;font-weight:400;font-style:italic;}
+.footer-col a{display:block;font-size:14px;color:var(--cream-soft);margin-bottom:11px;transition:color .25s ease,padding-left .25s ease;white-space:nowrap;}
+.footer-col a:hover{color:var(--gold-soft);padding-left:5px;}
+.footer-col a.social-link{display:flex;align-items:center;}
+.footer-col a.social-link:hover{padding-left:0;}
+.footer-col a.social-link svg{width:22px;height:22px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:26px 0 34px;border-top:1px solid var(--line-on-dark);font-size:12.5px;color:rgba(255,248,240,0.42);flex-wrap:wrap;gap:12px;}
+/* live seasonal strip — the special ending */
+.footer-season{display:flex;align-items:flex-start;gap:32px;padding:32px 0;border-top:1px solid var(--line-on-dark);flex-wrap:wrap;}
+.fs-left{display:flex;align-items:center;gap:12px;flex:none;padding-top:4px;}
+.fs-dot{width:9px;height:9px;border-radius:50%;background:var(--gold-soft);position:relative;}
+.fs-dot::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px solid var(--gold-soft);opacity:0.5;animation:fspulse 2.4s ease-out infinite;}
+@keyframes fspulse{0%{transform:scale(0.8);opacity:0.6;}100%{transform:scale(2);opacity:0;}}
+.fs-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;}
+.fs-body{flex:1;min-width:280px;}
+.fs-text{font-family:var(--font-display);font-style:italic;font-size:clamp(17px,2vw,22px);color:var(--soft-white);line-height:1.4;}
+.fs-plants{margin-top:10px;font-size:13px;color:rgba(255,248,240,0.55);letter-spacing:0.01em;}
+.fs-plant{color:var(--mint);font-style:italic;font-family:var(--font-display);font-size:15px;transition:opacity .5s ease;}
+.fs-plant.fading{opacity:0;}
+.footer-bottom a{color:rgba(255,248,240,0.42);}
+.footer-bottom a:hover{color:var(--gold-soft);}
+.footer-legal{display:flex;gap:22px;flex-wrap:wrap;}
+/* ===== Quick contact modal ===== */
+.qc-overlay{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(11,45,26,0.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.2,.7,.2,1),visibility 0s linear .35s;}
+.qc-overlay.open{opacity:1;visibility:visible;transition-delay:0s;}
+body.qc-lock{overflow:hidden;}
+.qc-content{position:relative;z-index:1;max-height:88vh;overflow-y:auto;padding:clamp(56px,5.5vw,64px);scrollbar-width:thin;scrollbar-color:rgba(255,248,240,0.20) transparent;}
+.qc-content::-webkit-scrollbar{width:10px;}
+.qc-content::-webkit-scrollbar-track{background:transparent;}
+.qc-content::-webkit-scrollbar-thumb{background:rgba(255,248,240,0.20);border-radius:999px;border:3px solid transparent;background-clip:padding-box;transition:background .25s ease;}
+.qc-content::-webkit-scrollbar-thumb:hover{background:rgba(201,169,110,0.6);border:3px solid transparent;background-clip:padding-box;}
+.qc-modal{position:relative;width:100%;max-width:760px;max-height:88vh;overflow:hidden;background:var(--dark-green);border:1px solid var(--line-on-dark);border-radius:var(--r);color:var(--cream-soft);transform:translateY(22px) scale(.97);transition:transform .4s cubic-bezier(.2,.7,.2,1);}
+.qc-overlay.open .qc-modal{transform:none;}
+.qc-close{position:absolute;z-index:3;top:20px;right:20px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-on-dark);background:rgba(11,45,26,0.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);color:var(--cream-soft);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s ease,color .25s ease,transform .3s ease;}
+.qc-close:hover{border-color:var(--gold-soft);color:var(--gold-soft);transform:rotate(90deg);}
+.qc-close svg{width:15px;height:15px;}
+.qc-title{font-family:var(--font-display);font-size:clamp(22px,2.6vw,26px);font-weight:400;color:var(--soft-white);margin:0 0 12px;padding-right:34px;line-height:1.2;}
+.qc-intro{font-size:14.5px;line-height:1.6;color:var(--cream-soft);margin:0 0 24px;}
+.qc-form .btn{width:100%;justify-content:center;margin-top:14px;}
+.qc-form .btn:hover{filter:none;}
+.qc-opt-tag{font-size:9.5px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,248,240,0.42);font-weight:400;margin-left:6px;}
+.qc-optional-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:560px){
+  .qc-content{padding:54px 22px 30px;}
+  .qc-close{top:14px;right:14px;}
+}
+@media (max-width:420px){ .qc-optional-row{grid-template-columns:1fr;} }
+.qc-pill-row label{margin-bottom:10px;}
+.pill-group{display:flex;flex-wrap:wrap;gap:8px;}
+.pill{display:inline-flex;align-items:center;padding:9px 16px;border-radius:999px;border:1px solid rgba(255,248,240,0.26);background:rgba(255,248,240,0.05);color:var(--cream-soft);font-family:var(--font-body);font-size:13.5px;font-weight:500;line-height:1.3;cursor:pointer;transition:border-color .25s ease,background .25s ease,color .25s ease;}
+.pill:hover{border-color:rgba(201,169,110,0.5);background:rgba(255,248,240,0.09);}
+.pill.active{border-color:var(--gold-soft);background:rgba(201,169,110,0.22);color:var(--soft-white);font-weight:600;}
+.pill.active:hover{background:rgba(201,169,110,0.32);border-color:var(--gold-soft);}
+.pill.active::after{content:'\00d7';margin-left:9px;margin-right:-2px;font-size:15px;line-height:1;color:var(--gold-soft);}
+.pill:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px;}
+.consent-row{display:flex;gap:9px;align-items:flex-start;width:100%;margin-top:14px;cursor:pointer;}
+.consent-row input{width:14px;height:14px;margin:2px 0 0;flex:none;accent-color:var(--gold-soft);cursor:pointer;}
+.consent-row span{font-size:12px;line-height:1.55;color:var(--cream-soft);opacity:.85;}
+.consent-row input:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px;}
 .skip-link{position:absolute;left:16px;top:-100px;z-index:200;background:var(--dark-green);color:var(--soft-white);border:1px solid var(--gold-soft);border-radius:var(--r);padding:12px 20px;font-size:14px;font-weight:600;text-decoration:none;transition:top .2s ease;}
 .skip-link:focus{top:16px;}
-
-/* header */
-.site-header{position:sticky;top:0;z-index:100;height:var(--header-h);display:flex;align-items:center;background:var(--dark-green);border-bottom:1px solid var(--line-on-dark);}
-.header-inner{display:flex;align-items:center;justify-content:space-between;width:100%;}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--soft-white);}
-.logo img{width:42px;height:42px;display:block;}
-.logo span{font-family:var(--font-display);font-size:19px;font-weight:500;letter-spacing:.01em;}
-.back-link{font-size:14px;font-weight:500;color:var(--cream-soft);text-decoration:none;position:relative;padding-bottom:3px;}
-.back-link::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--gold-soft);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
-.back-link:hover{color:var(--soft-white);}
-.back-link:hover::after{transform:scaleX(1);}
-
-/* page head */
-.page-head{padding:clamp(56px,7vw,92px) 0 clamp(34px,4vw,52px);border-bottom:1px solid var(--paper-line);}
-.eyebrow{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:20px;}
-.eyebrow::before{content:'';width:26px;height:1px;background:var(--gold);}
-.page-head h1{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,5vw,58px);line-height:1.05;margin:0 0 18px;letter-spacing:-0.01em;}
-.page-head p{max-width:60ch;color:var(--ink-soft);margin:0;font-size:16.5px;}
-.updated{margin-top:22px;font-size:13px;color:var(--ink-soft);}
-
-/* layout */
-.legal-layout{display:grid;grid-template-columns:264px 1fr;gap:clamp(40px,6vw,88px);padding:clamp(40px,5vw,64px) 0 clamp(70px,9vw,120px);align-items:start;}
-.toc{position:sticky;top:calc(var(--header-h) + 34px);}
-.toc-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 18px;}
-.toc ol{list-style:none;margin:0;padding:0;counter-reset:ch;border-top:1px solid var(--paper-line);}
-.toc li{border-bottom:1px solid var(--paper-line);counter-increment:ch;}
-.toc a{display:flex;gap:12px;align-items:baseline;padding:15px 4px;text-decoration:none;font-size:14.5px;color:var(--ink-soft);transition:color .25s ease,background .25s ease,padding-left .25s ease;}
-.toc a::before{content:counter(ch,decimal-leading-zero);font-family:var(--font-display);font-style:italic;font-size:12px;color:var(--gold-soft);flex:none;}
-.toc a:hover{color:var(--ink);background:rgba(255,248,240,0.6);padding-left:10px;}
-.toc a.active{color:var(--dark-green);font-weight:600;background:rgba(255,248,240,0.85);padding-left:10px;}
-.toc a.active::before{color:var(--gold);}
-.toc a:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;}
-
-/* content */
-.chapter{scroll-margin-top:calc(var(--header-h) + 26px);padding-bottom:clamp(46px,6vw,74px);}
-.chapter + .chapter{border-top:1px solid var(--paper-line);padding-top:clamp(42px,5vw,62px);}
-.chapter h2{font-family:var(--font-display);font-weight:500;font-size:clamp(26px,3.2vw,38px);line-height:1.15;margin:0 0 10px;letter-spacing:-0.01em;}
-.chapter .lede{color:var(--ink-soft);max-width:62ch;margin:0 0 34px;}
-.chapter h3{font-size:17px;font-weight:600;margin:34px 0 10px;color:var(--dark-green);}
-.chapter p{max-width:68ch;margin:0 0 14px;}
-.chapter ul{max-width:68ch;margin:0 0 16px;padding:0;list-style:none;}
-.chapter ul li{position:relative;padding-left:20px;margin-bottom:9px;}
-.chapter ul li::before{content:'';position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);}
-.chapter a{color:var(--dark-green);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--gold-soft);}
-.chapter a:hover{text-decoration-color:var(--gold);}
-
-.note{background:rgba(255,248,240,0.75);border:1px solid var(--paper-line);border-left:2px solid var(--gold);border-radius:var(--r);padding:20px 24px;margin:26px 0;max-width:68ch;}
-.note p{margin:0;font-size:14.5px;color:var(--ink-soft);}
-.note strong{color:var(--dark-green);}
-
-table{border-collapse:collapse;width:100%;max-width:68ch;margin:8px 0 20px;font-size:14.5px;}
-th,td{text-align:left;padding:13px 14px 13px 0;border-bottom:1px solid var(--paper-line);vertical-align:top;}
-th{font-weight:600;color:var(--dark-green);border-bottom-color:var(--gold-soft);}
-td:first-child{width:38%;color:var(--dark-green);font-weight:500;}
-
-/* footer */
-.site-footer{background:var(--dark-green);color:var(--cream-soft);padding:clamp(44px,5vw,64px) 0;position:relative;z-index:1;}
-.footer-inner{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:center;}
-.footer-inner a{color:var(--cream-soft);text-decoration:none;font-size:14px;}
-.footer-inner a:hover{color:var(--gold-soft);}
-.footer-links{display:flex;gap:26px;flex-wrap:wrap;}
-.copy{font-size:13px;opacity:.72;}
-.anpc{display:flex;gap:14px;align-items:center;margin-top:6px;}
-.anpc a{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-on-dark);border-radius:var(--r);padding:9px 14px;font-size:12.5px;transition:border-color .25s ease;}
-.anpc a:hover{border-color:var(--gold-soft);}
-
-@media (max-width:900px){
-  .legal-layout{grid-template-columns:1fr;gap:32px;}
-  .toc{position:static;}
-  .toc ol{display:grid;grid-template-columns:1fr 1fr;}
+.qc-reveal{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
+.qc-reveal.open{max-height:1800px;}
+.qc-reveal-inner{margin-top:2px;}
+.qc-branch{margin-bottom:24px;}
+.qc-branch-title{font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--soft-white);margin:0 0 12px;}
+.qc-branch-box{border:1px solid rgba(255,248,240,0.22);border-radius:var(--r);padding:20px 20px 2px;background:rgba(255,248,240,0.035);}
+.qc-attach input[type=file]{width:100%;background:rgba(255,248,240,0.05);border:1px solid rgba(255,248,240,0.26);border-radius:var(--r);color:var(--cream-soft);font-family:var(--font-body);font-size:13px;padding:10px 12px;}
+.qc-attach input[type=file]::file-selector-button{margin-right:12px;padding:8px 14px;border-radius:999px;border:1px solid var(--gold-soft);background:transparent;color:var(--gold-soft);font-family:var(--font-body);font-size:12.5px;font-weight:500;cursor:pointer;transition:background .25s ease,color .25s ease;}
+.qc-attach input[type=file]::file-selector-button:hover{background:var(--gold-soft);color:var(--dark-green);}
+.qc-file-note{font-size:12px;color:rgba(255,248,240,0.42);margin-top:8px;transition:color .2s ease;}
+.qc-file-note.error{color:#e2897c;font-weight:600;}
+.qc-attach input[type=file].error{border-color:#e2897c;}
+.qc-info{margin-top:26px;padding-top:22px;border-top:1px solid var(--line-on-dark);display:flex;flex-direction:column;}
+.site-toast{position:fixed;top:20px;left:50%;z-index:1100;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 40px);background:var(--dark-green);color:var(--soft-white);border:1px solid var(--line-on-dark);border-radius:999px;padding:14px 22px;box-shadow:0 14px 34px rgba(11,45,26,0.28);font-family:var(--font-body);font-size:14px;line-height:1.4;opacity:0;visibility:hidden;transform:translate(-50%,-14px);transition:opacity .4s cubic-bezier(.2,.7,.2,1),transform .4s cubic-bezier(.2,.7,.2,1),visibility 0s linear .4s;}
+.site-toast.open{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s;}
+.site-toast strong{color:var(--gold-soft);}
+.site-toast-icon{flex:none;width:20px;height:20px;border-radius:50%;background:var(--gold-soft);color:var(--dark-green);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+@media (prefers-reduced-motion:reduce){
+  .qc-overlay,.qc-modal,.qc-close,.qc-reveal,.site-toast,.svc-detail-wrap,.svc-plus,.svc-icon{transition:none !important;}
 }
-@media (max-width:560px){
-  .toc ol{grid-template-columns:1fr;}
-  td:first-child{width:auto;display:block;padding-bottom:2px;border:none;}
-  td:last-child{display:block;padding-top:0;}
+
+/* ---------- PAGINA LEGALA ---------- */
+.legal-updated{font-size:13px;color:var(--ink-soft);margin-top:18px;}
+.legal-layout{display:grid;grid-template-columns:250px 1fr;gap:clamp(36px,5vw,80px);align-items:start;margin-top:clamp(34px,4vw,52px);}
+.legal-toc{position:sticky;top:calc(var(--header-h) + 30px);}
+.legal-toc-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 16px;}
+.legal-toc ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--paper-line);}
+.legal-toc li{border-bottom:1px solid var(--paper-line);}
+.legal-toc a{display:block;padding:14px 4px;text-decoration:none;font-size:14px;color:var(--ink-soft);transition:color .25s ease,background .25s ease,padding-left .25s ease;}
+.legal-toc a:hover{color:var(--ink);background:var(--svc-row-bg);padding-left:10px;}
+.legal-toc a.active{color:var(--dark-green);font-weight:600;background:var(--svc-row-bg);padding-left:10px;}
+.legal-toc a:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;}
+.legal-chapter{scroll-margin-top:calc(var(--header-h) + 24px);padding-bottom:clamp(42px,5vw,66px);}
+.legal-chapter + .legal-chapter{border-top:1px solid var(--paper-line);padding-top:clamp(40px,5vw,58px);}
+.legal-chapter h3{font-family:var(--font-display);font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.15;letter-spacing:-0.01em;margin:0 0 10px;}
+.legal-lede{color:var(--ink-soft);max-width:62ch;margin:0 0 30px;font-size:16.5px;}
+.legal-chapter h4{font-size:16px;font-weight:600;color:var(--dark-green);margin:30px 0 9px;}
+.legal-chapter p{max-width:68ch;margin:0 0 13px;}
+.legal-chapter ul{max-width:68ch;margin:0 0 15px;padding:0;list-style:none;}
+.legal-chapter ul li{position:relative;padding-left:20px;margin-bottom:8px;}
+.legal-chapter ul li::before{content:'';position:absolute;left:0;top:12px;width:8px;height:1px;background:var(--gold);}
+.legal-chapter a{color:var(--dark-green);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--gold-soft);}
+.legal-chapter a:hover{text-decoration-color:var(--gold);}
+.legal-note{background:var(--svc-row-bg);border:1px solid var(--paper-line);border-left:2px solid var(--gold);border-radius:var(--r);padding:19px 22px;margin:24px 0;max-width:68ch;}
+.legal-note p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+.legal-note strong{color:var(--dark-green);}
+.legal-table{border-collapse:collapse;width:100%;max-width:68ch;margin:6px 0 18px;font-size:14.5px;}
+.legal-table th,.legal-table td{text-align:left;padding:13px 14px 13px 0;border-bottom:1px solid var(--paper-line);vertical-align:top;}
+.legal-table th{font-weight:600;color:var(--dark-green);border-bottom-color:var(--gold-soft);}
+.legal-table td:first-child{width:38%;color:var(--dark-green);font-weight:500;}
+@media(max-width:900px){
+  .legal-layout{grid-template-columns:1fr;gap:30px;}
+  .legal-toc{position:static;}
+  .legal-toc ol{display:grid;grid-template-columns:1fr 1fr;}
 }
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  .toc a,.back-link::after{transition:none !important;}
+@media(max-width:560px){
+  .legal-toc ol{grid-template-columns:1fr;}
+  .legal-table td:first-child{width:auto;display:block;padding-bottom:2px;border:none;}
+  .legal-table td:last-child{display:block;padding-top:0;}
 }
 </style>
 </head>
 <body>
 <a class="skip-link" href="#continut">Sari la conținut</a>
-
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="logo" href="/">
-      <img src="/img/favicon.svg" alt="" width="42" height="42">
-      <span>viridis artifex</span>
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <a href="/" class="nav-brand">
+      <span class="logo-on-dark"><svg width="44" height="44" viewBox="0 0 535 535" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clipdark_217_28880)">
+<rect width="535" height="535" rx="267.5" fill="#0B2D1A"/>
+<path d="M267.5 525C409.713 525 525 409.713 525 267.5C525 125.287 409.713 10 267.5 10C125.287 10 10 125.287 10 267.5C10 409.713 125.287 525 267.5 525Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M379.5 359C357.16 359 335.591 350.827 318.861 336.021C302.131 321.216 291.396 300.801 288.679 278.626C285.962 256.452 291.452 234.049 304.114 215.643C316.775 197.237 335.733 184.099 357.413 178.706" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M268 299.5C268 311.516 270.367 323.414 274.965 334.516C279.563 345.617 286.303 355.704 294.8 364.2C303.296 372.697 313.383 379.437 324.485 384.035C335.586 388.633 347.484 391 359.5 391" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M268 331.5C268 343.516 270.367 355.414 274.965 366.516C279.563 377.617 286.303 387.704 294.8 396.2C303.296 404.697 313.383 411.437 324.485 416.035C335.586 420.633 347.484 423 359.5 423" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M268 363.5C268 375.516 270.367 387.414 274.965 398.516C279.563 409.617 286.303 419.704 294.8 428.2C303.296 436.697 313.383 443.437 324.485 448.035C335.586 452.633 347.484 455 359.5 455" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M268 395.5C268 407.516 270.367 419.414 274.965 430.516C279.563 441.617 286.303 451.704 294.8 460.2C303.296 468.697 313.383 475.437 324.485 480.035C335.586 484.633 347.484 487 359.5 487" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M268.221 427.5C268.221 447.314 274.653 466.593 286.55 482.438C298.446 498.283 315.165 509.839 334.193 515.367" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267.846 201.806C268.337 188.89 271.558 176.225 277.298 164.644C283.039 153.063 291.168 142.83 301.149 134.618" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M433.5 359C445.516 359 457.414 356.633 468.516 352.035C479.617 347.437 489.704 340.697 498.2 332.2C506.697 323.704 513.437 313.617 518.035 302.516C522.633 291.414 525 279.516 525 267.5" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M358.779 391H491.779" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M358.779 423H473.779" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M358.779 455H445.779" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M358.779 487H403.779" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M504 359H379" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267.5 170V521" stroke="#FFF8F0" stroke-width="21"/>
+<path d="M155.5 359C177.84 359 199.409 350.827 216.139 336.021C232.869 321.216 243.604 300.801 246.321 278.626C249.038 256.452 243.548 234.049 230.886 215.643C218.225 197.237 199.267 184.099 177.587 178.706" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267 299.5C267 311.516 264.633 323.414 260.035 334.516C255.437 345.617 248.697 355.704 240.2 364.2C231.704 372.697 221.617 379.437 210.515 384.035C199.414 388.633 187.516 391 175.5 391" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267 331.5C267 343.516 264.633 355.414 260.035 366.516C255.437 377.617 248.697 387.704 240.2 396.2C231.704 404.697 221.617 411.437 210.515 416.035C199.414 420.633 187.516 423 175.5 423" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267 363.5C267 375.516 264.633 387.414 260.035 398.516C255.437 409.617 248.697 419.704 240.2 428.2C231.704 436.697 221.617 443.437 210.515 448.035C199.414 452.633 187.516 455 175.5 455" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267 395.5C267 407.516 264.633 419.414 260.035 430.516C255.437 441.617 248.697 451.704 240.2 460.2C231.704 468.697 221.617 475.437 210.515 480.035C199.414 484.633 187.516 487 175.5 487" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M266.781 427.5C266.781 447.314 260.349 466.593 248.452 482.438C236.556 498.283 219.837 509.839 200.809 515.367" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267.155 201.806C266.664 188.89 263.443 176.225 257.703 164.644C251.962 153.063 243.833 142.83 233.852 134.618" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M101.5 359C89.484 359 77.5858 356.633 66.4845 352.035C55.3832 347.437 45.2963 340.697 36.7997 332.2C28.3032 323.704 21.5633 313.617 16.965 302.516C12.3667 291.414 10 279.516 10 267.5" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M176.221 391H43.2207" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M176.221 423H61.2207" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M176.221 455H89.2207" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M176.221 487H131.221" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M31 359L156 359" stroke="#FFF8F0" stroke-width="20"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M267.5 27C249.445 35.7735 237 54.2892 237 75.7116C237 97.134 249.445 115.65 267.5 124.423C285.555 115.65 298 97.134 298 75.7116C298 54.2892 285.555 35.7735 267.5 27Z" fill="#FFF8F0"/>
+<path d="M367.062 241.062C381.326 237.879 396.839 241.846 407.916 252.924C418.993 264.001 422.959 279.513 419.777 293.777C405.513 296.959 390.001 292.993 378.924 281.916C367.846 270.839 363.879 255.326 367.062 241.062Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M356.643 182.918C364.48 170.581 378.254 162.417 393.92 162.417C409.585 162.417 423.358 170.581 431.195 182.918C423.358 195.254 409.585 203.419 393.92 203.419C378.254 203.419 364.48 195.255 356.643 182.918Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M354.562 164.278C351.379 150.014 355.346 134.501 366.424 123.424C377.501 112.347 393.013 108.38 407.277 111.562C410.459 125.827 406.493 141.339 395.416 152.416C384.339 163.493 368.826 167.461 354.562 164.278Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M298.062 131.778C294.879 117.514 298.846 102.001 309.924 90.9238C321.001 79.8466 336.513 75.8805 350.777 79.0625C353.959 93.3269 349.993 108.839 338.916 119.916C327.839 130.993 312.326 134.961 298.062 131.778Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M167.778 241.062C153.514 237.879 138.001 241.846 126.924 252.924C115.847 264.001 111.88 279.513 115.062 293.777C129.327 296.959 144.839 292.993 155.916 281.916C166.993 270.839 170.961 255.326 167.778 241.062Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M178.196 182.918C170.36 170.581 156.586 162.417 140.92 162.417C125.255 162.417 111.481 170.581 103.645 182.918C111.481 195.254 125.255 203.419 140.92 203.419C156.586 203.419 170.36 195.255 178.196 182.918Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M180.278 164.278C183.461 150.014 179.493 134.501 168.416 123.424C157.339 112.347 141.827 108.38 127.563 111.562C124.38 125.827 128.347 141.339 139.424 152.416C150.501 163.493 166.014 167.461 180.278 164.278Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M236.778 131.778C239.961 117.514 235.993 102.001 224.916 90.9238C213.839 79.8466 198.327 75.8805 184.063 79.0625C180.88 93.3269 184.847 108.839 195.924 119.916C207.001 130.993 222.514 134.961 236.778 131.778Z" stroke="#FFF8F0" stroke-width="20"/>
+</g>
+<defs>
+<clipPath id="clipdark_217_28880">
+<rect width="535" height="535" rx="267.5" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+</span>
+      <span class="logo-on-light"><svg width="44" height="44" viewBox="0 0 535 535" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clipHLight_217_28879)">
+<rect width="535" height="535" rx="267.5" fill="#FFF8F0"/>
+<path d="M267.5 525C409.713 525 525 409.713 525 267.5C525 125.287 409.713 10 267.5 10C125.287 10 10 125.287 10 267.5C10 409.713 125.287 525 267.5 525Z" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M379.5 359C357.16 359 335.591 350.827 318.861 336.021C302.131 321.216 291.396 300.801 288.679 278.626C285.962 256.452 291.452 234.049 304.114 215.643C316.775 197.237 335.733 184.099 357.413 178.706" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M268 299.5C268 311.516 270.367 323.414 274.965 334.516C279.563 345.617 286.303 355.704 294.8 364.2C303.296 372.697 313.383 379.437 324.485 384.035C335.586 388.633 347.484 391 359.5 391" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M268 331.5C268 343.516 270.367 355.414 274.965 366.516C279.563 377.617 286.303 387.704 294.8 396.2C303.296 404.697 313.383 411.437 324.485 416.035C335.586 420.633 347.484 423 359.5 423" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M268 363.5C268 375.516 270.367 387.414 274.965 398.516C279.563 409.617 286.303 419.704 294.8 428.2C303.296 436.697 313.383 443.437 324.485 448.035C335.586 452.633 347.484 455 359.5 455" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M268 395.5C268 407.516 270.367 419.414 274.965 430.516C279.563 441.617 286.303 451.704 294.8 460.2C303.296 468.697 313.383 475.437 324.485 480.035C335.586 484.633 347.484 487 359.5 487" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M268.221 427.5C268.221 447.314 274.653 466.593 286.55 482.438C298.446 498.283 315.165 509.839 334.193 515.367" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M267.846 201.806C268.337 188.89 271.558 176.225 277.298 164.644C283.039 153.063 291.168 142.83 301.149 134.618" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M433.5 359C445.516 359 457.414 356.633 468.516 352.035C479.617 347.437 489.704 340.697 498.2 332.2C506.697 323.704 513.437 313.617 518.035 302.516C522.633 291.414 525 279.516 525 267.5" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M358.779 391H491.779" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M358.779 423H473.779" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M358.779 455H445.779" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M358.779 487H403.779" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M504 359H379" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M267.5 170V521" stroke="#0B2D1A" stroke-width="21"/>
+<path d="M155.5 359C177.84 359 199.409 350.827 216.139 336.021C232.869 321.216 243.604 300.801 246.321 278.626C249.038 256.452 243.548 234.049 230.886 215.643C218.225 197.237 199.267 184.099 177.587 178.706" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M267 299.5C267 311.516 264.633 323.414 260.035 334.516C255.437 345.617 248.697 355.704 240.2 364.2C231.704 372.697 221.617 379.437 210.515 384.035C199.414 388.633 187.516 391 175.5 391" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M267 331.5C267 343.516 264.633 355.414 260.035 366.516C255.437 377.617 248.697 387.704 240.2 396.2C231.704 404.697 221.617 411.437 210.515 416.035C199.414 420.633 187.516 423 175.5 423" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M267 363.5C267 375.516 264.633 387.414 260.035 398.516C255.437 409.617 248.697 419.704 240.2 428.2C231.704 436.697 221.617 443.437 210.515 448.035C199.414 452.633 187.516 455 175.5 455" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M267 395.5C267 407.516 264.633 419.414 260.035 430.516C255.437 441.617 248.697 451.704 240.2 460.2C231.704 468.697 221.617 475.437 210.515 480.035C199.414 484.633 187.516 487 175.5 487" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M266.781 427.5C266.781 447.314 260.349 466.593 248.452 482.438C236.556 498.283 219.837 509.839 200.809 515.367" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M267.155 201.806C266.664 188.89 263.443 176.225 257.703 164.644C251.962 153.063 243.833 142.83 233.852 134.618" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M101.5 359C89.484 359 77.5858 356.633 66.4845 352.035C55.3832 347.437 45.2963 340.697 36.7997 332.2C28.3032 323.704 21.5633 313.617 16.965 302.516C12.3667 291.414 10 279.516 10 267.5" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M176.221 391H43.2207" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M176.221 423H61.2207" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M176.221 455H89.2207" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M176.221 487H131.221" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M31 359L156 359" stroke="#0B2D1A" stroke-width="20"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M267.5 27C249.445 35.7735 237 54.2892 237 75.7116C237 97.134 249.445 115.65 267.5 124.423C285.555 115.65 298 97.134 298 75.7116C298 54.2892 285.555 35.7735 267.5 27Z" fill="#0B2D1A"/>
+<path d="M367.062 241.062C381.326 237.879 396.839 241.846 407.916 252.924C418.993 264.001 422.959 279.513 419.777 293.777C405.513 296.959 390.001 292.993 378.924 281.916C367.846 270.839 363.879 255.326 367.062 241.062Z" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M356.643 182.918C364.48 170.581 378.254 162.417 393.92 162.417C409.585 162.417 423.358 170.581 431.195 182.918C423.358 195.254 409.585 203.419 393.92 203.419C378.254 203.419 364.48 195.255 356.643 182.918Z" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M354.562 164.278C351.379 150.014 355.346 134.501 366.424 123.424C377.501 112.347 393.013 108.38 407.277 111.562C410.459 125.827 406.493 141.339 395.416 152.416C384.339 163.493 368.826 167.461 354.562 164.278Z" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M298.062 131.778C294.879 117.514 298.846 102.001 309.924 90.9238C321.001 79.8466 336.513 75.8805 350.777 79.0625C353.959 93.3269 349.993 108.839 338.916 119.916C327.839 130.993 312.326 134.961 298.062 131.778Z" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M167.778 241.062C153.514 237.879 138.001 241.846 126.924 252.924C115.847 264.001 111.88 279.513 115.062 293.777C129.327 296.959 144.839 292.993 155.916 281.916C166.993 270.839 170.961 255.326 167.778 241.062Z" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M178.196 182.918C170.36 170.581 156.586 162.417 140.92 162.417C125.255 162.417 111.481 170.581 103.645 182.918C111.481 195.254 125.255 203.419 140.92 203.419C156.586 203.419 170.36 195.255 178.196 182.918Z" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M180.278 164.278C183.461 150.014 179.493 134.501 168.416 123.424C157.339 112.347 141.827 108.38 127.563 111.562C124.38 125.827 128.347 141.339 139.424 152.416C150.501 163.493 166.014 167.461 180.278 164.278Z" stroke="#0B2D1A" stroke-width="20"/>
+<path d="M236.778 131.778C239.961 117.514 235.993 102.001 224.916 90.9238C213.839 79.8466 198.327 75.8805 184.063 79.0625C180.88 93.3269 184.847 108.839 195.924 119.916C207.001 130.993 222.514 134.961 236.778 131.778Z" stroke="#0B2D1A" stroke-width="20"/>
+</g>
+<defs>
+<clipPath id="clipHLight_217_28879">
+<rect width="535" height="535" rx="267.5" fill="#FFF8F0"/>
+</clipPath>
+</defs>
+</svg>
+</span>
     </a>
-    <a class="back-link" href="/">Înapoi la site</a>
+    <nav class="main-nav" aria-label="Navigare principală">
+      <a class="navlink" href="#despre">Despre</a>
+      <a class="navlink" href="#servicii">Servicii</a>
+      <a class="navlink" href="#portofoliu">Portofoliu</a>
+      <a class="navlink" href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch"><a href="#" class="active">RO</a><span>/</span><a href="#">EN</a></div>
+      <button class="btn btn-nav-cta js-open-contact">Hai să discutăm</button>
+    </div>
   </div>
 </header>
 
 <main id="continut">
-  <div class="wrap page-head">
-    <p class="eyebrow">Informații legale</p>
-    <h1>Transparență, pe scurt<br>și fără ocolișuri</h1>
-    <p>Aici găsești tot ce ține de datele tale, de condițiile în care lucrăm împreună și de drepturile pe care le ai. Am scris fiecare secțiune cât se poate de clar — dacă rămâne ceva neînțeles, scrie-ne și îți explicăm.</p>
-    <p class="updated">Ultima actualizare: septembrie 2026</p>
-  </div>
+  <section class="section-pad">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Informații legale</p>
+        <h2>Datele tale și<br>condițiile colaborării</h2>
+        <p class="lede">Ce date colectăm, în ce condiții lucrăm împreună și ce drepturi ai. Dacă rămâne ceva neclar, scrie-ne și îți explicăm.</p>
+        <p class="legal-updated">Ultima actualizare: septembrie 2026</p>
+      </div>
 
-  <div class="wrap legal-layout">
-    <nav class="toc" aria-label="Cuprins">
-      <p class="toc-label">Cuprins</p>
-      <ol>
-        <li><a href="#confidentialitate">Politica de confidențialitate</a></li>
-        <li><a href="#termeni">Termeni și condiții</a></li>
-        <li><a href="#cookies">Politica de cookie-uri</a></li>
-        <li><a href="#litigii">Soluționarea litigiilor</a></li>
-      </ol>
-    </nav>
+      <div class="legal-layout reveal">
+        <nav class="legal-toc" aria-label="Cuprins">
+          <p class="legal-toc-label">Cuprins</p>
+          <ol>
+            <li><a href="#confidentialitate">Politica de confidențialitate</a></li>
+            <li><a href="#termeni">Termeni și condiții</a></li>
+            <li><a href="#cookies">Politica de cookie-uri</a></li>
+            <li><a href="#litigii">Soluționarea litigiilor</a></li>
+          </ol>
+        </nav>
 
-    <div class="legal-content">
+        <div class="legal-content">
 
-      <!-- 01 -->
-      <section class="chapter" id="confidentialitate">
-        <h2>Politica de confidențialitate</h2>
-        <p class="lede">Colectăm foarte puține date și doar atunci când ni le trimiți tu. Nu folosim instrumente de urmărire, nu construim profiluri și nu vindem nimic nimănui.</p>
+          <article class="legal-chapter" id="confidentialitate">
+            <h3>Politica de confidențialitate</h3>
+            <p class="legal-lede">Colectăm puține date și doar atunci când ni le trimiți tu. Nu folosim instrumente de urmărire și nu transmitem nimic mai departe în scopuri comerciale.</p>
 
-        <h3>Cine răspunde de datele tale</h3>
-        <p>Datele pe care ni le trimiți prin acest site sunt prelucrate de <strong>Larisa Zafiu</strong>, care activează sub denumirea Viridis Artifex, din Brașov, România.</p>
-        <p>Ne poți scrie oricând la <a href="mailto:viridisartifex.landscape@gmail.com">viridisartifex.landscape@gmail.com</a> sau ne poți suna la <a href="tel:+40742306289">+40 742 306 289</a>.</p>
+            <h4>Cine răspunde de datele tale</h4>
+            <p>Datele trimise prin acest site sunt prelucrate de <strong>Larisa Zafiu</strong>, care activează sub denumirea Viridis Artifex, în Brașov, România. Ne poți scrie la <a href="mailto:viridisartifex.landscape@gmail.com">viridisartifex.landscape@gmail.com</a> sau suna la <a href="tel:+40742306289">+40 742 306 289</a>.</p>
 
-        <div class="note">
-          <p><strong>În curs de înregistrare.</strong> Viridis Artifex se află în procesul de înființare ca societate. Până la finalizare, responsabilitatea pentru datele colectate revine persoanei menționate mai sus. Vom actualiza această secțiune cu denumirea completă, codul de identificare fiscală și sediul social imediat ce înregistrarea este finalizată.</p>
+            <div class="legal-note">
+              <p><strong>În curs de înregistrare.</strong> Viridis Artifex se află în procesul de înființare ca societate. Până la finalizare, responsabilitatea pentru datele colectate revine persoanei menționate mai sus. Vom actualiza această secțiune cu denumirea completă, codul de identificare fiscală și sediul social imediat ce înregistrarea este finalizată.</p>
+            </div>
+
+            <h4>Ce date colectăm și de ce</h4>
+            <p>Site-ul are trei formulare, iar niciunul nu cere mai mult decât e nevoie pentru a-ți răspunde.</p>
+            <table class="legal-table">
+              <tr><th>Ce completezi</th><th>De ce avem nevoie</th></tr>
+              <tr><td>Formularul de contact și fereastra „Hai să discutăm”: nume, email, telefon opțional, detalii despre spațiu, eventual o fotografie</td><td>Ca să înțelegem ce îți dorești și să revenim cu o propunere sau o estimare. Fotografia ajută la un prim diagnostic și este opțională.</td></tr>
+              <tr><td>Formularul de abonare: adresa de email</td><td>Ca să îți trimitem noutăți despre plante, grădini și proiecte.</td></tr>
+            </table>
+
+            <h4>Pe ce temei legal</h4>
+            <ul>
+              <li><strong>Mesajele prin formularele de contact:</strong> prelucrarea este necesară pentru demersuri făcute la cererea ta, înainte de o eventuală colaborare — articolul 6 alineatul (1) litera (b) din GDPR.</li>
+              <li><strong>Abonarea la noutăți:</strong> consimțământul tău — articolul 6 alineatul (1) litera (a). Îl poți retrage oricând, fără ca retragerea să afecteze prelucrările anterioare.</li>
+              <li><strong>Documentele financiare, dacă devenim colaboratori:</strong> obligațiile legale care ne revin — articolul 6 alineatul (1) litera (c).</li>
+            </ul>
+
+            <h4>Cine mai are acces</h4>
+            <p>Nu vindem și nu închiriem date. Există însă câteva servicii tehnice fără de care site-ul nu ar funcționa:</p>
+            <ul>
+              <li><strong>FormSubmit</strong> — procesează formularele și ne transmite conținutul pe email.</li>
+              <li><strong>Google</strong> — mesajele ajung într-o căsuță Gmail, iar fonturile se încarcă de pe serverele Google, care primesc astfel adresa ta IP.</li>
+              <li><strong>Cloudflare</strong> — găzduiește site-ul și păstrează pentru scurt timp jurnale tehnice.</li>
+              <li><strong>Echipa Viridis Artifex</strong> — persoanele implicate în proiecte au acces la solicitări, în măsura necesară pentru a-ți răspunde.</li>
+            </ul>
+            <p>Unii furnizori pot procesa datele în afara Spațiului Economic European. În aceste cazuri, transferul se face pe baza garanțiilor prevăzute de GDPR, în principal clauzele contractuale standard aprobate de Comisia Europeană.</p>
+
+            <h4>Cât timp păstrăm datele</h4>
+            <ul>
+              <li><strong>Solicitări fără continuare:</strong> maximum 12 luni de la ultima comunicare.</li>
+              <li><strong>Solicitări devenite proiecte:</strong> pe durata colaborării, apoi atât cât prevede legea pentru documentele contabile și contractuale.</li>
+              <li><strong>Abonarea la noutăți:</strong> până la dezabonare.</li>
+              <li><strong>Fotografiile trimise:</strong> doar cât e necesar pentru a-ți răspunde, cu excepția cazului în care fac parte dintr-un proiect în derulare.</li>
+            </ul>
+
+            <h4>Ce drepturi ai</h4>
+            <p>Le poți exercita oricând, scriindu-ne la adresa de mai sus. Nu trebuie să justifici cererea și nu implică niciun cost.</p>
+            <ul>
+              <li><strong>Acces</strong> — să afli ce date avem despre tine.</li>
+              <li><strong>Rectificare</strong> — să corectăm ce este greșit sau incomplet.</li>
+              <li><strong>Ștergere</strong> — să eliminăm datele, când nu avem obligația legală de a le păstra.</li>
+              <li><strong>Restricționare</strong> — să oprim temporar prelucrarea.</li>
+              <li><strong>Portabilitate</strong> — să primești datele într-un format reutilizabil.</li>
+              <li><strong>Opoziție</strong> — să te opui unei prelucrări.</li>
+              <li><strong>Retragerea consimțământului</strong> — pentru noutăți, oricând.</li>
+            </ul>
+            <p>Răspundem în cel mult o lună. Dacă nu ești mulțumit de soluție, te poți adresa Autorității Naționale de Supraveghere a Prelucrării Datelor cu Caracter Personal, B-dul G-ral. Gheorghe Magheru nr. 28-30, București, sau online la <a href="https://www.dataprotection.ro" target="_blank" rel="noopener">dataprotection.ro</a>.</p>
+
+            <h4>Securitate</h4>
+            <p>Site-ul folosește conexiune criptată, iar accesul la mesaje este limitat la persoanele care au nevoie de ele. Nu stocăm date pe site: mesajele ajung direct pe email.</p>
+
+            <h4>Minori</h4>
+            <p>Serviciile se adresează adulților. Nu colectăm intenționat date despre persoane sub 16 ani. Dacă afli că un minor ne-a trimis date personale, scrie-ne și le ștergem.</p>
+
+            <h4>Modificări</h4>
+            <p>Când schimbăm ceva important, actualizăm data de la începutul paginii.</p>
+          </article>
+
+          <article class="legal-chapter" id="termeni">
+            <h3>Termeni și condiții</h3>
+            <p class="legal-lede">Regulile după care funcționează site-ul și cadrul general al colaborării.</p>
+
+            <h4>Despre acest site</h4>
+            <p>viridisartifex.ro este un site de prezentare. Aici afli ce servicii oferim, cum lucrăm și cum ne poți contacta. Nu se pot achiziționa produse sau servicii direct de pe site și nu se efectuează plăți online.</p>
+
+            <h4>Prețurile afișate</h4>
+            <p>Sumele din secțiunea de servicii sunt <strong>orientative, de pornire</strong>, și au rolul de a indica ordinul de mărime. Ele nu constituie o ofertă fermă.</p>
+            <p>Prețul unei lucrări depinde de suprafață, de complexitatea terenului, de materialele alese, de accesul la locație și de alte detalii care se clarifică după discuție sau după vizionarea spațiului. Oferta fermă se transmite întotdeauna în scris, separat.</p>
+
+            <h4>Cum începe o colaborare</h4>
+            <p>Un mesaj trimis prin formular este o solicitare de informații, nu o comandă. Nu implică nicio obligație, iar discuția inițială nu se facturează.</p>
+            <p>Colaborarea începe după ce stabilim de comun acord obiectul lucrării, prețul și termenele, într-un document separat.</p>
+
+            <h4>Ce ține de natură și ce ține de noi</h4>
+            <p>Plantele sunt organisme vii. Reușita unei grădini depinde de sol, climă, regimul de apă, îngrijirea ulterioară și de factori care nu pot fi controlați complet — secete, geruri târzii, dăunători.</p>
+            <p>Ne asumăm calitatea proiectării și a execuției, alegerea unor specii potrivite locului și corectitudinea recomandărilor. Nu putem garanta un rezultat identic cu o imagine de referință și nici supraviețuirea fiecărei plante, în special când îngrijirea ulterioară nu urmează recomandările transmise.</p>
+
+            <h4>Proprietate intelectuală</h4>
+            <p>Textele, fotografiile, desenele, planurile și elementele grafice de pe site ne aparțin și sunt protejate de legea drepturilor de autor. Pot fi citite, linkul poate fi distribuit, iar citarea scurtă cu menționarea sursei este permisă. Reproducerea sau folosirea comercială necesită acordul nostru scris.</p>
+            <p>Planurile și documentațiile realizate pentru un client rămân proprietatea intelectuală a autorului. Clientul primește dreptul de a le folosi pentru realizarea propriei grădini.</p>
+
+            <h4>Linkuri externe</h4>
+            <p>Site-ul conține legături către alte platforme, între care paginile noastre de Instagram și YouTube. Nu răspundem pentru conținutul sau practicile de confidențialitate ale acestora.</p>
+
+            <h4>Legea aplicabilă</h4>
+            <p>Acestor termeni li se aplică legea română.</p>
+          </article>
+
+          <article class="legal-chapter" id="cookies">
+            <h3>Politica de cookie-uri</h3>
+            <p class="legal-lede">Acest site nu folosește cookie-uri.</p>
+            <p>Nu există niciun cookie, nicio informație salvată în browserul tău și niciun instrument de analiză a traficului. Nu folosim Google Analytics, nu avem pixel de Facebook și nu urmărim comportamentul vizitatorilor.</p>
+            <p>Din acest motiv nu vei întâlni pe site fereastra de consimțământ pentru cookie-uri.</p>
+
+            <h4>Singura excepție</h4>
+            <p>Fonturile se încarcă de pe serverele Google Fonts. Acest lucru nu setează cookie-uri, dar presupune o conexiune către Google, care primește adresa ta IP — ca în cazul oricărei resurse încărcate de pe un alt server.</p>
+
+            <div class="legal-note">
+              <p>Dacă vom adăuga instrumente care folosesc cookie-uri, vom implementa mai întâi un mecanism de consimțământ și vom actualiza această secțiune înainte de activarea lor.</p>
+            </div>
+          </article>
+
+          <article class="legal-chapter" id="litigii">
+            <h3>Soluționarea litigiilor</h3>
+            <p class="legal-lede">Dacă ceva nu a mers bine, primul pas este să ne spui.</p>
+
+            <h4>Scrie-ne întâi nouă</h4>
+            <p>Scrie-ne la <a href="mailto:viridisartifex.landscape@gmail.com">viridisartifex.landscape@gmail.com</a> și îți răspundem în cel mult 5 zile lucrătoare.</p>
+
+            <h4>Soluționarea alternativă a litigiilor</h4>
+            <p>În calitate de consumator, ai dreptul de a apela la o procedură de soluționare alternativă a litigiilor, fără a ajunge în instanță. În România, autoritatea competentă este Autoritatea Națională pentru Protecția Consumatorilor.</p>
+            <p>Detalii despre procedură găsești la <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">anpc.ro/ce-este-sal</a>, iar sesizările se depun prin <a href="https://reclamatii.anpc.ro/" target="_blank" rel="noopener">reclamatii.anpc.ro</a>.</p>
+
+            <div class="legal-note">
+              <p><strong>Despre platforma SOL.</strong> Platforma europeană de soluționare online a litigiilor a fost desființată la 20 iulie 2025, prin Regulamentul (UE) 2024/3228, iar obligația de a afișa un link către ea nu mai există.</p>
+            </div>
+          </article>
+
         </div>
-
-        <h3>Ce date colectăm și de ce</h3>
-        <p>Site-ul are trei formulare. Niciunul nu cere mai mult decât e nevoie ca să îți putem răspunde.</p>
-
-        <table>
-          <tr><th>Ce completezi</th><th>De ce avem nevoie</th></tr>
-          <tr>
-            <td>Formularul de contact și fereastra „Hai să discutăm”: nume, email, telefon (opțional), detalii despre spațiul tău, eventual o fotografie</td>
-            <td>Ca să înțelegem ce îți dorești și să îți putem răspunde cu o propunere sau o estimare. Fotografia ne ajută la un prim diagnostic, dar e complet opțională.</td>
-          </tr>
-          <tr>
-            <td>Formularul de abonare: adresa de email</td>
-            <td>Ca să îți trimitem noutăți despre plante, grădini și proiectele noastre.</td>
-          </tr>
-        </table>
-
-        <h3>Pe ce temei legal</h3>
-        <ul>
-          <li><strong>Pentru mesajele trimise prin formularele de contact:</strong> prelucrarea este necesară pentru a face demersuri, la cererea ta, înainte de o eventuală colaborare — articolul 6 alineatul (1) litera (b) din GDPR. Practic: ne-ai scris ca să ceri ceva, iar noi avem nevoie de datele tale ca să îți răspundem.</li>
-          <li><strong>Pentru abonarea la noutăți:</strong> consimțământul tău — articolul 6 alineatul (1) litera (a). Îl poți retrage oricând, iar retragerea nu afectează prelucrările făcute până atunci.</li>
-          <li><strong>Pentru păstrarea documentelor financiare, dacă devenim colaboratori:</strong> obligațiile legale care ne revin — articolul 6 alineatul (1) litera (c).</li>
-        </ul>
-
-        <h3>Cine mai are acces la datele tale</h3>
-        <p>Nu vindem și nu închiriem date nimănui. Există însă câteva servicii tehnice fără de care site-ul nu ar funcționa, și e corect să le știi:</p>
-        <ul>
-          <li><strong>FormSubmit</strong> — procesează formularele și ne transmite conținutul lor pe email.</li>
-          <li><strong>Google</strong> — mesajele ajung într-o căsuță Gmail. În plus, fonturile site-ului se încarcă de pe serverele Google, ceea ce înseamnă că adresa ta IP este transmisă către Google în momentul în care deschizi pagina.</li>
-          <li><strong>Cloudflare</strong> — găzduiește site-ul și păstrează, pentru scurt timp, jurnale tehnice necesare funcționării și securității.</li>
-          <li><strong>Echipa Viridis Artifex</strong> — persoanele care lucrează la proiecte au acces la solicitările primite, în măsura în care e necesar pentru a-ți răspunde și a duce lucrarea la bun sfârșit.</li>
-        </ul>
-        <p>Unii dintre acești furnizori pot procesa datele în afara Spațiului Economic European. În aceste situații, transferul se face pe baza garanțiilor prevăzute de GDPR, în principal clauzele contractuale standard aprobate de Comisia Europeană.</p>
-
-        <h3>Cât timp păstrăm datele</h3>
-        <ul>
-          <li><strong>Solicitări care nu se transformă într-o colaborare:</strong> maximum 12 luni de la ultima comunicare, apoi le ștergem.</li>
-          <li><strong>Solicitări care devin proiecte:</strong> pe durata colaborării, iar apoi atât cât ne obligă legea să păstrăm documentele contabile și contractuale.</li>
-          <li><strong>Abonarea la noutăți:</strong> până când te dezabonezi. Nu există un termen dinainte stabilit, pentru că tu decizi cât timp vrei să primești mesajele.</li>
-          <li><strong>Fotografiile trimise:</strong> le păstrăm doar cât ne trebuie pentru a-ți răspunde, apoi le ștergem — cu excepția cazului în care devenim colaboratori și fac parte din proiect.</li>
-        </ul>
-
-        <h3>Ce drepturi ai</h3>
-        <p>GDPR îți dă un set de drepturi pe care le poți exercita oricând, scriindu-ne la adresa de email de mai sus. Nu trebuie să justifici cererea și nu te costă nimic.</p>
-        <ul>
-          <li><strong>Acces</strong> — să afli ce date avem despre tine.</li>
-          <li><strong>Rectificare</strong> — să corectăm ce e greșit sau incomplet.</li>
-          <li><strong>Ștergere</strong> — să eliminăm datele, atunci când nu avem o obligație legală de a le păstra.</li>
-          <li><strong>Restricționare</strong> — să oprim temporar prelucrarea, cât timp se clarifică o situație.</li>
-          <li><strong>Portabilitate</strong> — să primești datele într-un format pe care îl poți lua cu tine.</li>
-          <li><strong>Opoziție</strong> — să te opui unei prelucrări.</li>
-          <li><strong>Retragerea consimțământului</strong> — pentru noutăți, oricând, fără nicio consecință.</li>
-        </ul>
-        <p>Răspundem în cel mult o lună de la primirea cererii. Dacă simți că nu ți-am rezolvat problema, te poți adresa Autorității Naționale de Supraveghere a Prelucrării Datelor cu Caracter Personal, cu sediul în B-dul G-ral. Gheorghe Magheru nr. 28-30, București, sau online la <a href="https://www.dataprotection.ro" target="_blank" rel="noopener">dataprotection.ro</a>.</p>
-
-        <h3>Cum îți protejăm datele</h3>
-        <p>Site-ul folosește conexiune criptată, iar accesul la mesajele primite este limitat la persoanele care au nevoie de ele pentru a lucra. Nu stocăm date pe acest site: mesajele ajung direct pe email.</p>
-
-        <h3>Copii</h3>
-        <p>Serviciile noastre se adresează adulților. Nu colectăm în mod intenționat date despre persoane sub 16 ani. Dacă afli că un copil ne-a trimis date personale, scrie-ne și le ștergem.</p>
-
-        <h3>Modificări</h3>
-        <p>Când schimbăm ceva important în această politică, actualizăm data de la începutul paginii. Te încurajăm să arunci un ochi din când în când.</p>
-      </section>
-
-      <!-- 02 -->
-      <section class="chapter" id="termeni">
-        <h2>Termeni și condiții</h2>
-        <p class="lede">Regulile după care funcționează acest site și cadrul general al colaborării noastre.</p>
-
-        <h3>Despre acest site</h3>
-        <p>viridisartifex.ro este un site de prezentare. Aici afli ce servicii oferim, cum lucrăm și cum ne poți contacta. Nu se pot cumpăra produse sau servicii direct de pe site și nu se fac plăți online.</p>
-
-        <h3>Prețurile afișate</h3>
-        <p>Sumele menționate în secțiunea de servicii sunt <strong>orientative, de pornire</strong>, și au rolul de a-ți da o idee despre ordinul de mărime. Ele nu constituie o ofertă fermă.</p>
-        <p>Prețul real al unei lucrări depinde de suprafață, de complexitatea terenului, de materialele alese, de accesul la locație și de multe alte detalii pe care le aflăm abia după ce discutăm sau vedem spațiul. Oferta fermă o primești întotdeauna în scris, separat.</p>
-
-        <h3>Cum se naște o colaborare</h3>
-        <p>Un mesaj trimis prin formular este o solicitare de informații, nu o comandă. Nimic nu te obligă la nimic în acest stadiu, iar noi nu îți facturăm nimic pentru o discuție inițială.</p>
-        <p>Colaborarea propriu-zisă începe abia după ce stabilim de comun acord obiectul lucrării, prețul și termenele, într-un document separat.</p>
-
-        <h3>Ce ține de natură și ce ține de noi</h3>
-        <p>Plantele sunt organisme vii. Reușita unei grădini depinde de sol, de climă, de regimul de apă, de îngrijirea de după plantare și de factori pe care nimeni nu îi poate controla complet — secete, geruri târzii, dăunători.</p>
-        <p>Ne asumăm calitatea proiectării și a execuției, alegerea unor specii potrivite pentru locul respectiv și corectitudinea recomandărilor. Nu putem garanta însă un rezultat identic cu o imagine de referință și nici supraviețuirea fiecărei plante, mai ales atunci când îngrijirea ulterioară nu se face conform recomandărilor.</p>
-
-        <h3>Proprietate intelectuală</h3>
-        <p>Textele, fotografiile, desenele, planurile și elementele grafice de pe acest site ne aparțin și sunt protejate de legea drepturilor de autor. Le poți citi, distribui linkul și cita scurt cu menționarea sursei, dar nu le poți reproduce sau folosi comercial fără acordul nostru scris.</p>
-        <p>Planurile și documentațiile realizate pentru un client rămân proprietatea intelectuală a autorului. Clientul primește dreptul de a le folosi pentru realizarea propriei grădini.</p>
-
-        <h3>Linkuri către alte site-uri</h3>
-        <p>Site-ul conține legături către alte platforme, cum ar fi paginile noastre de Instagram și YouTube. Nu răspundem pentru conținutul sau practicile de confidențialitate ale acestora.</p>
-
-        <h3>Legea aplicabilă</h3>
-        <p>Acestor termeni li se aplică legea română. Eventualele neînțelegeri le rezolvăm mai întâi prin discuție directă — de cele mai multe ori e și cea mai rapidă cale.</p>
-      </section>
-
-      <!-- 03 -->
-      <section class="chapter" id="cookies">
-        <h2>Politica de cookie-uri</h2>
-        <p class="lede">Acest site nu folosește cookie-uri.</p>
-
-        <p>Nu e o formulare de complezență: am verificat codul site-ului și nu există niciun cookie, nicio informație salvată în browserul tău și niciun instrument de analiză a traficului. Nu folosim Google Analytics, nu avem pixel de Facebook și nu urmărim comportamentul vizitatorilor.</p>
-        <p>Din acest motiv nu vei vedea pe site fereastra aceea de consimțământ pentru cookie-uri. Nu îți cerem acordul pentru ceva ce nu facem.</p>
-
-        <h3>Singura excepție care merită menționată</h3>
-        <p>Fonturile site-ului se încarcă de pe serverele Google Fonts. Acest lucru nu setează cookie-uri, dar presupune o conexiune către Google, care primește astfel adresa ta IP — la fel ca în cazul oricărei resurse încărcate de pe un alt server.</p>
-
-        <div class="note">
-          <p>Dacă vom adăuga în viitor instrumente care folosesc cookie-uri, vom implementa mai întâi un mecanism de consimțământ și vom actualiza această secțiune înainte de a le activa.</p>
-        </div>
-      </section>
-
-      <!-- 04 -->
-      <section class="chapter" id="litigii">
-        <h2>Soluționarea litigiilor</h2>
-        <p class="lede">Dacă ceva nu a mers bine, primul pas e să ne spui. Dacă tot nu se rezolvă, ai la dispoziție căi oficiale.</p>
-
-        <h3>Scrie-ne întâi nouă</h3>
-        <p>Aproape orice nemulțumire se rezolvă printr-o discuție. Scrie-ne la <a href="mailto:viridisartifex.landscape@gmail.com">viridisartifex.landscape@gmail.com</a> și îți răspundem în cel mult 5 zile lucrătoare.</p>
-
-        <h3>Soluționarea alternativă a litigiilor</h3>
-        <p>În calitate de consumator, ai dreptul de a apela la o procedură de soluționare alternativă a litigiilor, fără a ajunge în instanță. În România, autoritatea competentă este Autoritatea Națională pentru Protecția Consumatorilor.</p>
-        <p>Detalii despre procedură găsești la <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">anpc.ro/ce-este-sal</a>, iar sesizările se pot depune prin <a href="https://reclamatii.anpc.ro/" target="_blank" rel="noopener">reclamatii.anpc.ro</a>.</p>
-
-        <div class="note">
-          <p><strong>Despre platforma SOL.</strong> Este posibil să fi văzut pe alte site-uri un link către platforma europeană de soluționare online a litigiilor. Aceasta a fost desființată la 20 iulie 2025, prin Regulamentul (UE) 2024/3228, iar obligația de a o afișa nu mai există. Am preferat să explicăm asta, în loc să te trimitem către o pagină care nu mai funcționează.</p>
-        </div>
-      </section>
-
+      </div>
     </div>
-  </div>
+  </section>
 </main>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-links">
-          <a href="/">Prima pagină</a>
-          <a href="mailto:viridisartifex.landscape@gmail.com">Email</a>
-          <a href="tel:+40742306289">+40 742 306 289</a>
+  <div class="wrap footer-inner">
+
+    <div class="footer-cta">
+      <div class="footer-cta-left">
+        <div class="footer-brand-row">
+        <span class="footer-mark"><svg width="56" height="56" viewBox="0 0 535 535" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clipdark_217_28880)">
+<rect width="535" height="535" rx="267.5" fill="#0B2D1A"/>
+<path d="M267.5 525C409.713 525 525 409.713 525 267.5C525 125.287 409.713 10 267.5 10C125.287 10 10 125.287 10 267.5C10 409.713 125.287 525 267.5 525Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M379.5 359C357.16 359 335.591 350.827 318.861 336.021C302.131 321.216 291.396 300.801 288.679 278.626C285.962 256.452 291.452 234.049 304.114 215.643C316.775 197.237 335.733 184.099 357.413 178.706" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M268 299.5C268 311.516 270.367 323.414 274.965 334.516C279.563 345.617 286.303 355.704 294.8 364.2C303.296 372.697 313.383 379.437 324.485 384.035C335.586 388.633 347.484 391 359.5 391" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M268 331.5C268 343.516 270.367 355.414 274.965 366.516C279.563 377.617 286.303 387.704 294.8 396.2C303.296 404.697 313.383 411.437 324.485 416.035C335.586 420.633 347.484 423 359.5 423" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M268 363.5C268 375.516 270.367 387.414 274.965 398.516C279.563 409.617 286.303 419.704 294.8 428.2C303.296 436.697 313.383 443.437 324.485 448.035C335.586 452.633 347.484 455 359.5 455" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M268 395.5C268 407.516 270.367 419.414 274.965 430.516C279.563 441.617 286.303 451.704 294.8 460.2C303.296 468.697 313.383 475.437 324.485 480.035C335.586 484.633 347.484 487 359.5 487" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M268.221 427.5C268.221 447.314 274.653 466.593 286.55 482.438C298.446 498.283 315.165 509.839 334.193 515.367" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267.846 201.806C268.337 188.89 271.558 176.225 277.298 164.644C283.039 153.063 291.168 142.83 301.149 134.618" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M433.5 359C445.516 359 457.414 356.633 468.516 352.035C479.617 347.437 489.704 340.697 498.2 332.2C506.697 323.704 513.437 313.617 518.035 302.516C522.633 291.414 525 279.516 525 267.5" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M358.779 391H491.779" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M358.779 423H473.779" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M358.779 455H445.779" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M358.779 487H403.779" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M504 359H379" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267.5 170V521" stroke="#FFF8F0" stroke-width="21"/>
+<path d="M155.5 359C177.84 359 199.409 350.827 216.139 336.021C232.869 321.216 243.604 300.801 246.321 278.626C249.038 256.452 243.548 234.049 230.886 215.643C218.225 197.237 199.267 184.099 177.587 178.706" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267 299.5C267 311.516 264.633 323.414 260.035 334.516C255.437 345.617 248.697 355.704 240.2 364.2C231.704 372.697 221.617 379.437 210.515 384.035C199.414 388.633 187.516 391 175.5 391" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267 331.5C267 343.516 264.633 355.414 260.035 366.516C255.437 377.617 248.697 387.704 240.2 396.2C231.704 404.697 221.617 411.437 210.515 416.035C199.414 420.633 187.516 423 175.5 423" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267 363.5C267 375.516 264.633 387.414 260.035 398.516C255.437 409.617 248.697 419.704 240.2 428.2C231.704 436.697 221.617 443.437 210.515 448.035C199.414 452.633 187.516 455 175.5 455" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267 395.5C267 407.516 264.633 419.414 260.035 430.516C255.437 441.617 248.697 451.704 240.2 460.2C231.704 468.697 221.617 475.437 210.515 480.035C199.414 484.633 187.516 487 175.5 487" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M266.781 427.5C266.781 447.314 260.349 466.593 248.452 482.438C236.556 498.283 219.837 509.839 200.809 515.367" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M267.155 201.806C266.664 188.89 263.443 176.225 257.703 164.644C251.962 153.063 243.833 142.83 233.852 134.618" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M101.5 359C89.484 359 77.5858 356.633 66.4845 352.035C55.3832 347.437 45.2963 340.697 36.7997 332.2C28.3032 323.704 21.5633 313.617 16.965 302.516C12.3667 291.414 10 279.516 10 267.5" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M176.221 391H43.2207" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M176.221 423H61.2207" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M176.221 455H89.2207" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M176.221 487H131.221" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M31 359L156 359" stroke="#FFF8F0" stroke-width="20"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M267.5 27C249.445 35.7735 237 54.2892 237 75.7116C237 97.134 249.445 115.65 267.5 124.423C285.555 115.65 298 97.134 298 75.7116C298 54.2892 285.555 35.7735 267.5 27Z" fill="#FFF8F0"/>
+<path d="M367.062 241.062C381.326 237.879 396.839 241.846 407.916 252.924C418.993 264.001 422.959 279.513 419.777 293.777C405.513 296.959 390.001 292.993 378.924 281.916C367.846 270.839 363.879 255.326 367.062 241.062Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M356.643 182.918C364.48 170.581 378.254 162.417 393.92 162.417C409.585 162.417 423.358 170.581 431.195 182.918C423.358 195.254 409.585 203.419 393.92 203.419C378.254 203.419 364.48 195.255 356.643 182.918Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M354.562 164.278C351.379 150.014 355.346 134.501 366.424 123.424C377.501 112.347 393.013 108.38 407.277 111.562C410.459 125.827 406.493 141.339 395.416 152.416C384.339 163.493 368.826 167.461 354.562 164.278Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M298.062 131.778C294.879 117.514 298.846 102.001 309.924 90.9238C321.001 79.8466 336.513 75.8805 350.777 79.0625C353.959 93.3269 349.993 108.839 338.916 119.916C327.839 130.993 312.326 134.961 298.062 131.778Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M167.778 241.062C153.514 237.879 138.001 241.846 126.924 252.924C115.847 264.001 111.88 279.513 115.062 293.777C129.327 296.959 144.839 292.993 155.916 281.916C166.993 270.839 170.961 255.326 167.778 241.062Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M178.196 182.918C170.36 170.581 156.586 162.417 140.92 162.417C125.255 162.417 111.481 170.581 103.645 182.918C111.481 195.254 125.255 203.419 140.92 203.419C156.586 203.419 170.36 195.255 178.196 182.918Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M180.278 164.278C183.461 150.014 179.493 134.501 168.416 123.424C157.339 112.347 141.827 108.38 127.563 111.562C124.38 125.827 128.347 141.339 139.424 152.416C150.501 163.493 166.014 167.461 180.278 164.278Z" stroke="#FFF8F0" stroke-width="20"/>
+<path d="M236.778 131.778C239.961 117.514 235.993 102.001 224.916 90.9238C213.839 79.8466 198.327 75.8805 184.063 79.0625C180.88 93.3269 184.847 108.839 195.924 119.916C207.001 130.993 222.514 134.961 236.778 131.778Z" stroke="#FFF8F0" stroke-width="20"/>
+</g>
+<defs>
+<clipPath id="clipdark_217_28880">
+<rect width="535" height="535" rx="267.5" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+</span>
+        <h3>Hai să transformăm<br><em>spațiul tău</em></h3>
         </div>
-        <div class="anpc">
-          <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">ANPC — Soluționarea alternativă a litigiilor</a>
-        </div>
+        <p class="footer-brandtext">Design peisagistic naturalist, amenajare și întreținere spații verzi. Grădini gândite pentru oameni și pentru natură, în Brașov și împrejurimi.</p>
       </div>
-      <p class="copy">© 2026 Viridis Artifex. Toate drepturile rezervate.</p>
+      <div class="footer-cta-right">
+        <label class="footer-news-label">Primește noutăți din grădină</label>
+        <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/viridisartifex.landscape@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Abonare newsletter — Viridis Artifex">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="Tip formular" value="Abonare newsletter">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="email" name="email" placeholder="Adresa ta de email" required>
+          <button type="submit" class="btn btn-secondary-dark">Abonează-te</button>
+          <label class="consent-row">
+            <input type="checkbox" name="Consimțământ newsletter" value="Da" required>
+            <span>Sunt de acord să primesc noutăți pe email. Mă pot dezabona oricând, scriind la adresa de contact.</span>
+          </label>
+        </form>
+        <div class="form-feedback" id="newsletterStatus" role="status" aria-live="polite">
+          <span class="form-feedback-icon"></span>
+          <span class="form-feedback-text"></span>
+        </div>
+        <p class="footer-legal-note">Prin abonare ești de acord cu <a href="/legal#confidentialitate">Politica de confidențialitate</a> și îți dai consimțământul să primești noutăți.</p>
+      </div>
+    </div>
+
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Explorează</h4>
+        <a href="#despre">Despre</a>
+        <a href="#servicii">Servicii</a>
+        <a href="#portofoliu">Portofoliu</a>
+        <a href="#anotimpuri">Anotimpuri</a>
+        <a href="#faq">Întrebări frecvente</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+40742306289">+40 742 306 289</a>
+        <a href="mailto:viridisartifex.landscape@gmail.com">viridisartifex.landscape@gmail.com</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Bra%C8%99ov%2C+Rom%C3%A2nia" target="_blank" rel="noopener">Brașov, România</a>
+      </div>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <a class="social-link" href="https://www.instagram.com/viridisartifex/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.719-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
+          <span class="sr-only">Instagram</span>
+        </a>
+        <a class="social-link" href="https://www.youtube.com/@viridisartifex" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/></svg>
+          <span class="sr-only">YouTube</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-season" id="footerSeason">
+      <div class="fs-left">
+        <span class="fs-dot"></span>
+        <span class="fs-label">Chiar acum în grădină</span>
+      </div>
+      <div class="fs-body">
+        <p class="fs-text" id="fsText">—</p>
+        <p class="fs-plants">Acum în lumină: <span class="fs-plant" id="fsPlant">—</span></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Viridis Artifex. Toate drepturile rezervate.</span>
+      <div class="footer-legal"><a href="/legal#confidentialitate">Politica de confidențialitate</a><a href="/legal#termeni">Termeni &amp; condiții</a><a href="/legal#cookies">Politica de cookie-uri</a><a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">ANPC — SAL</a></div>
     </div>
   </div>
 </footer>
-
 <script>
-/* Evidentiaza in cuprins capitolul aflat in dreptul ecranului */
-(function(){
-  const links = [...document.querySelectorAll('.toc a')];
-  const map = new Map();
-  links.forEach(a => {
-    const sec = document.querySelector(a.getAttribute('href'));
-    if (sec) map.set(sec, a);
+const header = document.getElementById('siteHeader');
+const onScroll = () => { if (window.scrollY > 40) header.classList.add('scrolled'); else header.classList.remove('scrolled'); };
+window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+
+/* Ancorare manuala, ca in restul site-ului: pozitie calculata explicit */
+document.querySelectorAll('.legal-toc a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (!t) return;
+    e.preventDefault();
+    const y = t.getBoundingClientRect().top + window.scrollY - header.offsetHeight - 24;
+    window.scrollTo({top:y, behavior:'smooth'});
+    history.replaceState(null, '', a.getAttribute('href'));
   });
+});
+
+/* Evidentiaza capitolul curent in cuprins */
+(function(){
+  const links = [...document.querySelectorAll('.legal-toc a')];
+  const map = new Map();
+  links.forEach(a => { const s = document.querySelector(a.getAttribute('href')); if (s) map.set(s, a); });
   if (!map.size) return;
-
-  const setActive = (a) => links.forEach(l => l.classList.toggle('active', l === a));
-
-  const obs = new IntersectionObserver((entries) => {
-    const visible = entries.filter(e => e.isIntersecting)
-                           .sort((x,y) => x.boundingClientRect.top - y.boundingClientRect.top);
-    if (visible.length) setActive(map.get(visible[0].target));
-  }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
-
-  map.forEach((a, sec) => obs.observe(sec));
-
-  /* La deschiderea unui link direct (/legal#termeni), marcheaza imediat capitolul corect */
-  if (location.hash) {
-    const target = document.querySelector(location.hash);
-    if (target && map.has(target)) setActive(map.get(target));
-  } else {
-    setActive(links[0]);
-  }
+  const setActive = a => links.forEach(l => l.classList.toggle('active', l === a));
+  const obs = new IntersectionObserver(es => {
+    const vis = es.filter(e => e.isIntersecting).sort((x,y) => x.boundingClientRect.top - y.boundingClientRect.top);
+    if (vis.length) setActive(map.get(vis[0].target));
+  }, {rootMargin:'-25% 0px -60% 0px', threshold:0});
+  map.forEach((a,s) => obs.observe(s));
+  const h = location.hash && document.querySelector(location.hash);
+  setActive(h && map.has(h) ? map.get(h) : links[0]);
 })();
 </script>
 </body>

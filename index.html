@@ -108,7 +108,6 @@ body::before{
   background-image:url("/img/textura-iarba.jpg");
   background-size:1000px;background-position:left top;background-repeat:repeat;
   opacity:0.05;
-  transform:translateZ(0);backface-visibility:hidden;
 }
 body > *{position:relative;z-index:1;}
 img{max-width:100%;display:block;height:auto;}
@@ -495,9 +494,9 @@ body.qc-lock{overflow:hidden;}
 .pill.active:hover{background:rgba(201,169,110,0.32);border-color:var(--gold-soft);}
 .pill.active::after{content:'\00d7';margin-left:9px;margin-right:-2px;font-size:15px;line-height:1;color:var(--gold-soft);}
 .pill:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px;}
-.consent-row{display:flex;gap:10px;align-items:flex-start;margin-top:12px;flex-basis:100%;cursor:pointer;}
-.consent-row input{width:15px;height:15px;margin-top:3px;flex:none;accent-color:var(--gold-soft);cursor:pointer;}
-.consent-row span{font-size:12.5px;line-height:1.5;color:var(--cream-soft);}
+.consent-row{display:flex;gap:9px;align-items:flex-start;width:100%;margin-top:14px;cursor:pointer;}
+.consent-row input{width:14px;height:14px;margin:2px 0 0;flex:none;accent-color:var(--gold-soft);cursor:pointer;}
+.consent-row span{font-size:12px;line-height:1.55;color:var(--cream-soft);opacity:.85;}
 .consent-row input:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px;}
 .skip-link{position:absolute;left:16px;top:-100px;z-index:200;background:var(--dark-green);color:var(--soft-white);border:1px solid var(--gold-soft);border-radius:var(--r);padding:12px 20px;font-size:14px;font-weight:600;text-decoration:none;transition:top .2s ease;}
 .skip-link:focus{top:16px;}
