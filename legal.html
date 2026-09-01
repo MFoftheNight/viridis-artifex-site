@@ -1113,7 +1113,7 @@ main#continut{padding-top:var(--header-h);}
 </div>
 <script>
 const header = document.getElementById('siteHeader');
-const onScroll = () => { if (window.scrollY > 40) header.classList.add('scrolled'); else header.classList.remove('scrolled'); };
+const onScroll = () => { if (window.scrollY > 40) header.classList.add('stuck'); else header.classList.remove('stuck'); };
 window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
 // Manual anchor scroll — computed explicitly in JS, does not rely on CSS scroll-margin-top,
@@ -1498,9 +1498,6 @@ document.querySelectorAll('.season-tab').forEach(tab => {
 document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
 (function(){
   const hdr = document.getElementById('siteHeader');
-  const onSc = () => { if (window.scrollY > 40) hdr.classList.add('stuck'); else hdr.classList.remove('stuck'); };
-  window.addEventListener('scroll', onSc, {passive:true}); onSc();
-
   document.querySelectorAll('.legal-toc a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const t = document.querySelector(a.getAttribute('href'));
