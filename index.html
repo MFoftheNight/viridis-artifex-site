@@ -2,7 +2,77 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Viridis Artifex — Design peisagistic naturalist, Brașov</title>
+<meta name="description" content="Studio de design peisagistic în Brașov. Proiectăm, amenajăm și îngrijim grădini naturaliste, cu plante locale alese pentru biodiversitate.">
+<link rel="canonical" href="https://viridisartifex.ro/">
+<meta name="theme-color" content="#0B2D1A">
+<meta name="robots" content="index, follow">
+
+<!-- Partajare pe retele sociale -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Viridis Artifex">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:url" content="https://viridisartifex.ro/">
+<meta property="og:title" content="Viridis Artifex — Design peisagistic naturalist, Brașov">
+<meta property="og:description" content="Proiectăm, amenajăm și îngrijim grădini naturaliste, cu plante locale alese pentru biodiversitate.">
+<meta property="og:image" content="https://viridisartifex.ro/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Plan de plantare desenat de mână pentru o grădină naturalistă">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Viridis Artifex — Design peisagistic naturalist, Brașov">
+<meta name="twitter:description" content="Proiectăm, amenajăm și îngrijim grădini naturaliste, cu plante locale alese pentru biodiversitate.">
+<meta name="twitter:image" content="https://viridisartifex.ro/img/og-image.jpg">
+
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://viridisartifex.ro/#studio",
+  "name": "Viridis Artifex",
+  "description": "Studio de design peisagistic din Brașov, specializat în grădini naturaliste cu plante locale și plantare orientată spre biodiversitate.",
+  "url": "https://viridisartifex.ro/",
+  "image": "https://viridisartifex.ro/img/og-image.jpg",
+  "logo": "https://viridisartifex.ro/img/favicon.svg",
+  "telephone": "+40742306289",
+  "email": "viridisartifex.landscape@gmail.com",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brașov",
+    "addressRegion": "Brașov",
+    "addressCountry": "RO"
+  },
+  "areaServed": { "@type": "GeoCircle",
+    "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 45.6580, "longitude": 25.6012 },
+    "geoRadius": "50000" },
+  "sameAs": [
+    "https://www.instagram.com/viridisartifex/",
+    "https://www.youtube.com/@viridisartifex"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicii",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Design peisagistic",
+        "description": "Masterplan și plan de plantare, cu listă de plante." },
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 7500, "priceCurrency": "RON" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Amenajare spații verzi",
+        "description": "Pregătirea terenului, plantare, gazon, garduri vii, alei și irigație." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Îngrijire spații verzi",
+        "description": "Vizite lunare sau sezoniere pentru plante de interior și exterior." },
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 500, "priceCurrency": "RON" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Consultanță",
+        "description": "Discuție online sau la fața locului, cu recomandări clare." },
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": 250, "priceCurrency": "RON" } }
+    ]
+  }
+}
+</script>
 <style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap');
 
 :root{
@@ -421,6 +491,8 @@ body.qc-lock{overflow:hidden;}
 .pill.active:hover{background:rgba(201,169,110,0.32);border-color:var(--gold-soft);}
 .pill.active::after{content:'\00d7';margin-left:9px;margin-right:-2px;font-size:15px;line-height:1;color:var(--gold-soft);}
 .pill:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px;}
+.skip-link{position:absolute;left:16px;top:-100px;z-index:200;background:var(--dark-green);color:var(--soft-white);border:1px solid var(--gold-soft);border-radius:var(--r);padding:12px 20px;font-size:14px;font-weight:600;text-decoration:none;transition:top .2s ease;}
+.skip-link:focus{top:16px;}
 .qc-reveal{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
 .qc-reveal.open{max-height:1800px;}
 .qc-reveal-inner{margin-top:2px;}
@@ -444,6 +516,7 @@ body.qc-lock{overflow:hidden;}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#continut">Sari la conținut</a>
 
 <header class="site-header" id="siteHeader">
   <div class="wrap">
@@ -545,7 +618,7 @@ body.qc-lock{overflow:hidden;}
 </svg>
 </span>
     </a>
-    <nav class="main-nav">
+    <nav class="main-nav" aria-label="Navigare principală">
       <a class="navlink" href="#despre">Despre</a>
       <a class="navlink" href="#servicii">Servicii</a>
       <a class="navlink" href="#portofoliu">Portofoliu</a>
@@ -557,6 +630,8 @@ body.qc-lock{overflow:hidden;}
     </div>
   </div>
 </header>
+
+<main id="continut">
 
 <section class="hero">
   <div class="hero-text">
@@ -934,6 +1009,8 @@ body.qc-lock{overflow:hidden;}
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer class="site-footer">
   <div class="wrap footer-inner">
 
