@@ -73,7 +73,10 @@
   }
 }
 </script>
-<style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap">
+<style>
 
 :root{
   --dark-green:#0B2D1A;
@@ -491,6 +494,10 @@ body.qc-lock{overflow:hidden;}
 .pill.active:hover{background:rgba(201,169,110,0.32);border-color:var(--gold-soft);}
 .pill.active::after{content:'\00d7';margin-left:9px;margin-right:-2px;font-size:15px;line-height:1;color:var(--gold-soft);}
 .pill:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px;}
+.consent-row{display:flex;gap:10px;align-items:flex-start;margin-top:12px;flex-basis:100%;cursor:pointer;}
+.consent-row input{width:15px;height:15px;margin-top:3px;flex:none;accent-color:var(--gold-soft);cursor:pointer;}
+.consent-row span{font-size:12.5px;line-height:1.5;color:var(--cream-soft);}
+.consent-row input:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px;}
 .skip-link{position:absolute;left:16px;top:-100px;z-index:200;background:var(--dark-green);color:var(--soft-white);border:1px solid var(--gold-soft);border-radius:var(--r);padding:12px 20px;font-size:14px;font-weight:600;text-decoration:none;transition:top .2s ease;}
 .skip-link:focus{top:16px;}
 .qc-reveal{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
@@ -665,7 +672,7 @@ body.qc-lock{overflow:hidden;}
     <div class="plan-layout reveal">
       <div>
         <div class="plan-stage">
-          <img src="/img/plan-plantare.jpg" alt="Plan de plantare desenat de mână — grădină urbană tip pădure">
+          <img src="/img/plan-plantare.jpg" width="1540" height="1416" decoding="async" fetchpriority="high" alt="Plan de plantare desenat de mână — grădină urbană tip pădure">
           <span class="pin" data-sp="1" style="left:34%;top:23%;background:#2E7D6B;"></span>
           <span class="pin" data-sp="2" style="left:63%;top:19%;background:#A8C4A2;"></span>
           <span class="pin" data-sp="3" style="left:82%;top:33%;background:#C9A9D6;"></span>
@@ -885,15 +892,15 @@ body.qc-lock{overflow:hidden;}
     </div>
     <div class="portfolio-grid reveal">
       <a href="#" class="pf-card large">
-        <img src="/img/portofoliu-zona-relaxare.jpg" alt="Zonă de relaxare sub coronament">
+        <img src="/img/portofoliu-zona-relaxare.jpg" width="1400" height="1012" loading="lazy" decoding="async" alt="Zonă de relaxare sub coronament">
         <div class="pf-overlay"><span class="pf-cat">Grădină rezidențială · 320 m²</span><span class="pf-title">Grădina de relaxare</span><span class="pf-more">Vatră, hamac și un traseu care dispare printre ierburi.</span></div>
       </a>
       <a href="#" class="pf-card">
-        <img src="/img/portofoliu-gradina-aromatica.jpg" alt="Colț de grădină aromatică">
+        <img src="/img/portofoliu-gradina-aromatica.jpg" width="1000" height="497" loading="lazy" decoding="async" alt="Colț de grădină aromatică">
         <div class="pf-overlay"><span class="pf-cat">Sub pădure · 14 m²</span><span class="pf-title">Grădina aromatică</span><span class="pf-more">Plante medicinale pe sol dificil, la 650 m altitudine.</span></div>
       </a>
       <a href="#" class="pf-card">
-        <img src="/img/portofoliu-alee.jpg" alt="Alee de grădină">
+        <img src="/img/portofoliu-alee.jpg" width="939" height="613" loading="lazy" decoding="async" alt="Alee de grădină">
         <div class="pf-overlay"><span class="pf-cat">Proiect urban</span><span class="pf-title">Traseu senzorial</span><span class="pf-more">Fâșii verzi care răcoresc strada și rețin apa de ploaie.</span></div>
       </a>
     </div>
@@ -905,7 +912,7 @@ body.qc-lock{overflow:hidden;}
   <div class="wrap">
     <div class="about-teaser reveal">
       <figure class="about-figure" style="margin:0;">
-        <div class="about-portrait"><img src="/img/despre-portret.jpg" alt="Viridis Artifex, pe teren"></div>
+        <div class="about-portrait"><img src="/img/despre-portret.jpg" width="1000" height="1250" loading="lazy" decoding="async" alt="Viridis Artifex, pe teren"></div>
         <figcaption class="about-caption">Pe teren, în căutarea plantelor care se descurcă singure.</figcaption>
       </figure>
       <div class="about-text">
@@ -1002,7 +1009,7 @@ body.qc-lock{overflow:hidden;}
           <span class="form-feedback-icon"></span>
           <span class="form-feedback-text"></span>
         </div>
-        <p class="form-consent">Trimițând acest mesaj ești de acord cu <a href="#">politica de confidențialitate</a> și cu <a href="#">termenii și condițiile</a>.</p>
+        <p class="form-consent">Trimițând acest mesaj ești de acord cu <a href="/legal#confidentialitate">politica de confidențialitate</a> și cu <a href="/legal#termeni">termenii și condițiile</a>.</p>
       </form>
     </div>
   </div>
@@ -1079,12 +1086,16 @@ body.qc-lock{overflow:hidden;}
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <input type="email" name="email" placeholder="Adresa ta de email" required>
           <button type="submit" class="btn btn-secondary-dark">Abonează-te</button>
+          <label class="consent-row">
+            <input type="checkbox" name="Consimțământ newsletter" value="Da" required>
+            <span>Sunt de acord să primesc noutăți pe email. Mă pot dezabona oricând, scriind la adresa de contact.</span>
+          </label>
         </form>
         <div class="form-feedback" id="newsletterStatus" role="status" aria-live="polite">
           <span class="form-feedback-icon"></span>
           <span class="form-feedback-text"></span>
         </div>
-        <p class="footer-legal-note">Prin abonare ești de acord cu <a href="#">Politica de confidențialitate</a> și îți dai consimțământul să primești noutăți.</p>
+        <p class="footer-legal-note">Prin abonare ești de acord cu <a href="/legal#confidentialitate">Politica de confidențialitate</a> și îți dai consimțământul să primești noutăți.</p>
       </div>
     </div>
 
@@ -1101,7 +1112,7 @@ body.qc-lock{overflow:hidden;}
         <h4>Contact</h4>
         <a href="tel:+40742306289">+40 742 306 289</a>
         <a href="mailto:viridisartifex.landscape@gmail.com">viridisartifex.landscape@gmail.com</a>
-        <a href="#">Brașov, România</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Bra%C8%99ov%2C+Rom%C3%A2nia" target="_blank" rel="noopener">Brașov, România</a>
       </div>
       <div class="footer-col">
         <h4>Social</h4>
@@ -1129,7 +1140,7 @@ body.qc-lock{overflow:hidden;}
 
     <div class="footer-bottom">
       <span>© 2026 Viridis Artifex. Toate drepturile rezervate.</span>
-      <div class="footer-legal"><a href="#">Politica de confidențialitate</a><a href="#">Termeni &amp; condiții</a><a href="#">Setări cookies</a></div>
+      <div class="footer-legal"><a href="/legal#confidentialitate">Politica de confidențialitate</a><a href="/legal#termeni">Termeni &amp; condiții</a><a href="/legal#cookies">Politica de cookie-uri</a><a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">ANPC — SAL</a></div>
     </div>
   </div>
 </footer>
@@ -1326,7 +1337,7 @@ body.qc-lock{overflow:hidden;}
         <span class="form-feedback-icon"></span>
         <span class="form-feedback-text"></span>
       </div>
-      <p class="form-consent">Trimițând acest mesaj ești de acord cu <a href="#">politica de confidențialitate</a> și cu <a href="#">termenii și condițiile</a>.</p>
+      <p class="form-consent">Trimițând acest mesaj ești de acord cu <a href="/legal#confidentialitate">politica de confidențialitate</a> și cu <a href="/legal#termeni">termenii și condițiile</a>.</p>
     </form>
 
     <div class="contact-info qc-info">
