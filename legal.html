@@ -512,8 +512,6 @@ body.qc-lock{overflow:hidden;}
   .legal-table td:last-child{display:block;padding-top:0;}
 }
 
-/* Pagina legala are fundal deschis de sus pana jos: antetul sta permanent in
-   varianta pentru fundal deschis. Fundalul propriu si linia apar la derulare. */
 .site-header.scrolled{background:transparent;box-shadow:none;}
 .site-header.scrolled.stuck{background:#FBF4E8;box-shadow:0 1px 0 var(--paper-line);}
 main#continut{padding-top:var(--header-h);}
@@ -622,10 +620,10 @@ main#continut{padding-top:var(--header-h);}
 </span>
     </a>
     <nav class="main-nav" aria-label="Navigare principală">
-      <a class="navlink" href="#despre">Despre</a>
-      <a class="navlink" href="#servicii">Servicii</a>
-      <a class="navlink" href="#portofoliu">Portofoliu</a>
-      <a class="navlink" href="#contact">Contact</a>
+      <a class="navlink" href="/#despre">Despre</a>
+      <a class="navlink" href="/#servicii">Servicii</a>
+      <a class="navlink" href="/#portofoliu">Portofoliu</a>
+      <a class="navlink" href="/#contact">Contact</a>
     </nav>
     <div class="header-actions">
       <div class="lang-switch"><a href="#" class="active">RO</a><span>/</span><a href="#">EN</a></div>
@@ -870,11 +868,11 @@ main#continut{padding-top:var(--header-h);}
     <div class="footer-cols">
       <div class="footer-col">
         <h4>Explorează</h4>
-        <a href="#despre">Despre</a>
-        <a href="#servicii">Servicii</a>
-        <a href="#portofoliu">Portofoliu</a>
-        <a href="#anotimpuri">Anotimpuri</a>
-        <a href="#faq">Întrebări frecvente</a>
+        <a href="/#despre">Despre</a>
+        <a href="/#servicii">Servicii</a>
+        <a href="/#portofoliu">Portofoliu</a>
+        <a href="/#anotimpuri">Anotimpuri</a>
+        <a href="/#faq">Întrebări frecvente</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
@@ -912,27 +910,607 @@ main#continut{padding-top:var(--header-h);}
     </div>
   </div>
 </footer>
+<div class="qc-overlay" id="qcOverlay" aria-hidden="true">
+  <div class="qc-modal bg-dark-tex" id="qcModal" role="dialog" aria-modal="true" aria-labelledby="qcTitle">
+    <button type="button" class="qc-close" id="qcClose" aria-label="Închide fereastra">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <div class="qc-content">
+    <p class="eyebrow on-dark" style="margin-bottom:18px;">Contact</p>
+    <h3 class="qc-title" id="qcTitle">Hai să discutăm despre grădina ta</h3>
+    <p class="qc-intro">Spune-ne câteva detalii ca să pregătim un răspuns cât mai potrivit.</p>
+
+    <form class="qc-form" id="qcContactForm" action="https://formsubmit.co/viridisartifex.landscape@gmail.com" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="Mesaj nou de pe site — Viridis Artifex">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://viridisartifex.ro/?trimis=1">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="form-row"><label for="qcName">Nume<i>*</i></label><input type="text" id="qcName" name="name" placeholder="Numele tău" required></div>
+      <div class="form-row"><label for="qcEmail">Email<i>*</i></label><input type="email" id="qcEmail" name="email" placeholder="adresa@exemplu.ro" required></div>
+      <div class="qc-optional-row">
+        <div class="form-row"><label for="qcPhone">Telefon <span class="qc-opt-tag">opțional</span></label><input type="tel" id="qcPhone" name="telefon" placeholder="07xx xxx xxx"></div>
+        <div class="form-row"><label for="qcLocation">Locație <span class="qc-opt-tag">opțional</span></label><input type="text" id="qcLocation" name="localitate" placeholder="ex. Brașov"></div>
+      </div>
+
+      <div class="form-row qc-pill-row" data-field="serviciu">
+        <label>Ce serviciu te interesează?</label>
+        <div class="pill-group">
+          <button type="button" aria-pressed="false" class="pill" data-value="Design peisagistic" data-branch="design">Design peisagistic</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Amenajare spații verzi" data-branch="amenajare">Amenajare spații verzi</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Îngrijire spații verzi" data-branch="plante">Îngrijire spații verzi</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Consultanță" data-branch="consultanta">Consultanță</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur" data-branch="niciunul">Nu sunt sigur</button>
+        </div>
+        <input type="hidden" name="serviciu" value="">
+      </div>
+
+      <div class="qc-reveal" id="qcReveal">
+        <div class="qc-reveal-inner">
+
+          <div class="qc-branch" data-branch-panel="design">
+            <p class="qc-branch-title">Detalii – Design peisagistic</p>
+            <div class="qc-branch-box">
+              <div class="form-row qc-pill-row" data-field="tip_spatiu">
+                <label>Tip spațiu</label>
+                <div class="pill-group">
+                  <button type="button" aria-pressed="false" class="pill" data-value="Balcon">Balcon</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Terasă">Terasă</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Curte">Curte</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Grădină">Grădină</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Interior">Interior</button>
+                </div>
+                <input type="hidden" name="Tip spațiu (Design peisagistic)" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="suprafata">
+                <label>Suprafață estimată</label>
+                <div class="pill-group">
+                  <button type="button" aria-pressed="false" class="pill" data-value="sub 100 mp">sub 100 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="100-250 mp">100-250 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="peste 250 mp">peste 250 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                </div>
+                <input type="hidden" name="Suprafață estimată (Design peisagistic)" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="intretinere">
+                <label>Nivel de întreținere dorit</label>
+                <div class="pill-group">
+                  <button type="button" aria-pressed="false" class="pill" data-value="Redus">Redus</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Mediu">Mediu</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Ridicat">Ridicat</button>
+                </div>
+                <input type="hidden" name="Nivel întreținere (Design peisagistic)" value="">
+              </div>
+            </div>
+          </div>
+
+          <div class="qc-branch" data-branch-panel="amenajare">
+            <p class="qc-branch-title">Detalii – Amenajare spații verzi</p>
+            <div class="qc-branch-box">
+              <div class="form-row qc-pill-row" data-field="plan_existent">
+                <label>Ai deja un plan de amenajare?</label>
+                <div class="pill-group">
+                  <button type="button" aria-pressed="false" class="pill" data-value="Da, de la noi">Da, de la noi</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Da, de la altcineva">Da, de la altcineva</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Nu încă">Nu încă</button>
+                </div>
+                <input type="hidden" name="Plan existent (Amenajare spații verzi)" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="tip_lucrare">
+                <label>Ce tip de lucrare ai în minte?</label>
+                <div class="pill-group">
+                  <button type="button" aria-pressed="false" class="pill" data-value="Gazon">Gazon</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Garduri vii">Garduri vii</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Plantare">Plantare</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Alei / pavaje">Alei / pavaje</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Irigație">Irigație</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Altceva">Altceva</button>
+                </div>
+                <input type="hidden" name="Tip lucrare (Amenajare spații verzi)" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="suprafata_amenajare">
+                <label>Suprafață aproximativă</label>
+                <div class="pill-group">
+                  <button type="button" aria-pressed="false" class="pill" data-value="sub 100 mp">sub 100 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="100-250 mp">100-250 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="peste 250 mp">peste 250 mp</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                </div>
+                <input type="hidden" name="Suprafață aproximativă (Amenajare spații verzi)" value="">
+              </div>
+            </div>
+          </div>
+
+          <div class="qc-branch" data-branch-panel="plante">
+            <p class="qc-branch-title">Detalii – Îngrijire spații verzi</p>
+            <div class="qc-branch-box">
+              <div class="form-row qc-pill-row" data-field="pachet">
+                <label>Ce pachet ți se potrivește?</label>
+                <div class="pill-group">
+                  <button type="button" aria-pressed="false" class="pill" data-value="Lunar">Lunar</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="De sezon">De sezon</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Personalizat">Personalizat</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                </div>
+                <input type="hidden" name="Pachet (Îngrijire spații verzi)" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="unde_plante">
+                <label>Unde sunt plantele?</label>
+                <div class="pill-group">
+                  <button type="button" aria-pressed="false" class="pill" data-value="Interior">Interior</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Exterior">Exterior</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Mixt">Mixt</button>
+                </div>
+                <input type="hidden" name="Unde sunt plantele (Îngrijire spații verzi)" value="">
+              </div>
+              <div class="form-row qc-pill-row" data-field="probleme">
+                <label>Există probleme acum?</label>
+                <div class="pill-group">
+                  <button type="button" aria-pressed="false" class="pill" data-value="Dăunători">Dăunători</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Foliaj îngălbenit/uscat">Foliaj îngălbenit/uscat</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Altceva">Altceva</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+                </div>
+                <input type="hidden" name="Probleme actuale (Îngrijire spații verzi)" value="">
+              </div>
+            </div>
+          </div>
+
+          <div class="qc-branch" data-branch-panel="consultanta">
+            <p class="qc-branch-title">Detalii – Consultanță</p>
+            <div class="qc-branch-box">
+              <div class="form-row qc-pill-row" data-field="cand_discutam">
+                <label>Când preferi să discutăm? <span class="qc-opt-tag">opțional</span></label>
+                <div class="pill-group">
+                  <button type="button" aria-pressed="false" class="pill" data-value="Dimineață">Dimineață</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="După-amiază">După-amiază</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Weekend">Weekend</button>
+                  <button type="button" aria-pressed="false" class="pill" data-value="Oricând">Oricând</button>
+                </div>
+                <input type="hidden" name="Când preferă să discute (Consultanță)" value="">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row qc-attach" data-branch-panel="plante design amenajare">
+            <label for="qcFile">Poză <span class="qc-opt-tag">opțional — ajută la un prim diagnostic</span></label>
+            <input type="file" id="qcFile" name="attachment" accept="image/*">
+            <p class="qc-file-note" id="qcFileNote">Dimensiune maximă: 10 MB</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row qc-pill-row" data-field="mod_lucru">
+        <label>Cum preferi să lucrăm?</label>
+        <div class="pill-group">
+          <button type="button" aria-pressed="false" class="pill" data-value="Online">Online</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="La fața locului">La fața locului</button>
+          <button type="button" aria-pressed="false" class="pill" data-value="Nu sunt sigur">Nu sunt sigur</button>
+        </div>
+        <input type="hidden" name="mod_lucru" value="">
+      </div>
+
+      <div class="form-row">
+        <label for="qcMsg">Detalii</label>
+        <textarea id="qcMsg" name="mesaj" rows="4" placeholder="Spune-ne despre spațiul tău verde..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-secondary-dark">Trimite mesajul</button>
+      <div class="form-feedback" id="qcContactStatus" role="status" aria-live="polite">
+        <span class="form-feedback-icon"></span>
+        <span class="form-feedback-text"></span>
+      </div>
+      <p class="form-consent">Trimițând acest mesaj ești de acord cu <a href="/legal#confidentialitate">politica de confidențialitate</a> și cu <a href="/legal#termeni">termenii și condițiile</a>.</p>
+    </form>
+
+    <div class="contact-info qc-info">
+      <a href="tel:+40742306289"><span class="ci-label">Tel</span><span>+40 742 306 289</span></a>
+      <a href="mailto:viridisartifex.landscape@gmail.com"><span class="ci-label">Email</span><span>viridisartifex.landscape@gmail.com</span></a>
+    </div>
+    </div>
+  </div>
+</div>
 <script>
 const header = document.getElementById('siteHeader');
-/* .scrolled ramane mereu (varianta pentru fundal deschis).
-   .stuck adauga fundalul si linia, doar dupa ce s-a derulat. */
-const onScroll = () => { if (window.scrollY > 40) header.classList.add('stuck'); else header.classList.remove('stuck'); };
+const onScroll = () => { if (window.scrollY > 40) header.classList.add('scrolled'); else header.classList.remove('scrolled'); };
 window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
-document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
-
-document.querySelectorAll('.legal-toc a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if (!t) return;
+// Manual anchor scroll — computed explicitly in JS, does not rely on CSS scroll-margin-top,
+// to guarantee every in-page link stops exactly at (section top - header height), no exceptions.
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  const targetId = a.getAttribute('href').slice(1);
+  if (!targetId) return;
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  a.addEventListener('click', (e) => {
     e.preventDefault();
-    const y = t.getBoundingClientRect().top + window.scrollY - header.offsetHeight - 24;
-    window.scrollTo({top:y, behavior:'smooth'});
-    history.replaceState(null, '', a.getAttribute('href'));
+    const headerH = header.getBoundingClientRect().height;
+    const y = target.getBoundingClientRect().top + window.scrollY - headerH;
+    window.scrollTo({top: y, behavior: 'smooth'});
+    history.pushState(null, '', '#' + targetId);
   });
 });
 
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+});
+
+document.querySelectorAll('.svc-head').forEach(h => {
+  h.addEventListener('click', () => h.closest('.svc-row').classList.toggle('open'));
+});
+
+document.querySelectorAll('video[autoplay]').forEach(v => {
+  const tryPlay = () => v.play().catch(()=>{});
+  tryPlay(); window.addEventListener('load', tryPlay);
+});
+
+/* Live seasonal line + rotating plant examples */
 (function(){
+  const el = document.getElementById('fsText');
+  const plantEl = document.getElementById('fsPlant');
+  if (!el) return;
+  const m = new Date().getMonth(); // 0-11
+  const data = [
+    {line:'Miez de iarnă — ierburile uscate și semințele stau în picioare, hrană pentru păsări.',
+     plants:['Calamagrostis (structură)','Echinacea (capsule)','Miscanthus (panicule)','Sedum (inflorescențe uscate)']}, // Jan
+    {line:'Sfârșit de iarnă — ghioceii sparg primii pământul înghețat.',
+     plants:['Galanthus nivalis','Helleborus niger','Eranthis hyemalis','Cornus (scoarță roșie)']}, // Feb
+    {line:'Început de primăvară — floarea-paștelui și bulbii timpurii deschid sezonul.',
+     plants:['Anemone nemorosa','Crocus vernus','Muscari','Pulmonaria']}, // Mar
+    {line:'Primăvară — grădina prinde culoare, mugurii se desfac zi de zi.',
+     plants:['Narcissus','Tulipa','Fritillaria','Primula veris']}, // Apr
+    {line:'Primăvară târzie — salvia și macii încep să înflorească.',
+     plants:['Salvia nemorosa','Papaver rhoeas','Allium','Geranium']}, // May
+    {line:'Început de vară — coada-șoricelului și primele graminee intră în scenă.',
+     plants:['Achillea millefolium','Nepeta','Stipa gigantea','Digitalis']}, // Jun
+    {line:'Miez de vară — echinacea și ierburile ornamentale sunt în plină forță.',
+     plants:['Echinacea purpurea','Rudbeckia','Calamagrostis','Monarda']}, // Jul
+    {line:'Vară — grădina e la apogeu, polenizatorii lucrează de dimineața până seara.',
+     plants:['Echinacea purpurea','Salvia nemorosa','Achillea','Perovskia']}, // Aug
+    {line:'Început de toamnă — asterii preiau ștafeta, ultimele înfloriri ale anului.',
+     plants:['Symphyotrichum','Sedum spectabile','Anemone hupehensis','Helenium']}, // Sep
+    {line:'Toamnă — semințele se coc, ierburile capătă tonuri de bronz.',
+     plants:['Miscanthus sinensis','Panicum','Aster','Verbena bonariensis']}, // Oct
+    {line:'Toamnă târzie — structura rămâne, culorile se sting încet.',
+     plants:['Calamagrostis (siluetă)','Sedum (capete brune)','Hydrangea (uscată)','Molinia']}, // Nov
+    {line:'Început de iarnă — grădina se odihnește, dar nu dispare: totul rămâne în picioare.',
+     plants:['Ierburi ornamentale','Capsule de Echinacea','Ilex (fructe roșii)','Cornus (lujeri)']} // Dec
+  ];
+  el.textContent = data[m].line;
+  if (plantEl){
+    const list = data[m].plants;
+    let idx = 0;
+    plantEl.textContent = list[0];
+    setInterval(() => {
+      plantEl.classList.add('fading');
+      setTimeout(() => {
+        idx = (idx + 1) % list.length;
+        plantEl.textContent = list[idx];
+        plantEl.classList.remove('fading');
+      }, 500);
+    }, 2600);
+  }
+})();
+/* Trimitere formulare (contact + newsletter) fără reîncărcarea paginii */
+const ICONS = {
+  success: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  error: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v5M12 16.5v.01M12 3l9.5 17H2.5L12 3z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+};
+function showFeedback(el, type, title, text){
+  if (!el) return;
+  el.classList.remove('success','error');
+  el.classList.add(type, 'visible');
+  el.querySelector('.form-feedback-icon').innerHTML = ICONS[type];
+  el.querySelector('.form-feedback-text').innerHTML = '<strong>' + title + '</strong>' + text;
+}
+function wireAjaxForm(formEl, statusEl, successTitle, successText, onSuccess){
+  if (!formEl) return;
+  formEl.addEventListener('submit', function(e){
+    const fileInput = formEl.querySelector('input[type="file"]');
+    if (fileInput && fileInput.files && fileInput.files.length > 0){
+      /* FormSubmit's AJAX endpoint does not process file attachments — let the browser submit natively so the photo actually arrives. */
+      return;
+    }
+    e.preventDefault();
+    const submitBtn = formEl.querySelector('button[type="submit"]');
+    const originalLabel = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Se trimite...'; }
+    if (statusEl){ statusEl.classList.remove('visible','success','error'); }
+    const ajaxAction = formEl.getAttribute('action').replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/');
+    fetch(ajaxAction, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(formEl)
+    })
+    .then(res => { if (!res.ok) throw new Error('network'); return res.json(); })
+    .then(() => {
+      showFeedback(statusEl, 'success', successTitle, successText);
+      formEl.reset();
+      if (typeof onSuccess === 'function') onSuccess();
+    })
+    .catch(() => {
+      showFeedback(statusEl, 'error', 'A apărut o eroare.', ' Încearcă din nou sau scrie-ne direct pe email.');
+    })
+    .finally(() => {
+      if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
+    });
+  });
+}
+/* Confirmation toast shown after a native (attachment) form submission redirects back here */
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('trimis') !== '1') return;
+  const toast = document.createElement('div');
+  toast.className = 'site-toast';
+  toast.setAttribute('role', 'status');
+  toast.innerHTML = '<span class="site-toast-icon">✓</span><span><strong>Mulțumim!</strong> Mesajul tău a fost trimis — revenim curând.</span>';
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('open'));
+  setTimeout(() => {
+    toast.classList.remove('open');
+    setTimeout(() => toast.remove(), 500);
+  }, 6000);
+  const cleanUrl = window.location.pathname + window.location.hash;
+  window.history.replaceState(null, '', cleanUrl);
+})();
+
+wireAjaxForm(document.getElementById('contactForm'), document.getElementById('contactStatus'), 'Mulțumim!', ' Mesajul tău a fost trimis — revenim curând.');
+wireAjaxForm(document.getElementById('newsletterForm'), document.getElementById('newsletterStatus'), 'Te-ai abonat!', ' Vei primi noutăți din grădină direct pe email.');
+wireAjaxForm(document.getElementById('qcContactForm'), document.getElementById('qcContactStatus'), 'Mulțumim!', ' Mesajul tău a fost trimis — revenim curând.', () => {
+  if (typeof resetQuickContactUI === 'function') resetQuickContactUI();
+  setTimeout(closeQuickContact, 2200);
+});
+
+/* Quick-fill prompt pills — used by the main contact form */
+function wirePrompts(prompts, textareaEl, scrollTarget){
+  prompts.forEach(p => {
+    p.addEventListener('click', () => {
+      prompts.forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      if (textareaEl) {
+        textareaEl.value = p.dataset.fill;
+        textareaEl.focus();
+        if (scrollTarget && window.matchMedia('(max-width:980px)').matches) scrollTarget.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    });
+  });
+}
+wirePrompts(document.querySelectorAll('#contact .prompt'), document.getElementById('msg'), document.querySelector('.contact-form'));
+
+/* Quick-contact modal — branching pill questions per service (multi-select) */
+var resetQuickContactUI;
+(function(){
+  const qcForm = document.getElementById('qcContactForm');
+  if (!qcForm) return;
+  const reveal = document.getElementById('qcReveal');
+  const msgField = document.getElementById('qcMsg');
+  const DEFAULT_PLACEHOLDER = 'Spune-ne despre spațiul tău verde...';
+  const DESIGN_PLACEHOLDER = 'Spune-ne despre spațiul tău verde... (poți menționa și un buget orientativ, dacă ai deja unul)';
+  const selectedServices = new Set();
+
+  /* File size guard — checked the moment a file is chosen, so we never rely on FormSubmit's own (slow, off-site) size check */
+  const qcFile = document.getElementById('qcFile');
+  const qcFileNote = document.getElementById('qcFileNote');
+  const MAX_FILE_SIZE = 10 * 1024 * 1024;
+  const DEFAULT_FILE_NOTE = qcFileNote ? qcFileNote.textContent : '';
+  if (qcFile && qcFileNote){
+    qcFile.addEventListener('change', () => {
+      const file = qcFile.files && qcFile.files[0];
+      if (file && file.size > MAX_FILE_SIZE){
+        const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+        qcFileNote.textContent = `Fișierul are ${sizeMb} MB — peste limita de 10 MB. Alege o poză mai mică.`;
+        qcFileNote.classList.add('error');
+        qcFile.classList.add('error');
+        qcFile.value = '';
+      } else {
+        qcFileNote.textContent = DEFAULT_FILE_NOTE;
+        qcFileNote.classList.remove('error');
+        qcFile.classList.remove('error');
+      }
+    });
+  }
+
+  function updateServiceUI(){
+    qcForm.querySelectorAll('[data-branch-panel]').forEach(panel => {
+      const branches = panel.dataset.branchPanel.split(' ');
+      panel.style.display = branches.some(b => selectedServices.has(b)) ? '' : 'none';
+    });
+    reveal.classList.toggle('open', selectedServices.size > 0);
+    if (msgField) msgField.placeholder = (selectedServices.has('design') || selectedServices.has('amenajare')) ? DESIGN_PLACEHOLDER : DEFAULT_PLACEHOLDER;
+  }
+
+  /* Generic single-select wiring — every pill row except the service picker */
+  qcForm.querySelectorAll('.qc-pill-row').forEach(row => {
+    if (row.dataset.field === 'serviciu') return;
+    const hidden = row.querySelector('input[type="hidden"]');
+    const pills = row.querySelectorAll('.pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const wasActive = pill.classList.contains('active');
+        pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
+        if (!wasActive) { pill.classList.add('active'); pill.setAttribute('aria-pressed', 'true'); }
+        if (hidden) hidden.value = wasActive ? '' : pill.dataset.value;
+      });
+    });
+  });
+
+  /* Multi-select wiring — service picker only; "Nu sunt sigur" is mutually exclusive with real services */
+  const serviceRow = qcForm.querySelector('.qc-pill-row[data-field="serviciu"]');
+  const serviceHidden = serviceRow.querySelector('input[type="hidden"]');
+  const servicePills = serviceRow.querySelectorAll('.pill');
+  servicePills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const branch = pill.dataset.branch;
+      if (branch === 'niciunul'){
+        const wasActive = pill.classList.contains('active');
+        servicePills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
+        if (!wasActive) { pill.classList.add('active'); pill.setAttribute('aria-pressed', 'true'); }
+        selectedServices.clear();
+      } else {
+        const niciunulPill = [...servicePills].find(p => p.dataset.branch === 'niciunul');
+        if (niciunulPill) { niciunulPill.classList.remove('active'); niciunulPill.setAttribute('aria-pressed', 'false'); }
+        pill.classList.toggle('active');
+        pill.setAttribute('aria-pressed', pill.classList.contains('active') ? 'true' : 'false');
+        if (pill.classList.contains('active')) selectedServices.add(branch);
+        else selectedServices.delete(branch);
+      }
+      serviceHidden.value = [...servicePills].filter(p => p.classList.contains('active')).map(p => p.dataset.value).join(', ');
+      updateServiceUI();
+    });
+  });
+
+  resetQuickContactUI = function(){
+    qcForm.querySelectorAll('.pill.active').forEach(p => { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
+    qcForm.querySelectorAll('.qc-pill-row input[type="hidden"]').forEach(h => { h.value = ''; });
+    selectedServices.clear();
+    if (reveal) reveal.classList.remove('open');
+    qcForm.querySelectorAll('[data-branch-panel]').forEach(panel => { panel.style.display = ''; });
+    if (msgField) msgField.placeholder = DEFAULT_PLACEHOLDER;
+    if (qcFileNote){ qcFileNote.textContent = DEFAULT_FILE_NOTE; qcFileNote.classList.remove('error'); }
+    if (qcFile){ qcFile.classList.remove('error'); }
+  };
+})();
+
+/* Quick contact modal — opened by every "Hai să discutăm" CTA except the header's own #contact anchor link */
+(function(){
+  const overlay = document.getElementById('qcOverlay');
+  const modal = document.getElementById('qcModal');
+  const closeBtn = document.getElementById('qcClose');
+  if (!overlay || !modal) return;
+  let lastFocused = null;
+
+  window.openQuickContact = function(e){
+    if (e) e.preventDefault();
+    lastFocused = document.activeElement;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('qc-lock');
+    const firstField = document.getElementById('qcName');
+    window.setTimeout(() => { if (firstField) firstField.focus(); }, 320);
+  };
+  window.closeQuickContact = function(){
+    if (!overlay.classList.contains('open')) return;
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('qc-lock');
+    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+  };
+
+  document.querySelectorAll('.js-open-contact').forEach(btn => btn.addEventListener('click', openQuickContact));
+  closeBtn.addEventListener('click', closeQuickContact);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeQuickContact(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeQuickContact();
+  });
+  modal.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const focusables = modal.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+})();
+
+/* Plan legend <-> pin linking */
+document.querySelectorAll('.legend-row').forEach(row => {
+  const id = row.dataset.sp;
+  const pin = document.querySelector('.pin[data-sp="'+id+'"]');
+  const on = () => pin && pin.classList.add('lit');
+  const off = () => pin && pin.classList.remove('lit');
+  row.addEventListener('mouseenter', on);
+  row.addEventListener('mouseleave', off);
+  if (pin) { pin.addEventListener('mouseenter', () => { on(); row.style.background='var(--cream-2)'; });
+             pin.addEventListener('mouseleave', () => { off(); row.style.background=''; }); }
+});
+
+/* Seasonal succession chart */
+const SPECIES = [
+  {la:'Galanthus nivalis',  ro:'ghiocel',            bloom:[2,3],    struct:[]      },
+  {la:'Anemonoides nemorosa',ro:'floarea paștelui',  bloom:[3,4],    struct:[]      },
+  {la:'Salvia nemorosa',    ro:'salvie de câmp',     bloom:[5,7],    struct:[8,9]   },
+  {la:'Papaver rhoeas',     ro:'mac',                bloom:[5,6],    struct:[7,8]   },
+  {la:'Achillea millefolium',ro:'coada șoricelului', bloom:[6,9],    struct:[10,11] },
+  {la:'Echinacea purpurea', ro:'echinacea',          bloom:[7,9],    struct:[10,12] },
+  {la:'Symphyotrichum',     ro:'aster de toamnă',    bloom:[9,10],   struct:[11,12] },
+  {la:'Calamagrostis epigejos',ro:'trestioară',      bloom:[7,8],    struct:[9,12]  },
+  {la:'Stipa calamagrostis',ro:'colilie',            bloom:[8,9],    struct:[10,12] }
+];
+const SEASON_MONTHS = { all:[1,12], spring:[3,5], summer:[6,8], autumn:[9,11], winter:[12,2] };
+
+function inSeason(range, season){
+  if (season === 'all') return true;
+  if (!range.length) return false;
+  const [s,e] = SEASON_MONTHS[season];
+  const months = [];
+  if (season === 'winter') { months.push(12,1,2); }
+  else { for (let m=s;m<=e;m++) months.push(m); }
+  for (let m=range[0]; m<=range[1]; m++) if (months.includes(m)) return true;
+  return false;
+}
+
+const chart = document.getElementById('chart');
+if (chart) SPECIES.forEach(sp => {
+  const row = document.createElement('div');
+  row.className = 'chart-row';
+  row.innerHTML = '<div class="sp"><b>'+sp.la+'</b><i>'+sp.ro+'</i></div>';
+  const track = document.createElement('div');
+  track.className = 'track';
+  for (let m=1;m<=12;m++){
+    const cell = document.createElement('div');
+    const isBloom = sp.bloom.length && m>=sp.bloom[0] && m<=sp.bloom[1];
+    const isStruct = sp.struct.length && m>=sp.struct[0] && m<=sp.struct[1];
+    if (isBloom || isStruct){
+      const bar = document.createElement('span');
+      bar.className = 'bar ' + (isBloom ? 'bloom' : 'structure');
+      bar.style.display='block'; bar.style.height='100%';
+      cell.appendChild(bar);
+    }
+    cell.style.padding='0 1px';
+    track.appendChild(cell);
+  }
+  row.appendChild(track);
+  chart.appendChild(row);
+});
+
+document.querySelectorAll('.season-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.season-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const season = tab.dataset.season;
+    document.querySelectorAll('.chart-row').forEach((row, i) => {
+      const sp = SPECIES[i];
+      const active = inSeason(sp.bloom, season) || inSeason(sp.struct, season);
+      row.querySelectorAll('.bar').forEach(b => b.classList.toggle('dim', !active));
+      row.style.opacity = active ? '1' : '0.4';
+    });
+  });
+});
+
+/* --- specific paginii legale --- */
+document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+(function(){
+  const hdr = document.getElementById('siteHeader');
+  const onSc = () => { if (window.scrollY > 40) hdr.classList.add('stuck'); else hdr.classList.remove('stuck'); };
+  window.addEventListener('scroll', onSc, {passive:true}); onSc();
+
+  document.querySelectorAll('.legal-toc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
+      e.preventDefault();
+      window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - hdr.offsetHeight - 24, behavior:'smooth'});
+      history.replaceState(null, '', a.getAttribute('href'));
+    });
+  });
+
   const links = [...document.querySelectorAll('.legal-toc a')];
   const map = new Map();
   links.forEach(a => { const s = document.querySelector(a.getAttribute('href')); if (s) map.set(s, a); });
