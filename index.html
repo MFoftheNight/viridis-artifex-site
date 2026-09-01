@@ -205,7 +205,7 @@ section[id]{scroll-margin-top:var(--header-h);}
 .lang-switch a.active{opacity:1;color:var(--gold-soft);}
 
 /* ---------- HERO ---------- */
-.hero{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:var(--dark-green);overflow:hidden;}
+.hero{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:var(--dark-green);overflow:hidden;isolation:isolate;}
 .hero::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-grain.jpg");background-repeat:repeat;background-size:900px auto;opacity:0.18;mix-blend-mode:hard-light;}
 .hero-text{display:flex;flex-direction:column;justify-content:center;align-items:flex-end;padding:150px var(--gutter) 90px var(--gutter);color:var(--soft-white);position:relative;z-index:2;}
 .hero-text-inner{width:100%;max-width:calc(var(--max-w) / 2 - var(--gutter));}
@@ -224,7 +224,7 @@ section{position:relative;}
 .bg-texture{background:rgba(255,248,240,0.55);}
 .bg-mint{background:rgba(255,248,240,0.55);}
 .bg-soft{background:rgba(255,248,240,0.55);}
-.bg-dark-tex{background:var(--dark-green);color:var(--soft-white);position:relative;overflow:hidden;}
+.bg-dark-tex{background:var(--dark-green);color:var(--soft-white);position:relative;overflow:hidden;isolation:isolate;}
 .bg-dark-tex::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-grain.jpg");background-repeat:repeat;background-size:900px auto;opacity:0.18;mix-blend-mode:hard-light;}
 .bg-dark-tex .wrap{position:relative;z-index:1;}
 .section-head{max-width:640px;margin-bottom:64px;}
@@ -259,7 +259,7 @@ section{position:relative;}
 .pin.lit{transform:translate(-50%,-50%) scale(1.65);box-shadow:0 0 0 6px rgba(169,129,74,0.25),0 0 0 1px rgba(0,0,0,0.3);}
 
 /* ---------- SEASONS: the signature element ---------- */
-.seasons{background:var(--dark-green);color:var(--soft-white);padding:120px 0 110px;position:relative;overflow:hidden;}
+.seasons{background:var(--dark-green);color:var(--soft-white);padding:120px 0 110px;position:relative;overflow:hidden;isolation:isolate;}
 .seasons::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-grain.jpg");background-repeat:repeat;background-size:900px auto;opacity:0.18;mix-blend-mode:hard-light;}
 .seasons-head{max-width:660px;margin-bottom:54px;}
 .seasons-head h2{font-size:clamp(30px,3.6vw,44px);line-height:1.15;font-weight:400;margin-top:16px;}
@@ -377,7 +377,7 @@ section{position:relative;}
 .faq-a p{padding:0 4px 26px;font-size:15px;color:var(--ink-soft);line-height:1.7;max-width:640px;}
 
 /* ---------- CONTACT ---------- */
-.contact-section{background:var(--dark-green);color:var(--soft-white);padding:120px 0 100px;position:relative;overflow:hidden;}
+.contact-section{background:var(--dark-green);color:var(--soft-white);padding:120px 0 100px;position:relative;overflow:hidden;isolation:isolate;}
 .contact-section::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-grain.jpg");background-repeat:repeat;background-size:900px auto;opacity:0.18;mix-blend-mode:hard-light;}
 .contact-grid{display:grid;grid-template-columns:1fr 0.92fr;gap:clamp(40px,6vw,96px);position:relative;z-index:1;align-items:start;}
 .contact-copy h2{font-size:clamp(30px,3.8vw,46px);line-height:1.18;margin-bottom:20px;}
@@ -419,7 +419,7 @@ button[disabled]{opacity:0.65;cursor:default;}
 
 /* ---------- FOOTER: rooted, not a divider line ---------- */
 /* ---------- FOOTER — structured, mark-anchored ---------- */
-.site-footer{background:var(--dark-green);color:var(--cream-soft);position:relative;overflow:hidden;}
+.site-footer{background:var(--dark-green);color:var(--cream-soft);position:relative;overflow:hidden;isolation:isolate;}
 .site-footer::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-footer.jpg");background-repeat:no-repeat;background-position:top center;background-size:cover;opacity:0.9;mix-blend-mode:color-burn;}
 .footer-inner{position:relative;z-index:1;}
 .footer-inner{padding-top:100px;}
@@ -494,10 +494,6 @@ body.qc-lock{overflow:hidden;}
 .pill.active:hover{background:rgba(201,169,110,0.32);border-color:var(--gold-soft);}
 .pill.active::after{content:'\00d7';margin-left:9px;margin-right:-2px;font-size:15px;line-height:1;color:var(--gold-soft);}
 .pill:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px;}
-.consent-row{display:flex;gap:9px;align-items:flex-start;width:100%;margin-top:14px;cursor:pointer;}
-.consent-row input{width:14px;height:14px;margin:2px 0 0;flex:none;accent-color:var(--gold-soft);cursor:pointer;}
-.consent-row span{font-size:12px;line-height:1.55;color:var(--cream-soft);opacity:.85;}
-.consent-row input:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px;}
 .skip-link{position:absolute;left:16px;top:-100px;z-index:200;background:var(--dark-green);color:var(--soft-white);border:1px solid var(--gold-soft);border-radius:var(--r);padding:12px 20px;font-size:14px;font-weight:600;text-decoration:none;transition:top .2s ease;}
 .skip-link:focus{top:16px;}
 .qc-reveal{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
@@ -1086,16 +1082,12 @@ body.qc-lock{overflow:hidden;}
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <input type="email" name="email" placeholder="Adresa ta de email" required>
           <button type="submit" class="btn btn-secondary-dark">Abonează-te</button>
-          <label class="consent-row">
-            <input type="checkbox" name="Consimțământ newsletter" value="Da" required>
-            <span>Sunt de acord să primesc noutăți pe email. Mă pot dezabona oricând, scriind la adresa de contact.</span>
-          </label>
         </form>
         <div class="form-feedback" id="newsletterStatus" role="status" aria-live="polite">
           <span class="form-feedback-icon"></span>
           <span class="form-feedback-text"></span>
         </div>
-        <p class="footer-legal-note">Prin abonare ești de acord cu <a href="/legal#confidentialitate">Politica de confidențialitate</a> și îți dai consimțământul să primești noutăți.</p>
+        <p class="footer-legal-note">Prin abonare ești de acord cu <a href="/legal#confidentialitate">Politica de confidențialitate</a> și îți dai consimțământul să primești noutăți. Te poți dezabona oricând, scriindu-ne pe email.</p>
       </div>
     </div>
 

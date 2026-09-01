@@ -515,11 +515,18 @@ body.qc-lock{overflow:hidden;}
   .legal-table td:first-child{width:auto;display:block;padding-bottom:2px;border:none;}
   .legal-table td:last-child{display:block;padding-top:0;}
 }
+
+/* Pagina legala are fundal deschis de sus pana jos: antetul sta permanent in
+   varianta pentru fundal deschis (text inchis, logo deschis). Fundalul propriu
+   si linia de separare apar doar la derulare, ca pe pagina principala. */
+.site-header.scrolled{background:transparent;box-shadow:none;}
+.site-header.scrolled.stuck{background:#FBF4E8;box-shadow:0 1px 0 var(--paper-line);}
+main#continut{padding-top:var(--header-h);}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#continut">Sari la conținut</a>
-<header class="site-header" id="siteHeader">
+<header class="site-header scrolled" id="siteHeader">
   <div class="wrap">
     <a href="/" class="nav-brand">
       <span class="logo-on-dark"><svg width="44" height="44" viewBox="0 0 535 535" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -916,7 +923,9 @@ body.qc-lock{overflow:hidden;}
 </footer>
 <script>
 const header = document.getElementById('siteHeader');
-const onScroll = () => { if (window.scrollY > 40) header.classList.add('scrolled'); else header.classList.remove('scrolled'); };
+/* .scrolled ramane mereu (varianta pentru fundal deschis).
+   .stuck adauga fundalul si linia, doar dupa ce s-a derulat. */
+const onScroll = () => { if (window.scrollY > 40) header.classList.add('stuck'); else header.classList.remove('stuck'); };
 window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
 document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
