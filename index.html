@@ -329,6 +329,13 @@ section{position:relative;}
 
 /* ---------- PORTFOLIO ---------- */
 .portfolio-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;gap:24px;flex-wrap:wrap;}
+/* Butonul e frate cu grila (ca sa poata trece sub proiecte pe mobil), deci pe
+   desktop il asezam inapoi langa titlu printr-un grid pe wrapper-ul sectiunii.
+   Acelasi margin-bottom ca .portfolio-head aliniaza bazele celor doua. */
+.portfolio-wrap{display:grid;grid-template-columns:1fr auto;column-gap:24px;align-items:end;}
+.portfolio-head{grid-column:1;grid-row:1;}
+.pf-cta{grid-column:2;grid-row:1;justify-self:end;margin-bottom:56px;}
+.portfolio-grid{grid-column:1/-1;grid-row:2;}
 .portfolio-grid{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:auto auto;gap:22px;}
 .pf-card{position:relative;overflow:hidden;border-radius:var(--r);aspect-ratio:4/3;}
 .pf-card.large{grid-row:1/3;aspect-ratio:auto;}
@@ -379,7 +386,13 @@ section{position:relative;}
 /* ---------- CONTACT ---------- */
 .contact-section{background:var(--dark-green);color:var(--soft-white);padding:120px 0 100px;position:relative;overflow:hidden;isolation:isolate;}
 .contact-section::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-grain.jpg");background-repeat:repeat;background-size:900px auto;opacity:0.18;mix-blend-mode:hard-light;}
-.contact-grid{display:grid;grid-template-columns:1fr 0.92fr;gap:clamp(40px,6vw,96px);position:relative;z-index:1;align-items:start;}
+.contact-grid{display:grid;grid-template-columns:1fr 0.92fr;column-gap:clamp(40px,6vw,96px);row-gap:0;position:relative;z-index:1;align-items:start;}
+/* .contact-info e frate cu .contact-copy (ca sa poata trece sub formular pe
+   mobil), deci ii fixam explicit pozitia de pe desktop. row-gap:0 pastreaza
+   spatierea originala, data de margin-top-ul lui .contact-info. */
+.contact-copy{grid-column:1;grid-row:1;}
+.contact-info{grid-column:1;grid-row:2;}
+.contact-form{grid-column:2;grid-row:1/span 2;}
 .contact-copy h2{font-size:clamp(30px,3.8vw,46px);line-height:1.18;margin-bottom:20px;}
 .contact-intro{font-size:16px;line-height:1.7;color:var(--cream-soft);margin-bottom:28px;font-weight:300;max-width:440px;}
 .contact-prompts{display:flex;flex-direction:column;gap:10px;}
@@ -513,8 +526,217 @@ body.qc-lock{overflow:hidden;}
 .site-toast.open{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s;}
 .site-toast strong{color:var(--gold-soft);}
 .site-toast-icon{flex:none;width:20px;height:20px;border-radius:50%;background:var(--gold-soft);color:var(--dark-green);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+/* ==========================================================================
+   RESPONSIVE
+   Bloc unic, la finalul foii de stil, ca sa castige prin ordinea cascadei
+   fara selectori artificial mai specifici. Reguli exclusiv aditive
+   (max-width) — desktopul ramane neatins.
+   Praguri: 900px = comutarea in "mobil" (header + hero), apoi 760 / 560 / 420
+   pentru ajustari fine (blocurile acelea exista deja mai sus in fisier).
+   ========================================================================== */
+
+.chart-hint{display:none;margin-top:14px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,248,240,0.42);}
+
+/* ---------- Buton hamburger ---------- */
+.nav-toggle{display:none;position:relative;flex:none;width:44px;height:44px;align-items:center;justify-content:center;padding:0;background:transparent;border:0;cursor:pointer;color:var(--soft-white);transition:color .35s ease;}
+.site-header.scrolled .nav-toggle{color:var(--ink);}
+.nav-toggle i{position:absolute;left:11px;top:calc(50% - 0.75px);width:22px;height:1.5px;background:currentColor;border-radius:2px;transition:transform .4s cubic-bezier(.4,0,.2,1);}
+.nav-toggle i:nth-of-type(1){transform:translateY(-4px);}
+.nav-toggle i:nth-of-type(2){transform:translateY(4px);}
+.nav-toggle:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px;border-radius:var(--r);}
+body.mnav-open .nav-toggle i:nth-of-type(1){transform:rotate(45deg);}
+body.mnav-open .nav-toggle i:nth-of-type(2){transform:rotate(-45deg);}
+
+/* ---------- Panoul de meniu ---------- */
+body.mnav-open{overflow:hidden;}
+.mobile-nav{position:fixed;inset:0;z-index:90;background:var(--dark-green);overflow-y:auto;-webkit-overflow-scrolling:touch;isolation:isolate;opacity:0;visibility:hidden;transition:opacity .4s cubic-bezier(.2,.7,.2,1),visibility 0s linear .4s;}
+.mobile-nav::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("/img/textura-grain.jpg");background-repeat:repeat;background-size:900px auto;opacity:0.18;mix-blend-mode:hard-light;}
+.mobile-nav.open{opacity:1;visibility:visible;transition-delay:0s;}
+.mnav-inner{position:relative;z-index:1;min-height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:calc(var(--header-h) + 26px) var(--gutter) 44px;}
+
+/* Linkurile mostenesc integral clasa .navlink din header (Work Sans, uppercase,
+   13.5px, subliniere aurie la hover). Aici definim STRICT layout — daca se
+   schimba vreodata tipografia navigatiei, se schimba automat si aici. */
+.mnav-links{display:flex;flex-direction:column;}
+.mnav-links .navlink{display:block;padding:21px 0;border-bottom:1px solid rgba(255,248,240,0.13);opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1),color .35s ease;}
+.mnav-links .navlink:first-child{border-top:1px solid rgba(255,248,240,0.13);}
+.mobile-nav.open .mnav-links .navlink{opacity:1;transform:none;}
+.mobile-nav.open .mnav-links .navlink:nth-child(1){transition-delay:.10s;}
+.mobile-nav.open .mnav-links .navlink:nth-child(2){transition-delay:.17s;}
+.mobile-nav.open .mnav-links .navlink:nth-child(3){transition-delay:.24s;}
+.mobile-nav.open .mnav-links .navlink:nth-child(4){transition-delay:.31s;}
+
+.mnav-foot{margin-top:48px;opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1);}
+.mobile-nav.open .mnav-foot{opacity:1;transform:none;transition-delay:.46s;}
+.mnav-note{font-family:var(--font-display);font-size:19px;font-weight:300;line-height:1.4;color:var(--cream-soft);margin:0 0 20px;}
+.mnav-note em{font-style:italic;color:var(--gold-soft);}
+.mnav-cta{width:100%;}
+.mnav-contact{display:flex;flex-direction:column;gap:9px;margin-top:28px;}
+.mnav-contact a{font-family:var(--font-body);font-size:14px;font-weight:300;color:var(--cream-soft);word-break:break-word;}
+
+/* ---------- 900px: comutarea in mobil ---------- */
+@media (max-width:900px){
+  :root{--header-h:74px;}
+
+  /* Header */
+  .main-nav,
+  .header-actions .lang-switch,
+  .header-actions .btn-nav-cta{display:none;}
+  .nav-toggle{display:flex;}
+  .site-header .wrap{gap:16px;}
+  /* Cat timp meniul e deschis, headerul redevine transparent cu logo alb,
+     chiar daca pagina era deja derulata si avea clasa .scrolled */
+  body.mnav-open .site-header{background:transparent;box-shadow:none;}
+  body.mnav-open .site-header .nav-toggle{color:var(--soft-white);}
+  body.mnav-open .site-header .nav-brand .logo-on-dark{opacity:1;}
+  body.mnav-open .site-header .nav-brand .logo-on-light{opacity:0;}
+
+  /* Hero — video pe tot ecranul, text ancorat jos */
+  .hero{grid-template-columns:1fr;min-height:100vh;min-height:100svh;}
+  .hero-media{position:absolute;inset:0;z-index:0;}
+  /* Scrim vertical. Bujorul e un subiect luminos si se misca in cadru, deci
+     protejam explicit doua zone: banda de sus (logo + hamburger) si tot ce e
+     sub 46%, unde stau titlul si butoanele. Intre ele lasam videoul curat. */
+  .hero-media::after{background:linear-gradient(180deg,
+      rgba(11,45,26,0.62) 0%,
+      rgba(11,45,26,0.16) 22%,
+      rgba(11,45,26,0.55) 46%,
+      rgba(11,45,26,0.86) 70%,
+      rgba(11,45,26,0.96) 100%);}
+  .hero-text{justify-content:flex-end;align-items:stretch;padding:calc(var(--header-h) + 40px) var(--gutter) 60px;}
+  /* Nu scoatem limita de latime, o relaxam: pe tableta la 820px un rand
+     necontrolat ajunge la ~800px, adica peste 100 de caractere. */
+  .hero-text-inner{max-width:min(100%,620px);}
+  .hero-title{font-size:clamp(34px,8.6vw,46px);}
+  .hero-sub{max-width:none;font-size:16px;line-height:1.6;margin-top:20px;}
+  .hero-actions{margin-top:34px;gap:12px;}
+}
+
+/* ==========================================================================
+   760px — TOATE SECTIUNILE DE CONTINUT TREC PE O COLOANA
+   Prag separat de cel de 900px: pe tableta (760–900) sectiunile raman ca pe
+   desktop, doar navigatia si hero-ul comuta mai devreme.
+   ========================================================================== */
+@media (max-width:760px){
+  .section-pad{padding:82px 0;}
+  .sketch-section{padding:82px 0 76px;}
+  .seasons{padding:82px 0 76px;}
+  .contact-section{padding:82px 0 70px;}
+
+  /* ---- Proces: planul si legenda, unul sub altul ---- */
+  .plan-layout{grid-template-columns:1fr;}
+  .plan-stage{border-right:none;border-bottom:1px solid var(--paper-line);}
+  .plan-note{margin-top:18px;}
+  .sketch-head{margin-bottom:40px;}
+
+  /* ---- Anotimpuri: graficul primeste scroll orizontal ----
+     12 luni nu incap in 390px fara sa devina ilizibile, iar iarna se taia.
+     Derulam tot blocul intr-o singura zona, ca luna sa ramana citibila. */
+  .season-tabs{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .season-tabs::-webkit-scrollbar{display:none;}
+  .season-tab{flex:none;padding:12px 17px 14px;font-size:12px;}
+  .chart{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .chart::-webkit-scrollbar{display:none;}
+  .chart-months,.chart-row{min-width:600px;grid-template-columns:150px 1fr;}
+  .chart-hint{display:block;}
+  .season-legend{margin-top:18px;}
+
+  /* ---- Servicii: fara linia gri dubland linia aurie a pretului ----
+     Pe desktop CTA-ul e in dreapta cu bordura aurie la stanga, deci linia de
+     jos a listei inchide corect blocul. Aici se stivuiesc si ies doua linii
+     lipite una de alta. */
+  .svc-inc-row:last-child{border-bottom:none;}
+
+  /* ---- Portofoliu: proiectele unul sub altul, butonul la final ---- */
+  .portfolio-wrap{grid-template-columns:1fr;}
+  .portfolio-grid{grid-column:1;grid-row:2;grid-template-columns:1fr;gap:16px;}
+  .pf-cta{grid-column:1;grid-row:3;justify-self:stretch;margin-bottom:0;margin-top:26px;}
+  .pf-card.large{grid-row:auto;aspect-ratio:4/3;}
+  .pf-overlay{padding:22px;}
+  /* Fara hover pe touch, descrierea nu s-ar arata niciodata */
+  .pf-more{max-height:80px;opacity:1;margin-top:6px;}
+  .portfolio-head{margin-bottom:34px;}
+
+  /* ---- Despre: intai continutul, apoi poza ---- */
+  .about-teaser{grid-template-columns:1fr;gap:36px;}
+  .about-text{order:1;}
+  .about-figure{order:2;}
+  .about-text h2{margin-bottom:18px;}
+  .about-facts{margin:28px 0 4px;}
+  .about-facts div{padding:16px 10px 16px 12px;}
+  .about-facts b{font-size:16px;}
+
+  /* ---- FAQ: butonul dupa intrebari ----
+     Butonul e copil al .faq-sticky, iar lista e in afara lui, deci `order`
+     singur nu il poate muta. `display:contents` scoate containerul din layout
+     si ii promoveaza copiii ca elemente flex ale .faq-layout, fara sa atinga
+     structura HTML sau desktopul. */
+  .faq-layout{display:flex;flex-direction:column;gap:0;}
+  .faq-sticky{display:contents;}
+  .faq-list{order:1;margin-top:26px;}
+  .faq-sticky .btn{order:2;margin-top:30px;align-self:stretch;}
+
+  /* ---- Contact: formularul intai, datele de contact dupa ----
+     .contact-info e acum frate cu .contact-copy, deci se reordoneaza direct,
+     fara display:contents — asa isi pastreaza si animatia de intrare. */
+  .contact-grid{grid-template-columns:1fr;row-gap:0;}
+  .contact-copy{grid-column:1;grid-row:1;}
+  .contact-form{grid-column:1;grid-row:2;position:static;top:auto;max-width:none;width:100%;margin-top:38px;}
+  .contact-info{grid-column:1;grid-row:3;margin-top:40px;}
+  .contact-intro{max-width:none;}
+
+  /* ---- Footer ---- */
+  .footer-inner{padding-top:72px;}
+  .footer-cta{grid-template-columns:1fr;gap:38px;padding-bottom:44px;}
+  .footer-brand-row{flex-direction:column;align-items:flex-start;gap:16px;}
+  .footer-cta-right{padding-top:0;}
+  .footer-brandtext{max-width:none;}
+  /* Camp si buton pe toata latimea, unul sub altul */
+  .newsletter-form{flex-direction:column;gap:12px;}
+  .newsletter-form input{min-width:0;width:100%;}
+  .newsletter-form .btn{width:100%;}
+  /* Doua coloane, ca in versiunea veche: Exploreaza | Social, Contact dedesubt
+     pe toata latimea — adresa de email nu incape pe o treime de ecran. */
+  .footer-cols{grid-template-columns:1fr 1fr;gap:34px 24px;padding:40px 0;max-width:none;}
+  .footer-col:nth-child(1){grid-column:1;grid-row:1;}
+  .footer-col:nth-child(3){grid-column:2;grid-row:1;}
+  .footer-col:nth-child(2){grid-column:1/-1;grid-row:2;}
+  .footer-col a{white-space:normal;overflow-wrap:anywhere;}
+  .footer-season{flex-direction:column;gap:14px;padding:26px 0;}
+  .fs-left{padding-top:0;}
+  .fs-body{min-width:0;}
+  .footer-bottom{flex-direction:column;align-items:center;text-align:center;gap:14px;padding:24px 0 30px;}
+  .footer-legal{justify-content:center;gap:14px 20px;}
+}
+
+/* ---------- Ecran scund (telefon rotit in landscape) ----------
+   6 linkuri la scara editoriala nu incap in 390px inaltime. Panoul ramane
+   derulabil, dar il compactam ca sa nu para rupt la rotire. */
+@media (max-width:900px) and (max-height:560px){
+  .mnav-inner{padding-top:calc(var(--header-h) + 12px);padding-bottom:26px;}
+  .mnav-links a{font-size:21px;padding:11px 0;}
+  .mnav-note{display:none;}
+  .mnav-foot{margin-top:26px;}
+  .mnav-contact{flex-direction:row;flex-wrap:wrap;gap:6px 20px;margin-top:16px;}
+  .hero-text{padding-top:calc(var(--header-h) + 24px);padding-bottom:36px;}
+}
+
+/* ---------- 560px: butoanele hero pe toata latimea ---------- */
+@media (max-width:560px){
+  .hero-actions{flex-direction:column;align-items:stretch;gap:10px;}
+  .hero-actions .btn{width:100%;}
+  .hero-text{padding-bottom:48px;}
+  /* Doar pe ecrane inguste — pe tableta butoanele raman ca pe desktop */
+  .about-text .btn,
+  .faq-sticky .btn,
+  .pf-cta,
+  .svc-detail-cta .btn{width:100%;}
+  .portfolio-head{align-items:stretch;}
+}
+
 @media (prefers-reduced-motion:reduce){
   .qc-overlay,.qc-modal,.qc-close,.qc-reveal,.site-toast,.svc-detail-wrap,.svc-plus,.svc-icon{transition:none !important;}
+  .mobile-nav,.mnav-links a,.mnav-foot,.nav-toggle i{transition:none !important;}
 }
 </style>
 </head>
@@ -630,9 +852,30 @@ body.qc-lock{overflow:hidden;}
     <div class="header-actions">
       <div class="lang-switch"><a href="#" class="active">RO</a><span>/</span><a href="#">EN</a></div>
       <button class="btn btn-nav-cta js-open-contact">Hai să discutăm</button>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Deschide meniul"><i></i><i></i></button>
     </div>
   </div>
 </header>
+
+<!-- MENIU MOBIL -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mnav-inner">
+    <nav class="mnav-links" aria-label="Navigare mobilă">
+      <a class="navlink" href="#despre">Despre</a>
+      <a class="navlink" href="#servicii">Servicii</a>
+      <a class="navlink" href="#portofoliu">Portofoliu</a>
+      <a class="navlink" href="#contact">Contact</a>
+    </nav>
+    <div class="mnav-foot">
+      <p class="mnav-note">Ai un spațiu în minte?<br><em>Hai să vorbim despre el.</em></p>
+      <button type="button" class="btn btn-primary-dark mnav-cta js-open-contact">Hai să discutăm</button>
+      <div class="mnav-contact">
+        <a href="tel:+40742306289">+40 742 306 289</a>
+        <a href="mailto:viridisartifex.landscape@gmail.com">viridisartifex.landscape@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <main id="continut">
 
@@ -734,6 +977,8 @@ body.qc-lock{overflow:hidden;}
           </div>
         </div>
       </div>
+
+      <p class="chart-hint" aria-hidden="true">Derulează lateral pentru toate lunile</p>
 
       <div class="season-legend">
         <span><i style="background:var(--gold-soft);"></i> Înflorire</span>
@@ -878,13 +1123,12 @@ body.qc-lock{overflow:hidden;}
 
 <!-- PORTFOLIO -->
 <section class="section-pad bg-texture" id="portofoliu">
-  <div class="wrap">
+  <div class="wrap portfolio-wrap">
     <div class="portfolio-head reveal">
       <div class="section-head" style="margin-bottom:0;">
         <p class="eyebrow">Lucrări recente</p>
         <h2>Grădini care au prins <span class="italic-accent">viață</span></h2>
       </div>
-      <button class="btn btn-secondary-light">Vezi tot portofoliul</button>
     </div>
     <div class="portfolio-grid reveal">
       <a href="#" class="pf-card large">
@@ -900,6 +1144,7 @@ body.qc-lock{overflow:hidden;}
         <div class="pf-overlay"><span class="pf-cat">Proiect urban</span><span class="pf-title">Traseu senzorial</span><span class="pf-more">Fâșii verzi care răcoresc strada și rețin apa de ploaie.</span></div>
       </a>
     </div>
+    <button class="btn btn-secondary-light pf-cta reveal">Vezi tot portofoliul</button>
   </div>
 </section>
 
@@ -985,11 +1230,11 @@ body.qc-lock{overflow:hidden;}
             Ai nevoie de îndrumare pentru îngrijirea plantelor?
           </button>
         </div>
-        <div class="contact-info">
-          <a href="tel:+40742306289"><span class="ci-label">Tel</span><span>+40 742 306 289</span></a>
-          <a href="mailto:viridisartifex.landscape@gmail.com"><span class="ci-label">Email</span><span>viridisartifex.landscape@gmail.com</span></a>
-          <a href="#"><span class="ci-label">Zonă</span><span>Brașov și 30 km împrejur · online oriunde</span></a>
-        </div>
+      </div>
+      <div class="contact-info reveal">
+        <a href="tel:+40742306289"><span class="ci-label">Tel</span><span>+40 742 306 289</span></a>
+        <a href="mailto:viridisartifex.landscape@gmail.com"><span class="ci-label">Email</span><span>viridisartifex.landscape@gmail.com</span></a>
+        <a href="#"><span class="ci-label">Zonă</span><span>Brașov și 30 km împrejur · online oriunde</span></a>
       </div>
       <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/viridisartifex.landscape@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Mesaj nou de pe site — Viridis Artifex">
@@ -1646,6 +1891,68 @@ var resetQuickContactUI;
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
+})();
+
+/* Meniu mobil — panou pe tot ecranul, sub header (z-index 90 vs 100),
+   ca logo-ul si butonul X sa ramana vizibile si sa nu dublam inchiderea. */
+(function(){
+  const toggle = document.getElementById('navToggle');
+  const panel  = document.getElementById('mobileNav');
+  if (!toggle || !panel) return;
+  let lastFocused = null;
+
+  function openMenu(){
+    lastFocused = document.activeElement;
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Închide meniul');
+    document.body.classList.add('mnav-open');
+  }
+  function closeMenu(returnFocus){
+    if (!panel.classList.contains('open')) return;
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Deschide meniul');
+    document.body.classList.remove('mnav-open');
+    if (returnFocus && lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+  }
+
+  toggle.addEventListener('click', () => {
+    if (panel.classList.contains('open')) closeMenu(true); else openMenu();
+  });
+
+  /* IMPORTANT — faza de captura. Handlerul de scroll al ancorelor e legat direct pe <a>
+     si ruleaza in faza de bubbling; daca am inchide meniul acolo, window.scrollTo() s-ar
+     executa cat timp <body> mai are inca overflow:hidden si nu s-ar intampla nimic.
+     Inchizand aici, deblocam scroll-ul inainte ca ancora sa isi faca treaba. */
+  panel.addEventListener('click', (e) => {
+    if (e.target.closest('a[href], .js-open-contact')) closeMenu(false);
+  }, true);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !panel.classList.contains('open')) return;
+    closeMenu(true);
+  });
+
+  /* Capcana de focus: butonul hamburger e in afara panoului, deci intra explicit in lista */
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !panel.classList.contains('open')) return;
+    const items = [toggle].concat(Array.prototype.slice.call(panel.querySelectorAll('a[href], button')));
+    if (!items.length) return;
+    const first = items[0];
+    const last  = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  /* Rotire in landscape sau redimensionare peste prag cu meniul deschis:
+     altfel body-ul ar ramane blocat pe un layout care nu mai are hamburger. */
+  const mq = window.matchMedia('(min-width:901px)');
+  const onBreakpoint = () => { if (mq.matches) closeMenu(false); };
+  if (mq.addEventListener) mq.addEventListener('change', onBreakpoint);
+  else if (mq.addListener) mq.addListener(onBreakpoint);
 })();
 
 /* Plan legend <-> pin linking */
